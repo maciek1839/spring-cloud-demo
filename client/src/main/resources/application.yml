@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: spring-cloud-eureka-client
+server:
+  port: 8000
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}
+
+apiDocumentation:
+  name: spring-cloud-eureka-client2
+  url: http://localhost:8002
