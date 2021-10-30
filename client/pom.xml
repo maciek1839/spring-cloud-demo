@@ -47,31 +47,56 @@
 
     <build>
         <plugins>
-<!--            Additionally you have to scan the packages to detect a feign client.-->
-<!--            <plugin>-->
-<!--                <groupId>io.swagger.codegen.v3</groupId>-->
-<!--                <artifactId>swagger-codegen-maven-plugin</artifactId>-->
-<!--                <version>3.0.16</version>-->
-<!--                <executions>-->
-<!--                    <execution>-->
-<!--                        <id>generate-swagger-microservice2</id>-->
-<!--                        <phase>generate-sources</phase>-->
-<!--                        <goals>-->
-<!--                            <goal>generate</goal>-->
-<!--                        </goals>-->
-<!--                        <configuration>-->
-<!--                            <language>spring</language>-->
-<!--                            <library>spring-cloud</library>-->
-<!--                            <inputSpec>${project.basedir}/src/main/resources/api-docs-microservice2.json</inputSpec>-->
-<!--                            <generateApiTests>false</generateApiTests>-->
-<!--                            <configOptions>-->
-<!--                                <generateForOpenFeign>true</generateForOpenFeign>-->
-<!--                                <output>target/generated-sources/microservice2/openfeign</output>-->
-<!--                            </configOptions>-->
-<!--                        </configuration>-->
-<!--                    </execution>-->
-<!--                </executions>-->
-<!--            </plugin>-->
+            <!--            <plugin>-->
+            <!--                <groupId>org.openapitools</groupId>-->
+            <!--                <artifactId>openapi-generator-maven-plugin</artifactId>-->
+            <!--                <version>5.3.0</version>-->
+            <!--                <executions>-->
+            <!--                    <execution>-->
+            <!--                        <goals>-->
+            <!--                            <goal>generate</goal>-->
+            <!--                        </goals>-->
+            <!--                        <configuration>-->
+            <!--                            <inputSpec>${project.basedir}/src/main/resources/api-docs-microservice2.json</inputSpec>-->
+            <!--                            <generatorName>java</generatorName>-->
+            <!--                            <configOptions>-->
+            <!--                                <library>feign</library>-->
+            <!--                                <sourceFolder>src/gen/java/main</sourceFolder>-->
+            <!--                            </configOptions>-->
+            <!--                        </configuration>-->
+            <!--                    </execution>-->
+            <!--                </executions>-->
+            <!--            </plugin>-->
+            <plugin>
+                <groupId>io.swagger.codegen.v3</groupId>
+                <artifactId>swagger-codegen-maven-plugin</artifactId>
+                <version>3.0.16</version>
+                <executions>
+                    <execution>
+                        <id>generate-swagger-microservice2</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <language>spring</language>
+                            <library>spring-cloud</library>
+                            <inputSpec>${project.basedir}/src/main/resources/api-docs-microservice2.json</inputSpec>
+                            <generateApiTests>false</generateApiTests>
+                            <generateModels>false</generateModels>
+                            <generateApiDocumentation>false</generateApiDocumentation>
+                            <generateModelDocumentation>false</generateModelDocumentation>
+                            <generateSupportingFiles>true</generateSupportingFiles>
+                            <generateApis>true</generateApis>
+                            <output>target/generated-sources/microservice2/openfeign</output>
+                            <configOptions>
+                                <generateForOpenFeign>true</generateForOpenFeign>
+                                <interfaceOnly>false</interfaceOnly>
+                            </configOptions>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
             <plugin>
                 <groupId>io.swagger</groupId>
                 <artifactId>swagger-codegen-maven-plugin</artifactId>
@@ -82,11 +107,11 @@
                             <goal>generate</goal>
                         </goals>
                         <configuration>
-                            <inputSpec>${project.basedir}/src/main/resources/api-docs-microservice2.json</inputSpec>
+                            <inputSpec>${project.basedir}/src/main/resources/api-docs-standalone-service.json</inputSpec>
                             <language>java</language>
                             <library>resttemplate</library>
 
-                            <output>target/generated-sources/microservice2/resttemplate</output>
+                            <output>target/generated-sources/swagger-service-standalone</output>
                             <generateApiTests>false</generateApiTests>
                             <generateModelTests>false</generateModelTests>
                         </configuration>

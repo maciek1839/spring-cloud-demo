@@ -18,9 +18,11 @@
 
 	<modules>
 		<module>eureka-server</module>
+		<module>client</module>
 		<module>microservice1</module>
 		<module>microservice2</module>
-	</modules>
+        <module>standalone-service</module>
+    </modules>
 
 	<properties>
 		<java.version>11</java.version>
