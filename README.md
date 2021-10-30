@@ -71,3 +71,4 @@ Reference: https://medium.com/@tgtshanika/open-api-3-0-vs-swagger-2-0-94a80f1210
 - https://springdoc.org/migrating-from-springfox.html
 - https://springdoc.org/faq.html
 - https://newbedev.com/how-to-write-integration-tests-with-spring-cloud-netflix-and-feign
+- https://www.vojtechruzicka.com/documenting-spring-boot-rest-api-swagger-springfox/

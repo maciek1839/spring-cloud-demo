@@ -22,10 +22,10 @@ public class ManualApiClientConfiguration {
      * An example of configuration a client with a fixed URL e.g. loadbalancer.
      */
     @Bean
-    public io.swagger.client.api.StandaloneControllerImplApi standaloneService() {
+    public io.swagger.client.api.StandaloneApi standaloneService() {
         io.swagger.client.ApiClient apiClient = new io.swagger.client.ApiClient();
         apiClient.setBasePath(standaloneServicePath);
-        return new io.swagger.client.api.StandaloneControllerImplApi(apiClient);
+        return new io.swagger.client.api.StandaloneApi(apiClient);
     }
 
     /**

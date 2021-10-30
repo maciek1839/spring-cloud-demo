@@ -1,63 +1,14 @@
 - Add examples of all Spring libraries
     - Spring Cloud Gateway
-
-https://www.baeldung.com/spring-cloud-feign-integration-tests
-
-
-<!--		<dependency>-->
-<!--			<groupId>org.springframework.boot</groupId>-->
-<!--			<artifactId>spring-boot-starter-security</artifactId>-->
-<!--		</dependency>-->
-
-<!--		<dependency>-->
-<!--			<groupId>org.springframework.cloud</groupId>-->
-<!--			<artifactId>spring-cloud-starter</artifactId>-->
-<!--		</dependency>-->
-<!--		<dependency>-->
-<!--			<groupId>org.springframework.cloud</groupId>-->
-<!--			<artifactId>spring-cloud-starter-loadbalancer</artifactId>-->
-<!--		</dependency>-->
-<!--		<dependency>-->
-<!--			<groupId>org.springframework.cloud</groupId>-->
-<!--			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>-->
-<!--		</dependency>-->
-
-<!--		<dependency>-->
-<!--			<groupId>org.springframework.cloud</groupId>-->
-<!--			<artifactId>spring-cloud-starter-netflix-hystrix</artifactId>-->
-<!--		</dependency>-->
-<!--		<dependency>-->
-<!--			<groupId>org.springframework.cloud</groupId>-->
-<!--			<artifactId>spring-cloud-starter-netflix-hystrix-dashboard</artifactId>-->
-<!--		</dependency>-->
-<!--		<dependency>-->
-<!--			<groupId>org.springframework.cloud</groupId>-->
-<!--			<artifactId>spring-cloud-starter-netflix-ribbon</artifactId>-->
-<!--		</dependency>-->
-<!--		<dependency>-->
-<!--			<groupId>org.springframework.cloud</groupId>-->
-<!--			<artifactId>spring-cloud-starter-netflix-zuul</artifactId>-->
-<!--		</dependency>-->
-<!--		<dependency>-->
-<!--			<groupId>org.springframework.cloud</groupId>-->
-<!--			<artifactId>spring-cloud-starter-open-service-broker</artifactId>-->
-<!--			<version>3.2.0</version>-->
-<!--		</dependency>-->
-<!--		<dependency>-->
-<!--			<groupId>org.springframework.boot</groupId>-->
-<!--			<artifactId>spring-boot-configuration-processor</artifactId>-->
-<!--			<optional>true</optional>-->
-<!--		</dependency>-->
-<!--		<dependency>-->
-<!--			<groupId>org.springframework.restdocs</groupId>-->
-<!--			<artifactId>spring-restdocs-webtestclient</artifactId>-->
-<!--			<scope>test</scope>-->
-<!--		</dependency>-->
-<!--		<dependency>-->
-<!--			<groupId>org.springframework.security</groupId>-->
-<!--			<artifactId>spring-security-test</artifactId>-->
-<!--			<scope>test</scope>-->
-<!--		</dependency>-->
-
-
-Netflix Ribbon
+    - spring-boot-starter-security
+    - spring-cloud-starter
+    - spring-cloud-starter-loadbalancer
+    - spring-cloud-starter-netflix-hystrix
+    - spring-cloud-starter-netflix-hystrix-dashboard
+    - spring-cloud-starter-netflix-ribbon
+    - spring-cloud-starter-netflix-zuul
+    - spring-cloud-starter-open-service-broker
+    - spring-boot-configuration-processor
+    - spring-security-test
+    - and others from https://start.spring.io/
+- Add context to all services e.g. books, store, external-bookstore, printing-house

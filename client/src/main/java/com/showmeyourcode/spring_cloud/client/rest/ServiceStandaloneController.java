@@ -10,15 +10,15 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(ApiPathConstant.SERVICE_MANUAL)
 public class ServiceStandaloneController {
 
-    private final io.swagger.client.api.StandaloneControllerImplApi standaloneService;
+    private final io.swagger.client.api.StandaloneApi standaloneApi;
 
-    public ServiceStandaloneController(io.swagger.client.api.StandaloneControllerImplApi standaloneService) {
-        this.standaloneService = standaloneService;
+    public ServiceStandaloneController(io.swagger.client.api.StandaloneApi standaloneApi) {
+        this.standaloneApi = standaloneApi;
     }
 
     @RequestMapping("/resttemplate")
     public String getStandaloneServiceName() {
         log.info("Calling service3 (RestTemplate) ...");
-        return standaloneService.getMicroserviceNameUsingGET();
+        return standaloneApi.getMicroserviceNameUsingGET();
     }
 }
