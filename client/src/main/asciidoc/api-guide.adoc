@@ -1,0 +1,35 @@
+= REST Service API Guide
+:doctype: book
+:icons: font
+:source-highlighter: highlightjs
+:toc: left
+:toclevels: 4
+:sectlinks:
+
+= Resources
+
+== Service1 REST Service
+
+The Service1 provides the entry point into the service.
+
+=== Accessing the service1 GET with provided content
+
+==== Request structure
+
+include::{snippets}/service1/getMicroserviceName/http-request.adoc[]
+
+//==== Request parameters
+//
+//include::{snippets}/service1/getMicroserviceName/request-parameters.adoc[]
+
+//==== Response fields
+//
+//include::{snippets}/greeting-controller-test/greeting-get-with-provided-content/response-fields.adoc[]
+
+==== Example response
+
+include::{snippets}/service1/getMicroserviceName/http-response.adoc[]
+
+==== CURL request
+
+include::{snippets}/service1/getMicroserviceName/curl-request.adoc[]

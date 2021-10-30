@@ -30,6 +30,7 @@
         <spring-cloud.version>Hoxton.SR10</spring-cloud.version>
         <spring-boot.version>2.3.9.RELEASE</spring-boot.version>
         <springdoc-openapi.version>1.5.12</springdoc-openapi.version>
+        <snippetsDirectory>${project.build.directory}/generated-snippets</snippetsDirectory>
     </properties>
 
     <dependencyManagement>
@@ -64,6 +65,26 @@
                 <groupId>org.springdoc</groupId>
                 <artifactId>springdoc-openapi-webmvc-core</artifactId>
                 <version>${springdoc-openapi.version}</version>
+            </dependency>
+
+            <!-- Test dependencies-->
+            <dependency>
+                <groupId>org.testcontainers</groupId>
+                <artifactId>testcontainers</artifactId>
+                <version>1.12.3</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.testcontainers</groupId>
+                <artifactId>junit-jupiter</artifactId>
+                <version>1.12.3</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.github.tomakehurst</groupId>
+                <artifactId>wiremock</artifactId>
+                <version>2.27.2</version>
+                <scope>test</scope>
             </dependency>
         </dependencies>
     </dependencyManagement>
@@ -100,6 +121,46 @@
     </dependencies>
 
     <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.asciidoctor</groupId>
+                    <artifactId>asciidoctor-maven-plugin</artifactId>
+                    <version>1.5.8</version>
+                    <executions>
+                        <execution>
+                            <id>generate-docs</id>
+                            <phase>prepare-package</phase>
+                            <goals>
+                                <goal>process-asciidoc</goal>
+                            </goals>
+                            <configuration>
+                                <backend>html</backend>
+                                <doctype>book</doctype>
+                                <attributes>
+                                    <snippets>${snippetsDirectory}</snippets>
+                                </attributes>
+                                <!--                                <sourceDirectory>src/docs/asciidocs</sourceDirectory>-->
+                                <!--                                <outputDirectory>target/generated-docs</outputDirectory>-->
+                                <outputDirectory>${project.build.outputDirectory}/static/docs</outputDirectory>
+                                <resources>
+                                    <resource>
+                                        <directory>${project.build.directory}/generated-docs</directory>
+                                    </resource>
+                                </resources>
+                            </configuration>
+                        </execution>
+                    </executions>
+                    <dependencies>
+                        <dependency>
+                            <groupId>org.springframework.restdocs</groupId>
+                            <artifactId>spring-restdocs-asciidoctor</artifactId>
+                            <version>${spring-restdocs.version}</version>
+                        </dependency>
+                    </dependencies>
+                </plugin>
+            </plugins>
+        </pluginManagement>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>

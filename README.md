@@ -1,11 +1,16 @@
 # Spring Cloud demo
 
+**Technical remarks** - [link](./TECHNICAL_REMARKS.md)
+
 ## Technology
 - JDK 11 (AWS Coretto)
 - Spring Boot Cloud
+    - OpenFeign
+    - Ribbon
+    - Eureka
 - Spring REST Docs
-- OpenFeign
 - Swagger/ ReDoc
+- Testcontainers
 
 ## Services specification
 - `eureka-server`
@@ -37,6 +42,7 @@
     - Specification: OpenApi3 (OAS3)
     - Reference: http://localhost:8000/swagger-ui/
     - Eureka service name: spring-cloud-eureka-client
+    - Spring REST Docs: client/src/main/asciidoc 
 
 ## Getting started
 
@@ -45,26 +51,14 @@
 1. Run microservices which will register with Eureka server.
     - microservice1
     - microservice2
-        - Swagger: http://localhost:8002/swagger-ui/
+    - microservice3
     - standalone-service
-        - Swagger: http://localhost:8100/swagger-ui.html
 1. Run a client which will connect to Eureka and call microservices using Eureka.
     - client
 
-## Components
-- **Eureka**
-   - An application that holds the information about all client-service applications.
-- *Feign/OpenFeign*
-   - A declarative web service client.
-   - https://cloud.spring.io/spring-cloud-netflix/multi/multi_spring-cloud-feign.html
-- Ribbon load balancer
-
-## Spring REST Docs vs Springdoc
-Reference: https://www.baeldung.com/spring-rest-docs-vs-openapi
-
-**Spring REST Docs** is a framework developed by the Spring community in order to create accurate documentation for RESTful APIs. The output of running the tests is created as AsciiDoc files which can be put together using Asciidoctor to generate an HTML page describing our APIs.
-
-**Springdoc OpenAPI UI** can generate UI using Swagger UI.
+## Spring Cloud components
+![Spring Cloud](./docs/spring-cloud.png)  
+Reference: https://dzone.com/articles/microservice-architecture-with-spring-cloud-and-do
 
 ## Swagger 2 vs OpenApi3
 
@@ -76,3 +70,4 @@ Reference: https://medium.com/@tgtshanika/open-api-3-0-vs-swagger-2-0-94a80f1210
 - https://www.baeldung.com/swagger-2-documentation-for-spring-rest-api
 - https://springdoc.org/migrating-from-springfox.html
 - https://springdoc.org/faq.html
+- https://newbedev.com/how-to-write-integration-tests-with-spring-cloud-netflix-and-feign
