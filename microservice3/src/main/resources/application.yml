@@ -1,11 +1,17 @@
 spring:
   application:
-    name: spring-cloud-eureka-service2
+    name: spring-cloud-eureka-service3
 server:
-  port: 8002
+  port: 8003
 eureka:
   client:
     serviceUrl:
       defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}
   instance:
     preferIpAddress: true
+
+springdoc:
+  swagger-ui:
+    enabled: false
+  api-docs:
+    enabled: true

@@ -9,11 +9,11 @@ eureka:
       defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}
 
 client2EurekaName:
-  name: spring-cloud-eureka-client2
+  name: spring-cloud-eureka-service2
 
 standaloneService:
-  basePath: localhost:8003
+  basePath: localhost:8100
 
 apiDocumentation:
-  name: spring-cloud-eureka-client2
+  name: spring-cloud-eureka-service2
   url: ''

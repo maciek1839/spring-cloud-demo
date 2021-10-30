@@ -1,45 +1,40 @@
 {
-  "openapi": "3.0.3",
+  "swagger": "2.0",
   "info": {
-    "title": "Api Documentation",
     "description": "Api Documentation",
+    "version": "1.0",
+    "title": "Api Documentation",
     "termsOfService": "urn:tos",
     "contact": {},
     "license": {
       "name": "Apache 2.0",
       "url": "http://www.apache.org/licenses/LICENSE-2.0"
-    },
-    "version": "1.0"
-  },
-  "servers": [
-    {
-      "url": "http://localhost:8002",
-      "description": "Inferred Url"
     }
-  ],
+  },
+  "host": "localhost:8001",
+  "basePath": "/",
   "tags": [
     {
-      "name": "microservice-2-controller-impl",
-      "description": "Microservice 2 Controller Impl"
+      "name": "microservice-1-controller-impl",
+      "description": "Microservice 1 Controller Impl"
     }
   ],
   "paths": {
-    "/api/microservice2": {
+    "/api/microservice1": {
       "get": {
         "tags": [
-          "microservice-2-controller-impl"
+          "microservice-1-controller-impl"
         ],
         "summary": "getMicroserviceName",
         "operationId": "getMicroserviceNameUsingGET",
+        "produces": [
+          "*/*"
+        ],
         "responses": {
           "200": {
             "description": "OK",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "type": "string"
-                }
-              }
+            "schema": {
+              "type": "string"
             }
           },
           "401": {
@@ -53,21 +48,53 @@
           }
         }
       },
-      "put": {
+      "head": {
         "tags": [
-          "microservice-2-controller-impl"
+          "microservice-1-controller-impl"
         ],
         "summary": "getMicroserviceName",
-        "operationId": "getMicroserviceNameUsingPUT",
+        "operationId": "getMicroserviceNameUsingHEAD",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
         "responses": {
           "200": {
             "description": "OK",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "type": "string"
-                }
-              }
+            "schema": {
+              "type": "string"
+            }
+          },
+          "204": {
+            "description": "No Content"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "microservice-1-controller-impl"
+        ],
+        "summary": "getMicroserviceName",
+        "operationId": "getMicroserviceNameUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "string"
             }
           },
           "201": {
@@ -84,21 +111,23 @@
           }
         }
       },
-      "post": {
+      "put": {
         "tags": [
-          "microservice-2-controller-impl"
+          "microservice-1-controller-impl"
         ],
         "summary": "getMicroserviceName",
-        "operationId": "getMicroserviceNameUsingPOST",
+        "operationId": "getMicroserviceNameUsingPUT",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
         "responses": {
           "200": {
             "description": "OK",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "type": "string"
-                }
-              }
+            "schema": {
+              "type": "string"
             }
           },
           "201": {
@@ -117,19 +146,18 @@
       },
       "delete": {
         "tags": [
-          "microservice-2-controller-impl"
+          "microservice-1-controller-impl"
         ],
         "summary": "getMicroserviceName",
         "operationId": "getMicroserviceNameUsingDELETE",
+        "produces": [
+          "*/*"
+        ],
         "responses": {
           "200": {
             "description": "OK",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "type": "string"
-                }
-              }
+            "schema": {
+              "type": "string"
             }
           },
           "204": {
@@ -145,47 +173,21 @@
       },
       "options": {
         "tags": [
-          "microservice-2-controller-impl"
+          "microservice-1-controller-impl"
         ],
         "summary": "getMicroserviceName",
         "operationId": "getMicroserviceNameUsingOPTIONS",
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "type": "string"
-                }
-              }
-            }
-          },
-          "204": {
-            "description": "No Content"
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "403": {
-            "description": "Forbidden"
-          }
-        }
-      },
-      "head": {
-        "tags": [
-          "microservice-2-controller-impl"
+        "consumes": [
+          "application/json"
         ],
-        "summary": "getMicroserviceName",
-        "operationId": "getMicroserviceNameUsingHEAD",
+        "produces": [
+          "*/*"
+        ],
         "responses": {
           "200": {
             "description": "OK",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "type": "string"
-                }
-              }
+            "schema": {
+              "type": "string"
             }
           },
           "204": {
@@ -201,47 +203,21 @@
       },
       "patch": {
         "tags": [
-          "microservice-2-controller-impl"
+          "microservice-1-controller-impl"
         ],
         "summary": "getMicroserviceName",
         "operationId": "getMicroserviceNameUsingPATCH",
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "type": "string"
-                }
-              }
-            }
-          },
-          "204": {
-            "description": "No Content"
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "403": {
-            "description": "Forbidden"
-          }
-        }
-      },
-      "trace": {
-        "tags": [
-          "microservice-2-controller-impl"
+        "consumes": [
+          "application/json"
         ],
-        "summary": "getMicroserviceName",
-        "operationId": "getMicroserviceNameUsingTRACE",
+        "produces": [
+          "*/*"
+        ],
         "responses": {
           "200": {
             "description": "OK",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "type": "string"
-                }
-              }
+            "schema": {
+              "type": "string"
             }
           },
           "204": {
@@ -256,6 +232,5 @@
         }
       }
     }
-  },
-  "components": {}
+  }
 }

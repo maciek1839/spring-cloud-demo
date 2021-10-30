@@ -1,6 +1,8 @@
 - Add examples of all Spring libraries
     - Spring Cloud Gateway
 
+https://www.baeldung.com/spring-cloud-feign-integration-tests
+
 
 <!--		<dependency>-->
 <!--			<groupId>org.springframework.boot</groupId>-->

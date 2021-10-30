@@ -2,4 +2,4 @@ spring:
   application:
     name: standalone-service
 server:
-  port: 8003
+  port: 8100

@@ -1,4 +1,4 @@
-package com.showmeyourcode.spring_cloud.microservice2.configuration;
+package com.showmeyourcode.spring_cloud.client.configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -14,9 +14,9 @@ public class SwaggerConfig {
 
     @Bean
     public Docket api() {
-        return new Docket(DocumentationType.SWAGGER_2)
+        return new Docket(DocumentationType.OAS_30)
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.showmeyourcode.spring_cloud.microservice2.api"))
+                .apis(RequestHandlerSelectors.basePackage("com.showmeyourcode.spring_cloud.client.rest"))
                 .paths(PathSelectors.any())
                 .build();
     }
