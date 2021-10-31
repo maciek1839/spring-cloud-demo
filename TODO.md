@@ -14,3 +14,5 @@
 - Add context to all services e.g. books, store, external-bookstore, printing-house
 
 Add spring security
+
+Hystrix Dashboard/Turbine
