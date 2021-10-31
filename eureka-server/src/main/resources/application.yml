@@ -1,6 +1,27 @@
+spring:
+  application:
+    name: eureka-server
+
 server:
   port: 8761
 eureka:
   client:
-    registerWithEureka: false
+#    Usually you don't have to register to Eureka but
+#    Spring Boot Admin should also expose information about it,
+#    the setting should be set to "true" instead of "false".
+    registerWithEureka: true
     fetchRegistry: false
+
+# Default metric settings for all services
+# (metrics should be ingested by the Admin microservice)
+management:
+  endpoints:
+    jmx:
+      exposure:
+        exclude: shutdown
+        include: '*'
+    web:
+      exposure:
+        exclude:
+        include: health,info,metrics
+

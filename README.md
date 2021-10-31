@@ -15,21 +15,19 @@
 ## Services specification
 - `eureka-server`
     - Dashboard: http://localhost:8761
-- `standalone-service`
-    - Springfox 2.x
-    - Specification: Swagger 2
-    - Reference: http://localhost:8100/swagger-ui.html
-    - Eureka service name: spring-cloud-eureka-client
+    - Port: 8761
 - `microservice1`
     - SpringFox 3.x
     - Specification: Swagger2
     - Reference: http://localhost:8001/swagger-ui/
-  - Eureka service name: spring-cloud-eureka-service1
+    - Eureka service name: spring-cloud-eureka-service1
+    - Port: 8001
 - `microservice2`
     - springdoc-openapi-ui using Swagger UI
     - Specification: OpenApi3 (OAS3)
     - Reference: http://localhost:8002/swagger-ui.html
-  - Eureka service name: spring-cloud-eureka-service2
+    - Eureka service name: spring-cloud-eureka-service2
+    - Port: 8002
 - `microservice3`
     - springdoc-openapi-ui & ReDoc (as UI)
     - Specification: OpenApi3 (OAS3)
@@ -37,12 +35,23 @@
         - ReDoc: http://localhost:8003/documentation.html
         - API specification: http://localhost:8003/v3/api-docs 
     - Eureka service name: spring-cloud-eureka-service3
+    - Port: 8003
+- `standalone-service`
+    - Springfox 2.x
+    - Specification: Swagger 2
+    - Reference: http://localhost:8100/swagger-ui.html
+    - Eureka service name: spring-cloud-eureka-client
+    - Port: 8100
 - `client`
     - SpringFox 3.x
     - Specification: OpenApi3 (OAS3)
     - Reference: http://localhost:8000/swagger-ui/
     - Eureka service name: spring-cloud-eureka-client
     - Spring REST Docs: client/src/main/asciidoc 
+    - Port: 8000
+- `admin-dashboard`
+    - Dashboard: http://localhost:9000/
+    - Port: 9000
 
 ## Getting started
 

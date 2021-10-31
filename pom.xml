@@ -23,6 +23,7 @@
         <module>microservice2</module>
         <module>standalone-service</module>
         <module>microservice3</module>
+        <module>admin-dashboard</module>
     </modules>
 
     <properties>
@@ -183,8 +184,18 @@
                         </exclude>
                     </excludes>
                 </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>build-info</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>pl.project13.maven</groupId>
+                <artifactId>git-commit-id-plugin</artifactId>
             </plugin>
         </plugins>
     </build>
-
 </project>

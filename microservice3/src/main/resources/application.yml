@@ -15,3 +15,16 @@ springdoc:
     enabled: false
   api-docs:
     enabled: true
+
+# Default metric settings for all services
+# (metrics should be ingested by the Admin microservice)
+management:
+  endpoints:
+    jmx:
+      exposure:
+        exclude: shutdown
+        include: '*'
+    web:
+      exposure:
+        exclude:
+        include: health,info,metrics

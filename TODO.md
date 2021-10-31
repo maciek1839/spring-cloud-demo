@@ -12,3 +12,5 @@
     - spring-security-test
     - and others from https://start.spring.io/
 - Add context to all services e.g. books, store, external-bookstore, printing-house
+
+Add spring security
