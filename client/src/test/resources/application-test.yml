@@ -9,5 +9,17 @@ spring:
   main:
     allow-bean-definition-overriding: true
 
+wiremock-host: http://localhost:9871
+
 standaloneService:
-  basePath: http://localhost:9871
+  basePath: ${wiremock-host}
+
+# Spring Cloud services configuration for test purposes
+# when the app runs locally, it fetches URLs from the registry
+spring-cloud-eureka-service1:
+  ribbon:
+    listOfServers: ${wiremock-host}
+
+spring-cloud-eureka-service2:
+  ribbon:
+    listOfServers: ${wiremock-host}

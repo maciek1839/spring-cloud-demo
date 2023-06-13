@@ -34,7 +34,6 @@
         <spring-cloud.version>Hoxton.SR10</spring-cloud.version>
         <spring-boot.version>2.3.9.RELEASE</spring-boot.version>
         <springdoc-openapi.version>1.5.12</springdoc-openapi.version>
-        <snippetsDirectory>${project.build.directory}/generated-snippets</snippetsDirectory>
     </properties>
 
     <dependencyManagement>
@@ -148,7 +147,7 @@
                                 <backend>html</backend>
                                 <doctype>book</doctype>
                                 <attributes>
-                                    <snippets>${snippetsDirectory}</snippets>
+                                    <snippets>${project.build.directory}/generated-snippets</snippets>
                                 </attributes>
                                 <!--  <sourceDirectory>src/docs/asciidocs</sourceDirectory>    -->
                                 <!--  <outputDirectory>target/generated-docs</outputDirectory> -->
@@ -206,6 +205,12 @@
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
+                <configuration>
+                    <!-- exclude auto-generated sources -->
+                    <excludes>
+                        <exclude>io/swagger/**/*.class</exclude>
+                    </excludes>
+                </configuration>
                 <executions>
                     <execution>
                         <goals>

@@ -16,6 +16,9 @@ import org.springframework.web.client.RestTemplate;
 @RequestMapping(ApiPathConstant.SERVICE_2)
 public class Service2ProxyEndpoint {
 
+    public static final String PATH_OPENFEIGN = "/openfeign";
+    public static final String PATH_RESTTEMPLATE = "/resttemplate";
+
     private final RestTemplate restTemplateClient2;
     private final io.swagger.api.Microservice2ControllerImplApiClient client2OpenFeign;
 
@@ -25,13 +28,13 @@ public class Service2ProxyEndpoint {
         this.client2OpenFeign = client2OpenFeign;
     }
 
-    @RequestMapping("/openfeign")
+    @RequestMapping(PATH_OPENFEIGN)
     public String getMicroservice2OpenFeign() {
         log.info("Calling service2 (OpenFeign) ...");
         return client2OpenFeign.getMicroserviceNameUsingGET().getBody();
     }
 
-    @RequestMapping("/resttemplate")
+    @RequestMapping(PATH_RESTTEMPLATE)
     public String getMicroservice2NameRestTemplate() {
         log.info("Calling service2 (RestTemplate) ...");
         HttpEntity<String> httpEntity = new HttpEntity<>(new HttpHeaders());

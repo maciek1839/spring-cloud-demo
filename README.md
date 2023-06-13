@@ -56,7 +56,6 @@
 2. Run microservices which will register with Eureka server.
     - microservice1
     - microservice2
-    - microservice3
     - standalone-service
 3. Run a client which will connect to Eureka and call microservices using Eureka.
     - client

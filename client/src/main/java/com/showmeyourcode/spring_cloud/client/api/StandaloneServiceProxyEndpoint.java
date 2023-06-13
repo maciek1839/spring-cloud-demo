@@ -18,7 +18,7 @@ public class StandaloneServiceProxyEndpoint {
 
     @RequestMapping(RESTTEMPLATE_ENDPOINT)
     public String getStandaloneServiceName() {
-        log.info("Calling service3 (RestTemplate) ...");
+        log.info("Calling the standalone service (RestTemplate) ...");
         return standaloneApi.getMicroserviceNameUsingGET();
     }
 }
