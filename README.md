@@ -1,9 +1,13 @@
 # Spring Cloud demo
 
-**Technical remarks** - [link](./TECHNICAL_REMARKS.md)
+| Branch |                                                                                         Pipeline                                                                                         |                                                                                      Code coverage                                                                                       |                                       Test report                                        |
+|:------:|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|:----------------------------------------------------------------------------------------:|
+| master | [![pipeline status](https://gitlab.com/ShowMeYourCodeYouTube/spring-cloud-demo/badges/master/pipeline.svg)](https://gitlab.com/ShowMeYourCodeYouTube/spring-cloud-demo/-/commits/master) | [![coverage report](https://gitlab.com/ShowMeYourCodeYouTube/spring-cloud-demo/badges/master/coverage.svg)](https://gitlab.com/ShowMeYourCodeYouTube/spring-cloud-demo/-/commits/master) | [link](https://showmeyourcodeyoutube.gitlab.io/spring-cloud-demo/test-report/index.html) |
+
 
 ## Technology
-- JDK 11 (AWS Coretto)
+
+- JDK 11 (AWS Corretto)
 - Spring Boot Cloud
     - OpenFeign
     - Ribbon
@@ -13,6 +17,7 @@
 - Testcontainers
 
 ## Services specification
+
 - `eureka-server`
     - Dashboard: http://localhost:8761
     - Port: 8761
@@ -57,24 +62,40 @@
 
 1. Run Eureka server
     - dashboard: localhost:8761
-1. Run microservices which will register with Eureka server.
+2. Run microservices which will register with Eureka server.
     - microservice1
     - microservice2
     - microservice3
     - standalone-service
-1. Run a client which will connect to Eureka and call microservices using Eureka.
+3. Run a client which will connect to Eureka and call microservices using Eureka.
     - client
 
+### Spring REST Docs vs Springdoc
+
+Reference: https://www.baeldung.com/spring-rest-docs-vs-openapi
+
+**Spring REST Docs** is a framework developed by the Spring community in order to create accurate documentation for RESTful APIs. The output of running the tests is created as AsciiDoc files which can be put together using Asciidoctor to generate an HTML page describing our APIs.
+
+**Springdoc OpenAPI UI** can generate UI using Swagger UI.
+
+### Maven commands
+
+- mvn clean install -DskipTests
+
 ## Spring Cloud components
-![Spring Cloud](./docs/spring-cloud.png)  
+
+<img src="docs/spring-cloud.png"  width="800" height="600">
+
 Reference: https://dzone.com/articles/microservice-architecture-with-spring-cloud-and-do
 
 ## Swagger 2 vs OpenApi3
 
-![Swagger2 vs OpenApi3](./docs/swagger2-vs-openapi3.png)  
+<img src="docs/swagger2-vs-openapi3.png"  width="800" height="500">
+
 Reference: https://medium.com/@tgtshanika/open-api-3-0-vs-swagger-2-0-94a80f121022
 
 ## References
+
 - https://www.baeldung.com/spring-cloud-netflix-eureka
 - https://www.baeldung.com/swagger-2-documentation-for-spring-rest-api
 - https://springdoc.org/migrating-from-springfox.html

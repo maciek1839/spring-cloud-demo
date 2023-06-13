@@ -1,3 +1,10 @@
+# TODOs
+
+- Use different protocols - gRPC, RPC and try out GraphQL
+- Create a diagrams shows current microservices mesh
+- Spring Cloud Contract
+  - Spring Cloud Contract is an umbrella project holding solutions that help users in successfully implementing the Consumer Driven Contracts approach.
+  - https://spring.io/projects/spring-cloud-contract
 - Add examples of all Spring libraries
     - Spring Cloud Gateway
     - spring-boot-starter-security
@@ -12,7 +19,5 @@
     - spring-security-test
     - and others from https://start.spring.io/
 - Add context to all services e.g. books, store, external-bookstore, printing-house
-
-Add spring security
-
-Hystrix Dashboard/Turbine
+- Add spring security
+- Hystrix Dashboard/Turbine
