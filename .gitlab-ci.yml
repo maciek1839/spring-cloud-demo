@@ -2,9 +2,17 @@ default:
   image: amazoncorretto:11.0.7
   before_script:
     - ': before_script'
-    - java --version
     - chmod +x mvnw
     - export MAVEN_OPTS="-Dmaven.repo.local=${CI_PROJECT_DIR}/.m2/"
+
+# Static Application Security Testing (SAST) is a frequently used Application Security (AppSec) tool,
+# which scans an application’s source, binary, or byte code.
+# https://www.microfocus.com/en-us/what-is/sast
+include:
+  - template: Security/SAST.gitlab-ci.yml
+
+variables:
+  SAST_JAVA_VERSION: "11" # Required by SAST scanning
 
 cache:
   key: maven-cache
