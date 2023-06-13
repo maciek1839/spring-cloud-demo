@@ -2,13 +2,11 @@ package com.showmeyourcode.spring_cloud.standalone_service.model;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import lombok.Builder;
 import lombok.Data;
 
 import java.io.Serializable;
 
 @Data
-@Builder
 @ApiModel(description = "Representation of StandaloneModel3 tracked by the application.")
 public class StandaloneModel3 implements Serializable {
     private static final long serialVersionUID = 1L;

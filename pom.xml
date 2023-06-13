@@ -11,23 +11,26 @@
     </parent>
     <packaging>pom</packaging>
     <groupId>com.showmeyourcode.spring_cloud</groupId>
-    <artifactId>demo</artifactId>
+    <artifactId>demo-parent</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>Spring Boot Cloud demo</name>
     <description>Demo project for Spring Boot Cloud</description>
 
     <modules>
-        <module>eureka-server</module>
+        <module>admin-dashboard</module>
         <module>client</module>
+        <module>coverage-report</module>
+        <module>eureka-server</module>
         <module>microservice1</module>
         <module>microservice2</module>
         <module>standalone-service</module>
-        <module>microservice3</module>
-        <module>admin-dashboard</module>
     </modules>
 
     <properties>
-        <java.version>11</java.version>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
+
         <spring-cloud.version>Hoxton.SR10</spring-cloud.version>
         <spring-boot.version>2.3.9.RELEASE</spring-boot.version>
         <springdoc-openapi.version>1.5.12</springdoc-openapi.version>
@@ -147,8 +150,8 @@
                                 <attributes>
                                     <snippets>${snippetsDirectory}</snippets>
                                 </attributes>
-                                <!--                                <sourceDirectory>src/docs/asciidocs</sourceDirectory>-->
-                                <!--                                <outputDirectory>target/generated-docs</outputDirectory>-->
+                                <!--  <sourceDirectory>src/docs/asciidocs</sourceDirectory>    -->
+                                <!--  <outputDirectory>target/generated-docs</outputDirectory> -->
                                 <outputDirectory>${project.build.outputDirectory}/static/docs</outputDirectory>
                                 <resources>
                                     <resource>
@@ -195,6 +198,28 @@
             <plugin>
                 <groupId>pl.project13.maven</groupId>
                 <artifactId>git-commit-id-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>report</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>

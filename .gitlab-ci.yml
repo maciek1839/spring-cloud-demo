@@ -12,9 +12,40 @@ cache:
     - $CI_PROJECT_DIR/.m2/
 
 stages:
+  - test
   - build
+  - deploy
 
-Build package:
+test:
+  stage: test
+  script:
+    - ./mvnw verify $MAVEN_OPTS
+    - cat coverage-report/target/site/jacoco-aggregate/index.html | grep -o '<tfoot>.*</tfoot>'
+  coverage: '/Total.*?([0-9]{1,3})%/'
+  artifacts:
+    paths:
+      - coverage-report/target/site/jacoco-aggregate/*
+    reports:
+      junit:
+        - "**/target/surefire-reports/TEST-*.xml"
+        - "**/target/failsafe-reports/TEST-*.xml"
+    expire_in: 1 hour
+
+install:
   stage: build
   script:
-    - ./mvnw clean install
+    - ./mvnw clean install -DskipTests $MAVEN_OPTS
+
+pages:
+  stage: deploy
+  script:
+    - echo 'Cleaning old pages'
+    - rm -rf public
+    - ls -la
+    - mkdir -p public/test-report && cp -r coverage-report/target/site/jacoco-aggregate/* public/test-report
+    - echo 'Public directory content after copying files'
+    - ls -la ./public
+  artifacts:
+    paths:
+      - public
+    expire_in: 1 hour

@@ -1,5 +1,10 @@
 # TODOs
 
+- add V1 prefix to all microservices
+- Testcontainers (TODO) - eureka
+- Add missing tests for client and standalone-service
+- Add generated Ascii docs to Gitlab CI/CD and expose using Gitlab pages / asciidoctor-maven-plugin
+- Use `maven-failsafe-plugin` to run integration tests
 - Use different protocols - gRPC, RPC and try out GraphQL
 - Create a diagrams shows current microservices mesh
 - Spring Cloud Contract

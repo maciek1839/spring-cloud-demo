@@ -12,7 +12,7 @@ client2EurekaName:
   name: spring-cloud-eureka-service2
 
 standaloneService:
-  basePath: localhost:8100
+  basePath: http://localhost:8100
 
 apiDocumentation:
   name: spring-cloud-eureka-service2

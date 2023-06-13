@@ -1,1 +1,13 @@
+eureka:
+  client:
+    enabled: false
 
+spring:
+  cloud:
+    discovery:
+      enabled: false
+  main:
+    allow-bean-definition-overriding: true
+
+standaloneService:
+  basePath: http://localhost:9871

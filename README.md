@@ -13,8 +13,7 @@
     - Ribbon
     - Eureka
 - Spring REST Docs
-- Swagger/ ReDoc
-- Testcontainers
+- Swagger
 
 ## Services specification
 
@@ -33,14 +32,6 @@
     - Reference: http://localhost:8002/swagger-ui.html
     - Eureka service name: spring-cloud-eureka-service2
     - Port: 8002
-- `microservice3`
-    - springdoc-openapi-ui & ReDoc (as UI)
-    - Specification: OpenApi3 (OAS3)
-    - Reference
-        - ReDoc: http://localhost:8003/documentation.html
-        - API specification: http://localhost:8003/v3/api-docs 
-    - Eureka service name: spring-cloud-eureka-service3
-    - Port: 8003
 - `standalone-service`
     - Springfox 2.x
     - Specification: Swagger 2
@@ -69,6 +60,10 @@
     - standalone-service
 3. Run a client which will connect to Eureka and call microservices using Eureka.
     - client
+
+![img](./docs/spring-boot-admin.png)
+
+![img](./docs/spring-boot-eureka.png)
 
 ### Spring REST Docs vs Springdoc
 
