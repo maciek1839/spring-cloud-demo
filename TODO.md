@@ -1,7 +1,7 @@
 # TODOs
 
 - add V1 prefix to all microservices
-- Add generated Ascii docs to Gitlab CI/CD and expose using Gitlab pages / asciidoctor-maven-plugin
+- Fix asciidoctor-maven-plugin
 - Use `maven-failsafe-plugin` to run integration tests
 - Use different protocols - gRPC, RPC and try out GraphQL
 - Create a diagrams shows current microservices mesh

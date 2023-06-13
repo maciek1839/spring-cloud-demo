@@ -1,4 +1,4 @@
-= REST Service API Guide
+= REST API Documentation
 :doctype: book
 :icons: font
 :source-highlighter: highlightjs
