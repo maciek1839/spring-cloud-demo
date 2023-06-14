@@ -1,5 +1,6 @@
 # TODOs
 
+- https://bitbucket.org/atlassian/swagger-request-validator/src/master/
 - add V1 prefix to all microservices
 - Fix asciidoctor-maven-plugin
 - Use `maven-failsafe-plugin` to run integration tests
