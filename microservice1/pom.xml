@@ -4,7 +4,7 @@
     <parent>
         <groupId>com.showmeyourcode.spring_cloud</groupId>
         <artifactId>demo-parent</artifactId>
-        <version>1.0.0</version>
+        <version>1.0.1-SNAPSHOT</version>
     </parent>
 
     <artifactId>microservice1</artifactId>
