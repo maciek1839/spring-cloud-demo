@@ -72,10 +72,6 @@ Reference: https://www.baeldung.com/spring-rest-docs-vs-openapi
 
 **Springdoc OpenAPI UI** can generate UI using Swagger UI.
 
-### Maven commands
-
-- mvn clean install -DskipTests
-
 ## Spring Cloud components
 
 <img src="docs/spring-cloud.png"  width="800" height="600">

@@ -2,7 +2,6 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
@@ -12,7 +11,7 @@
     <packaging>pom</packaging>
     <groupId>com.showmeyourcode.spring_cloud</groupId>
     <artifactId>demo-parent</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.0.0-SNAPSHOT</version>
     <name>Spring Boot Cloud demo</name>
     <description>Demo project for Spring Boot Cloud</description>
 
@@ -161,6 +160,14 @@
         </pluginManagement>
         <plugins>
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <configuration>
+                    <autoVersionSubmodules>true</autoVersionSubmodules>
+                    <tagNameFormat>@{project.version}</tagNameFormat>
+                </configuration>
+            </plugin>
+            <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
@@ -217,4 +224,12 @@
             </plugin>
         </plugins>
     </build>
+
+    <scm>
+        <url>https://gitlab.com/ShowMeYourCodeYouTube/spring-cloud-demo</url>
+        <connection>scm:git:https://gitlab.com/ShowMeYourCodeYouTube/spring-cloud-demo.git</connection>
+        <developerConnection>scm:git:https://gitlab.com/ShowMeYourCodeYouTube/spring-cloud-demo.git</developerConnection>
+        <tag>HEAD</tag>
+    </scm>
+
 </project>

@@ -5,4 +5,19 @@
       - https://gist.github.com/joshbuchea/6f47e86d2510bce28f8e7f42ae84c716
       - https://ec.europa.eu/component-library/v1.15.0/eu/docs/conventions/git/
 
+## Maven commands
 
+- mvn clean install -DskipTests
+- mvn dependency:tree -Ddetail=true
+
+### Release a new version
+
+```text
+mvn release:prepare
+```
+
+If you want to only update versions (not recommended), use below command:
+
+```text
+mvn release:update-versions -DautoVersionSubmodules=true
+```
