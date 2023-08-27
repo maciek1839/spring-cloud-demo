@@ -2,7 +2,12 @@ spring:
   application:
     name: standalone-service
 server:
-  port: 8100
+  port: 8300
+  servlet:
+    context-path: /standalone-microservice
+
+api:
+  version: 0.0.1
 
 # Default metric settings for all services
 # (metrics should be ingested by the Admin microservice)

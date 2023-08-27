@@ -15,7 +15,7 @@ public class ManualApiClientConfiguration {
 
     @Value("${standaloneService.basePath}")
     private String standaloneServicePath;
-    @Value("${client2EurekaName.name}")
+    @Value("${microservice2_.name}")
     private String client2ServiceEurekaName;
 
     /**

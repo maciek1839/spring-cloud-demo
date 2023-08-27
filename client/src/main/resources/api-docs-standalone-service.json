@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ornare quam tempus leo viverra, vehicula porta nisi pretium. Fusce pellentesque, ex eget consectetur vehicula, risus nulla lobortis dui, mollis vulputate nulla nisi et magna. Phasellus fermentum dapibus congue. Curabitur efficitur mi vitae nibh fermentum, et dignissim risus sollicitudin. ",
+    "description": "Spring Cloud Application - Standalone Service",
     "version": "1.0.0",
     "title": "Standalone Service API",
     "contact": {
@@ -10,20 +10,20 @@
       "email": "EMAIL"
     },
     "license": {
-      "name": "Apache 2.0",
-      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+      "name": "MIT",
+      "url": "https://opensource.org/license/mit/"
     }
   },
   "host": "localhost:8100",
-  "basePath": "/",
+  "basePath": "/standalone-microservice",
   "tags": [
     {
       "name": "Standalone",
-      "description": "Set of endpoints for Creating, Retrieving, Updating and Deleting of StandaloneModels."
+      "description": "Standalone Endpoint Impl"
     }
   ],
   "paths": {
-    "/api/standalone-microservice": {
+    "/api/v1": {
       "get": {
         "tags": [
           "Standalone"
@@ -53,7 +53,7 @@
         "deprecated": false
       }
     },
-    "/api/standalone-microservice/properties": {
+    "/api/v1/properties": {
       "get": {
         "tags": [
           "Standalone"
@@ -131,7 +131,7 @@
         "deprecated": false
       }
     },
-    "/api/standalone-microservice/properties/{id}": {
+    "/api/v1/properties/{id}": {
       "delete": {
         "tags": [
           "Standalone"
@@ -184,8 +184,8 @@
         "standaloneProperty1": {
           "type": "integer",
           "format": "int64",
-          "minimum": 0,
-          "maximum": 100,
+          "minimum": 0.0,
+          "maximum": 100.0,
           "exclusiveMinimum": false,
           "exclusiveMaximum": false
         },

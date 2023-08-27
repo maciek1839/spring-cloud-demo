@@ -9,7 +9,7 @@
     </parent>
     <packaging>pom</packaging>
     <groupId>com.showmeyourcode.spring_cloud</groupId>
-    <artifactId>demo-parent</artifactId>
+    <artifactId>spring-cloud-demo-parent</artifactId>
     <version>1.0.1-SNAPSHOT</version>
     <name>Spring Boot Cloud demo</name>
     <description>Demo project for Spring Boot Cloud</description>
@@ -36,8 +36,8 @@
         </sonar.coverage.jacoco.xmlReportPaths>
 
         <spring-cloud.version>Hoxton.SR10</spring-cloud.version>
-        <spring-boot.version>2.3.9.RELEASE</spring-boot.version>
         <springdoc-openapi.version>1.5.12</springdoc-openapi.version>
+        <jacoco.version>0.8.10</jacoco.version>
     </properties>
 
     <dependencyManagement>
@@ -206,6 +206,7 @@
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
+                <version>${jacoco.version}</version>
                 <configuration>
                     <!-- exclude auto-generated sources -->
                     <excludes>

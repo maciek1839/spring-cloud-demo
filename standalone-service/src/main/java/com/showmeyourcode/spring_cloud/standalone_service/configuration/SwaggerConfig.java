@@ -1,5 +1,6 @@
 package com.showmeyourcode.spring_cloud.standalone_service.configuration;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
@@ -18,6 +19,9 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @Import(BeanValidatorPluginsConfiguration.class)
 public class SwaggerConfig {
 
+    @Value("${api.version}")
+    private String apiVersion;
+
     @Bean
     public Docket api() {
         return new Docket(DocumentationType.SWAGGER_2)
@@ -31,11 +35,10 @@ public class SwaggerConfig {
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
                 .title("Standalone Service API")
-                .description("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ornare quam tempus leo viverra, vehicula porta nisi pretium. Fusce pellentesque, ex eget consectetur vehicula, risus nulla lobortis dui, mollis vulputate nulla nisi et magna. Phasellus fermentum dapibus congue. Curabitur efficitur mi vitae nibh fermentum, et dignissim risus sollicitudin. ")
-                .license("Apache 2.0")
-                .licenseUrl("http://www.apache.org/licenses/LICENSE-2.0.html")
-                .termsOfServiceUrl("")
-                .version("1.0.0")
+                .description("Spring Cloud Application - Standalone Service")
+                .license("MIT")
+                .licenseUrl("https://opensource.org/license/mit/")
+                .version(apiVersion)
                 .contact(new Contact("CONTACT-NAME","URL","EMAIL"))
                 .build();
     }

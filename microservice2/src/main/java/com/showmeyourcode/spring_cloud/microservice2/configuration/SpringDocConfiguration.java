@@ -11,23 +11,25 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class SpringDocConfiguration {
 
+    private static final String API_VERSION = "0.0.1";
+
     @Bean
     public GroupedOpenApi publicApi() {
         return GroupedOpenApi.builder()
-                .group("springshop-public")
+                .group("public")
                 .pathsToMatch("/**")
                 .build();
     }
 
     @Bean
-    public OpenAPI springShopOpenAPI() {
+    public OpenAPI microserviceOpenAPI() {
         return new OpenAPI()
-                .info(new Info().title("SpringShop API")
-                        .description("Spring shop sample application")
-                        .version("v0.0.1")
-                        .license(new License().name("Apache 2.0").url("http://springdoc.org")))
+                .info(new Info().title("Microservice2 API")
+                        .description("Spring Cloud Application - Microservice2")
+                        .version(API_VERSION)
+                        .license(new License().name("MIT").url("https://opensource.org/license/mit/")))
                 .externalDocs(new ExternalDocumentation()
-                        .description("SpringShop Wiki Documentation")
-                        .url("https://external-host:8080/docs"));
+                        .description("ShowMeYourCodeYouTube - GitLab")
+                        .url("https://gitlab.com/ShowMeYourCodeYouTube"));
     }
 }

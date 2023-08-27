@@ -11,19 +11,18 @@
       "url": "http://www.apache.org/licenses/LICENSE-2.0"
     }
   },
-  "host": "localhost:8001",
-  "basePath": "/",
+  "host": "localhost:8002",
   "tags": [
     {
-      "name": "microservice-1-controller-impl",
-      "description": "Microservice 1 Controller Impl"
+      "name": "microservice-1-endpoint-impl",
+      "description": "Microservice 1 Endpoint Impl"
     }
   ],
   "paths": {
-    "/api/microservice1": {
+    "/microservice1/api/v1": {
       "get": {
         "tags": [
-          "microservice-1-controller-impl"
+          "microservice-1-endpoint-impl"
         ],
         "summary": "getMicroserviceName",
         "operationId": "getMicroserviceNameUsingGET",
@@ -50,7 +49,7 @@
       },
       "head": {
         "tags": [
-          "microservice-1-controller-impl"
+          "microservice-1-endpoint-impl"
         ],
         "summary": "getMicroserviceName",
         "operationId": "getMicroserviceNameUsingHEAD",
@@ -80,7 +79,7 @@
       },
       "post": {
         "tags": [
-          "microservice-1-controller-impl"
+          "microservice-1-endpoint-impl"
         ],
         "summary": "getMicroserviceName",
         "operationId": "getMicroserviceNameUsingPOST",
@@ -113,7 +112,7 @@
       },
       "put": {
         "tags": [
-          "microservice-1-controller-impl"
+          "microservice-1-endpoint-impl"
         ],
         "summary": "getMicroserviceName",
         "operationId": "getMicroserviceNameUsingPUT",
@@ -146,7 +145,7 @@
       },
       "delete": {
         "tags": [
-          "microservice-1-controller-impl"
+          "microservice-1-endpoint-impl"
         ],
         "summary": "getMicroserviceName",
         "operationId": "getMicroserviceNameUsingDELETE",
@@ -173,7 +172,7 @@
       },
       "options": {
         "tags": [
-          "microservice-1-controller-impl"
+          "microservice-1-endpoint-impl"
         ],
         "summary": "getMicroserviceName",
         "operationId": "getMicroserviceNameUsingOPTIONS",
@@ -203,7 +202,7 @@
       },
       "patch": {
         "tags": [
-          "microservice-1-controller-impl"
+          "microservice-1-endpoint-impl"
         ],
         "summary": "getMicroserviceName",
         "operationId": "getMicroserviceNameUsingPATCH",

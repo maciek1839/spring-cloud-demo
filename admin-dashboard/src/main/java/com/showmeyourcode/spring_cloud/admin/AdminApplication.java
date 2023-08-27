@@ -9,9 +9,9 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 @EnableEurekaClient
 @EnableAdminServer
 @SpringBootApplication(exclude = AdminServerHazelcastAutoConfiguration.class)
-public class SpringBootCloudAdminApplication {
+public class AdminApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SpringBootCloudAdminApplication.class, args);
+		SpringApplication.run(AdminApplication.class, args);
 	}
 }

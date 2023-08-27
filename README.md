@@ -1,19 +1,20 @@
 # Spring Cloud demo
 
-| Branch |                                                                                         Pipeline                                                                                         |                                                                                      Code coverage                                                                                       |                                       Test report                                        |                                         Spring REST Docs                                         |
-|:------:|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|:----------------------------------------------------------------------------------------:|:------------------------------------------------------------------------------------------------:|
-| master | [![pipeline status](https://gitlab.com/ShowMeYourCodeYouTube/spring-cloud-demo/badges/master/pipeline.svg)](https://gitlab.com/ShowMeYourCodeYouTube/spring-cloud-demo/-/commits/master) | [![coverage report](https://gitlab.com/ShowMeYourCodeYouTube/spring-cloud-demo/badges/master/coverage.svg)](https://gitlab.com/ShowMeYourCodeYouTube/spring-cloud-demo/-/commits/master) | [link](https://showmeyourcodeyoutube.gitlab.io/spring-cloud-demo/test-report/index.html) | [link](https://showmeyourcodeyoutube.gitlab.io/spring-cloud-demo/rest-docs/client-api-docs.html) |
+| Branch |                                                                                         Pipeline                                                                                         |                                                                                      Code coverage                                                                                       |                                       Test report                                        |                                         Spring REST Docs                                         |                                 SonarCloud                                 |
+|:------:|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|:----------------------------------------------------------------------------------------:|:------------------------------------------------------------------------------------------------:|:--------------------------------------------------------------------------:|
+| master | [![pipeline status](https://gitlab.com/ShowMeYourCodeYouTube/spring-cloud-demo/badges/master/pipeline.svg)](https://gitlab.com/ShowMeYourCodeYouTube/spring-cloud-demo/-/commits/master) | [![coverage report](https://gitlab.com/ShowMeYourCodeYouTube/spring-cloud-demo/badges/master/coverage.svg)](https://gitlab.com/ShowMeYourCodeYouTube/spring-cloud-demo/-/commits/master) | [link](https://showmeyourcodeyoutube.gitlab.io/spring-cloud-demo/test-report/index.html) | [link](https://showmeyourcodeyoutube.gitlab.io/spring-cloud-demo/rest-docs/client-api-docs.html) | [link](https://sonarcloud.io/organizations/showmeyourcodeyoutube/projects) |
 
 
 ## Technology
 
-- JDK 11 (AWS Corretto)
+- JDK (AWS Corretto)
 - Spring Boot Cloud
     - OpenFeign
     - Ribbon
     - Eureka
 - Spring REST Docs
 - Swagger
+- WireMock
 
 ## Services specification
 
@@ -23,27 +24,29 @@
 - `microservice1`
     - SpringFox 3.x
     - Specification: Swagger2
-    - Reference: http://localhost:8001/swagger-ui/
+    - Reference: http://localhost:8100/microservice1/swagger-ui/
     - Eureka service name: spring-cloud-eureka-service1
-    - Port: 8001
+    - Port: 8100
+    - Context path: /microservice1
 - `microservice2`
     - springdoc-openapi-ui using Swagger UI
     - Specification: OpenApi3 (OAS3)
-    - Reference: http://localhost:8002/swagger-ui.html
+    - Reference: http://localhost:8200/microservice2/swagger-ui.html
     - Eureka service name: spring-cloud-eureka-service2
-    - Port: 8002
+    - Port: 8200
+    - Context path: /microservice2
 - `standalone-service`
     - Springfox 2.x
     - Specification: Swagger 2
-    - Reference: http://localhost:8100/swagger-ui.html
-    - Eureka service name: spring-cloud-eureka-client
-    - Port: 8100
+    - Reference: http://localhost:8300/standalone-microservice/swagger-ui.html
+    - Port: 8300
+    - Context path: /standalone-microservice
 - `client`
     - SpringFox 3.x
     - Specification: OpenApi3 (OAS3)
     - Reference: http://localhost:8000/swagger-ui/
     - Eureka service name: spring-cloud-eureka-client
-    - Spring REST Docs: client/src/main/asciidoc 
+    - Spring REST Docs: client/src/main/asciidoc
     - Port: 8000
 - `admin-dashboard`
     - Dashboard: http://localhost:9000/
@@ -51,13 +54,15 @@
 
 ## Getting started
 
-1. Run Eureka server
+1. (Optional) Enable Lombok annotations in your IDE.
+2. (Optional) Run all servers using predefined configurations for IntelliJ (.runconfig)
+3. Run Eureka server
     - dashboard: localhost:8761
-2. Run microservices which will register with Eureka server.
+4. Run microservices which will register with Eureka server.
     - microservice1
     - microservice2
     - standalone-service
-3. Run a client which will connect to Eureka and call microservices using Eureka.
+5. Run a client which will connect to Eureka and call microservices using Eureka.
     - client
 
 ![img](./docs/spring-boot-admin.png)

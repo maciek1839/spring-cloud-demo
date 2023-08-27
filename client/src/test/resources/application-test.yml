@@ -20,6 +20,9 @@ spring-cloud-eureka-service1:
   ribbon:
     listOfServers: ${wiremock-host}
 
-spring-cloud-eureka-service2:
+microservice2_:
+  url: ${wiremock-host}/microservice2
+
+spring-cloud-eureka-client2:
   ribbon:
     listOfServers: ${wiremock-host}

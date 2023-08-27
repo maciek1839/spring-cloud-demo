@@ -1,7 +1,7 @@
 package com.showmeyourcode.spring_cloud.client.api;
 
 import com.showmeyourcode.spring_cloud.client.configuration.ApiPathConstant;
-import io.swagger.api.Microservice2ControllerImplApiClient;
+
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpEntity;
@@ -18,12 +18,13 @@ public class Service2ProxyEndpoint {
 
     public static final String PATH_OPENFEIGN = "/openfeign";
     public static final String PATH_RESTTEMPLATE = "/resttemplate";
+    public static final String SERVICE2_INTERNAL_PATH = "/microservice2/api/v1";
 
     private final RestTemplate restTemplateClient2;
-    private final io.swagger.api.Microservice2ControllerImplApiClient client2OpenFeign;
+    private final io.swagger.api.Microservice2EndpointImplApiClient client2OpenFeign;
 
     public Service2ProxyEndpoint(@Qualifier("service2Client") RestTemplate restTemplate,
-                                 Microservice2ControllerImplApiClient client2OpenFeign) {
+                                 io.swagger.api.Microservice2EndpointImplApiClient client2OpenFeign) {
         this.restTemplateClient2 = restTemplate;
         this.client2OpenFeign = client2OpenFeign;
     }
@@ -31,14 +32,14 @@ public class Service2ProxyEndpoint {
     @RequestMapping(PATH_OPENFEIGN)
     public String getMicroservice2OpenFeign() {
         log.info("Calling service2 (OpenFeign) ...");
-        return client2OpenFeign.getMicroserviceNameUsingGET().getBody();
+        return client2OpenFeign.getMicroserviceName4().getBody();
     }
 
     @RequestMapping(PATH_RESTTEMPLATE)
     public String getMicroservice2NameRestTemplate() {
         log.info("Calling service2 (RestTemplate) ...");
         HttpEntity<String> httpEntity = new HttpEntity<>(new HttpHeaders());
-        return restTemplateClient2.exchange("/api/microservice2",
+        return restTemplateClient2.exchange(SERVICE2_INTERNAL_PATH,
                 HttpMethod.GET,
                 httpEntity,
                 String.class

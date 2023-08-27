@@ -4,9 +4,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SpringBootCloudStandaloneServiceApplication {
+public class StandaloneServiceApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SpringBootCloudStandaloneServiceApplication.class, args);
+		SpringApplication.run(StandaloneServiceApplication.class, args);
 	}
 }

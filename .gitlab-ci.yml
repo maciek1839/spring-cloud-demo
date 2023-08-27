@@ -55,10 +55,10 @@ sonarcloud-check:
     - master
 
 
-install:
+package:
   stage: build
   script:
-    - ./mvnw clean install -DskipTests $MAVEN_OPTS
+    - ./mvnw clean package -DskipTests $MAVEN_OPTS
   artifacts:
     when: always
     paths:

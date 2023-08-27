@@ -1,7 +1,6 @@
 # TODOs
 
 - https://bitbucket.org/atlassian/swagger-request-validator/src/master/
-- add V1 prefix to all microservices
 - Fix asciidoctor-maven-plugin
 - Use `maven-failsafe-plugin` to run integration tests
 - Use different protocols - gRPC, RPC and try out GraphQL
@@ -25,3 +24,13 @@
 - Add context to all services e.g. books, store, external-bookstore, printing-house
 - Add spring security
 - Hystrix Dashboard/Turbine
+- K8 with internal/external communication, show use-cases
+- add System and Acceptance tests. https://www.guru99.com/levels-of-testing.html
+  - Do not need to manually check...
+- add client discovery, how ribbon works - https://www.google.com/search?sca_esv=560402742&sxsrf=AB5stBizYIZGA1tKvlTg8vuShUPVVYEB6Q:1693099231347&q=ribbon+eureka+cloud&tbm=isch&source=lnms&sa=X&ved=2ahUKEwje1YOS1vuAAxWPSWwGHeXlBp4Q0pQJegQIDBAB&biw=1536&bih=747&dpr=1.25#imgrc=jm39K4K5saRBWM
+- add actuator
+- add tracking zipkin?
+- add one service with WebFlux
+- renovate
+- check configuration of generating clients and references in README.md
+- Check latest changes in Spring Cloud (release notes)

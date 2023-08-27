@@ -25,7 +25,7 @@ class StandaloneServiceProxyEndpointTest extends BaseIT {
     @Test
     void shouldCallStandaloneServiceUsingRestTemplate() throws URISyntaxException {
         configureFor(wireMockServer.port());
-        stubFor(WireMock.get(urlEqualTo("/api/standalone-microservice"))
+        stubFor(WireMock.get(urlEqualTo("/api/v1"))
                 .willReturn(aResponse().withStatus(200).withBody("standalone-service-name"))
         );
 

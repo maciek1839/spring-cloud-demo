@@ -11,11 +11,11 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Api(description = "Set of endpoints for Creating, Retrieving, Updating and Deleting of StandaloneModels.", tags = {"Standalone"})
+@Api(value = "Set of endpoints for Creating, Retrieving, Updating and Deleting of StandaloneModels.", tags = {"Standalone"})
 public interface StandaloneEndpoint {
 
-    String ENDPOINT_PATH = "/api/standalone-microservice";
-    String ENDPOINT_PROPS_PATH = "/api/standalone-microservice/properties";
+    String ENDPOINT_PATH = "/api/v1";
+    String ENDPOINT_PROPS_PATH = ENDPOINT_PATH+"/properties";
 
     @GetMapping(ENDPOINT_PATH)
     String getMicroserviceName();

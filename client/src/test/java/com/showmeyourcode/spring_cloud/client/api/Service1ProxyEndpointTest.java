@@ -24,7 +24,7 @@ class Service1ProxyEndpointTest extends BaseIT {
     @Test
     void shouldCallService1UsingFeign() throws URISyntaxException {
         configureFor(wireMockServer.port());
-        stubFor(WireMock.get(urlEqualTo("/api/microservice1"))
+        stubFor(WireMock.get(urlEqualTo("/microservice1/api/v1/"))
                 .willReturn(aResponse().withStatus(200).withBody("microservice1"))
         );
 

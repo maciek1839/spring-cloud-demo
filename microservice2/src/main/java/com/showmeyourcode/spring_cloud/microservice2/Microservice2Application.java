@@ -4,9 +4,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SpringBootCloudMicroservice2Application {
+public class Microservice2Application {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SpringBootCloudMicroservice2Application.class, args);
+		SpringApplication.run(Microservice2Application.class, args);
 	}
 }

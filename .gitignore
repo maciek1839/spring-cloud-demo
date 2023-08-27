@@ -15,6 +15,10 @@ target/
 
 ### IntelliJ IDEA ###
 .idea
+!.idea/
+.idea/*
+!.idea/runConfigurations/
+**/*.iml
 *.iws
 *.iml
 *.ipr

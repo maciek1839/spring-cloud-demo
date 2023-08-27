@@ -1,0 +1,11 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="SpringCloudDemo" type="CompoundRunConfigurationType">
+    <toRun name="0EurekaApplication" type="SpringBootApplicationConfigurationType" />
+    <toRun name="1Microservice1Application" type="SpringBootApplicationConfigurationType" />
+    <toRun name="1Microservice2Application" type="SpringBootApplicationConfigurationType" />
+    <toRun name="1StandaloneServiceApplication" type="SpringBootApplicationConfigurationType" />
+    <toRun name="2ClientApplication" type="SpringBootApplicationConfigurationType" />
+    <toRun name="3AdminApplication" type="SpringBootApplicationConfigurationType" />
+    <method v="2" />
+  </configuration>
+</component>

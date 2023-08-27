@@ -16,6 +16,7 @@ import static com.github.tomakehurst.wiremock.client.WireMock.aResponse;
 import static com.github.tomakehurst.wiremock.client.WireMock.configureFor;
 import static com.github.tomakehurst.wiremock.client.WireMock.stubFor;
 import static com.github.tomakehurst.wiremock.client.WireMock.urlEqualTo;
+import static com.showmeyourcode.spring_cloud.client.api.Service2ProxyEndpoint.SERVICE2_INTERNAL_PATH;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
@@ -24,7 +25,7 @@ class Service2ProxyEndpointTest extends BaseIT {
     @Test
     void shouldCallService2UsingRestTemplate() throws URISyntaxException {
         configureFor(wireMockServer.port());
-        stubFor(WireMock.get(urlEqualTo("/api/microservice2"))
+        stubFor(WireMock.get(urlEqualTo(SERVICE2_INTERNAL_PATH))
                 .willReturn(aResponse().withStatus(200).withBody("microservice2"))
         );
 
@@ -39,7 +40,7 @@ class Service2ProxyEndpointTest extends BaseIT {
     @Test
     void shouldCallService2UsingFeign() throws URISyntaxException {
         configureFor(wireMockServer.port());
-        stubFor(WireMock.get(urlEqualTo("/api/microservice2"))
+        stubFor(WireMock.get(urlEqualTo(SERVICE2_INTERNAL_PATH))
                 .willReturn(aResponse().withStatus(200).withBody("microservice2"))
         );
 

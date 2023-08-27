@@ -9,6 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @FeignClient("spring-cloud-eureka-service1")
 public interface Microservice1ApiClient {
 
-    @RequestMapping("api/microservice1")
+    @RequestMapping("microservice1/api/v1/")
     String getMicroserviceName();
 }
