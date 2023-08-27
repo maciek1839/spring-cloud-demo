@@ -62,7 +62,7 @@ package:
   artifacts:
     when: always
     paths:
-      - client/target/generated-docs/client-api-docs.html
+      - client/target/generated-docs/*
     expire_in: 1 hour
 
 pages:
@@ -72,7 +72,7 @@ pages:
     - rm -rf public
     - ls -la
     - mkdir -p public/test-report && cp -r coverage-report/target/site/jacoco-aggregate/* public/test-report
-    - mkdir -p public/rest-docs && cp client/target/generated-docs/client-api-docs.html public/rest-docs
+    - mkdir -p public/rest-docs && cp client/target/generated-docs/* public/rest-docs
     - echo 'Public directory content after copying files'
     - ls -la ./public
   artifacts:

@@ -89,6 +89,20 @@ Reference: https://dzone.com/articles/microservice-architecture-with-spring-clou
 
 Reference: https://medium.com/@tgtshanika/open-api-3-0-vs-swagger-2-0-94a80f121022
 
+## Spring REST Docs
+
+Spring REST Docs helps you to document RESTful services.
+
+It combines hand-written documentation written with Asciidoctor and auto-generated snippets produced with Spring MVC Test. This approach frees you from the limitations of the documentation produced by tools like Swagger.
+
+It helps you to produce documentation that is accurate, concise, and well-structured. This documentation then allows your users to get the information they need with a minimum of fuss.
+
+Ref: https://spring.io/projects/spring-restdocs#overview
+
+![img](docs/springs-docs-generated-api-doc.png)
+
+Example implementation - [spring-projects / spring-restdocs](https://github.com/spring-projects/spring-restdocs/blob/2.0.x/samples/rest-notes-spring-data-rest/src/main/asciidoc/api-guide.adoc)
+
 ## References
 
 - https://www.baeldung.com/spring-cloud-netflix-eureka

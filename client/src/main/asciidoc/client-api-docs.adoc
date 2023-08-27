@@ -1,4 +1,5 @@
 = REST API Documentation
+ShowMeYourCode! - SPRING CLOUD demo;
 :doctype: book
 :icons: font
 :source-highlighter: highlightjs
@@ -6,30 +7,43 @@
 :toclevels: 4
 :sectlinks:
 
-= Resources
+[[introduction]]
+= Introduction
 
-== Service1 REST Service
+*The client microservice* allows calling other services providing a unified API interface (Swagger UI).
 
-The Service1 provides the entry point into the service.
+[[endpoints]]
+== Endpoints
 
-=== Accessing the service1 GET with provided content
+By accessing *Swagger UI* you can call the client microservice on your web browser.
+This sections shows example requests and responses.
 
-==== Request structure
+* http://localhost:8000/swagger-ui/
 
-include::{snippets}/service1/getMicroserviceName/http-request.adoc[]
+=== /api/v1/service1
 
-//==== Request parameters
-//
-//include::{snippets}/service1/getMicroserviceName/request-parameters.adoc[]
+The *service1* endpoint provides the entry point to the Service1 microservice.
 
-//==== Response fields
-//
-//include::{snippets}/greeting-controller-test/greeting-get-with-provided-content/response-fields.adoc[]
+==== GET MicroserviceName
 
-==== Example response
+===== Request structure
 
-include::{snippets}/service1/getMicroserviceName/http-response.adoc[]
+include::{snippets}/service1-proxy/getMicroserviceName/http-request.adoc[]
 
-==== CURL request
+include::{snippets}/service1-proxy/getMicroserviceName/httpie-request.adoc[]
 
-include::{snippets}/service1/getMicroserviceName/curl-request.adoc[]
+include::{snippets}/service1-proxy/getMicroserviceName/curl-request.adoc[]
+
+===== Request body
+
+include::{snippets}/service1-proxy/getMicroserviceName/request-body.adoc[]
+
+===== Response structure
+
+include::{snippets}/service1-proxy/getMicroserviceName/http-response.adoc[]
+
+===== Example response
+
+include::{snippets}/service1-proxy/getMicroserviceName/response-body.adoc[]
+
+
