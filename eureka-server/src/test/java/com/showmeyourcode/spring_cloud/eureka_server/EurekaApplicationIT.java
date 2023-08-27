@@ -1,11 +1,13 @@
 package com.showmeyourcode.spring_cloud.eureka_server;
 
+import org.hamcrest.MatcherAssert;
+import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.ApplicationContext;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.hamcrest.Matchers.notNullValue;
 
 @SpringBootTest
 class EurekaApplicationIT {
@@ -15,7 +17,6 @@ class EurekaApplicationIT {
 
     @Test
     void shouldStartEurekaServer() {
-        assertThat(context.getBean("eurekaServerContext")).isNotNull();
+        MatcherAssert.assertThat(context.getBean("eurekaServerContext"), Matchers.is(notNullValue()));
     }
-
 }

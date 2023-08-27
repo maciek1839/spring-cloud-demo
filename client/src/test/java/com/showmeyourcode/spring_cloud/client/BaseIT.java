@@ -1,23 +1,23 @@
 package com.showmeyourcode.spring_cloud.client;
 
 import com.github.tomakehurst.wiremock.WireMockServer;
+import io.restassured.RestAssured;
+import io.restassured.builder.RequestSpecBuilder;
+import io.restassured.specification.RequestSpecification;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.web.client.TestRestTemplate;
+import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.restdocs.RestDocumentationContextProvider;
 import org.springframework.restdocs.RestDocumentationExtension;
-import org.springframework.restdocs.mockmvc.MockMvcRestDocumentation;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
-import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-import org.springframework.web.context.WebApplicationContext;
+
+import static org.springframework.restdocs.restassured3.RestAssuredRestDocumentation.documentationConfiguration;
 
 @Slf4j
 @ExtendWith({RestDocumentationExtension.class, SpringExtension.class})
@@ -26,13 +26,11 @@ import org.springframework.web.context.WebApplicationContext;
 public abstract class BaseIT {
 
     protected static WireMockServer wireMockServer;
-    @Autowired
-    protected TestRestTemplate restTemplate;
-    @Autowired
-    private WebApplicationContext webApplicationContext;
     // In order to generate documentation (spring-restdocs), tests must run with MockMvc/WebClient/RestAssured.
     // https://docs.spring.io/spring-restdocs/docs/current/reference/htmlsingle/
-    protected MockMvc mockMvc;
+    protected RequestSpecification requestSpecification;
+    @LocalServerPort
+    protected int port;
 
     @BeforeAll
     static void setup() {
@@ -48,10 +46,11 @@ public abstract class BaseIT {
     }
 
     @BeforeEach
-    protected void beforeEach(WebApplicationContext webApplicationContext,
-                              RestDocumentationContextProvider restDocumentation) {
-        mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext)
-                .apply(MockMvcRestDocumentation.documentationConfiguration(restDocumentation))
+    public void beforeEach(RestDocumentationContextProvider restDocumentation) {
+        log.info("Setting up the port: {}", port);
+        RestAssured.port = port;
+        this.requestSpecification = new RequestSpecBuilder()
+                .addFilter(documentationConfiguration(restDocumentation))
                 .build();
     }
 

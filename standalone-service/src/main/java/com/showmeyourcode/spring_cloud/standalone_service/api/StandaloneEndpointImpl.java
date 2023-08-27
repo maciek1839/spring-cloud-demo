@@ -23,7 +23,7 @@ public class StandaloneEndpointImpl implements StandaloneEndpoint {
     @Override
     public String getMicroserviceName() {
         return String.format(
-                "Name standalone service: '%s' Time: '%s'",
+                "Name: '%s' Time: '%s'",
                 appName,
                 Instant.now());
     }

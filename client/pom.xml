@@ -49,7 +49,7 @@
 
         <dependency>
             <groupId>org.springframework.restdocs</groupId>
-            <artifactId>spring-restdocs-mockmvc</artifactId>
+            <artifactId>spring-restdocs-restassured</artifactId>
             <scope>test</scope>
         </dependency>
         <dependency>

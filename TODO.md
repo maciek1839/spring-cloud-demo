@@ -1,6 +1,5 @@
 # TODOs
 
-- Spock
 - add a header with a microservice name for API
 - https://bitbucket.org/atlassian/swagger-request-validator/src/master/
 - Use different protocols - gRPC, RPC and try out GraphQL
@@ -34,5 +33,3 @@
 - renovate
 - check configuration of generating clients and references in README.md
 - Check latest changes in Spring Cloud (release notes)
-- use WebClient instead of RestTemplate (?) Spring rest docs (test and then in app)
-- Add Spring Docs screenshot to README.md

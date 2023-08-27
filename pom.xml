@@ -34,6 +34,7 @@
             ${project.basedir}/coverage-report/target/site/jacoco-aggregate/jacoco.xml,
             ${project.basedir}/../coverage-report/target/site/jacoco-aggregate/jacoco.xml
         </sonar.coverage.jacoco.xmlReportPaths>
+        <sonar.exclusions>**/AdminApplication.java, **/ClientApplication*.java, **/EurekaApplication.java, **/Microservice1Application.java, **/Microservice2Application.java, **/StandaloneServiceApplication.java</sonar.exclusions>
 
         <spring-cloud.version>Hoxton.SR10</spring-cloud.version>
         <springdoc-openapi.version>1.5.12</springdoc-openapi.version>
@@ -42,6 +43,13 @@
         <wiremock-standalone.version>2.27.2</wiremock-standalone.version>
         <validation-api.version>2.0.1.Final</validation-api.version>
         <springfox-swagger-ui.version>3.0.0</springfox-swagger-ui.version>
+
+        <jacoco.module.admin.app.exclusion>**/AdminApplication*</jacoco.module.admin.app.exclusion>
+        <jacoco.module.client.app.exclusion>**/ClientApplication*</jacoco.module.client.app.exclusion>
+        <jacoco.module.eureka.app.exclusion>**/EurekaApplication*</jacoco.module.eureka.app.exclusion>
+        <jacoco.module.microservice1.app.exclusion>**/Microservice1Application*</jacoco.module.microservice1.app.exclusion>
+        <jacoco.module.microservice2.app.exclusion>**/Microservice2Application*</jacoco.module.microservice2.app.exclusion>
+        <jacoco.module.standalone.app.exclusion>**/StandaloneServiceApplication*</jacoco.module.standalone.app.exclusion>
     </properties>
 
     <dependencyManagement>
@@ -121,7 +129,21 @@
                     <groupId>org.junit.vintage</groupId>
                     <artifactId>junit-vintage-engine</artifactId>
                 </exclusion>
+                <exclusion>
+                    <groupId>org.assertj</groupId>
+                    <artifactId>assertj-core</artifactId>
+                </exclusion>
             </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>rest-assured</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-params</artifactId>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 
@@ -204,8 +226,14 @@
                 <artifactId>jacoco-maven-plugin</artifactId>
                 <version>${jacoco.version}</version>
                 <configuration>
-                    <!-- exclude auto-generated sources -->
                     <excludes>
+                        <exclude>${jacoco.module.admin.app.exclusion}</exclude>
+                        <exclude>${jacoco.module.client.app.exclusion}</exclude>
+                        <exclude>${jacoco.module.eureka.app.exclusion}</exclude>
+                        <exclude>${jacoco.module.microservice1.app.exclusion}</exclude>
+                        <exclude>${jacoco.module.microservice2.app.exclusion}</exclude>
+                        <exclude>${jacoco.module.standalone.app.exclusion}</exclude>
+                        <!-- exclude auto-generated sources -->
                         <exclude>io/swagger/**/*.class</exclude>
                     </excludes>
                 </configuration>

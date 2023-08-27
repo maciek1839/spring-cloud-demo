@@ -15,6 +15,7 @@
 - Spring REST Docs
 - Swagger
 - WireMock
+- RestAssured & Hamcrest
 
 ## Services specification
 

@@ -4,6 +4,8 @@
     - References:
       - https://gist.github.com/joshbuchea/6f47e86d2510bce28f8e7f42ae84c716
       - https://ec.europa.eu/component-library/v1.15.0/eu/docs/conventions/git/
+- Use assertions from `Hamcrest` instead of `Junit` in order to be consistent with RestAssured across the project.
+  - Hamcrest is required by RestAssured.
 
 ## Maven commands
 

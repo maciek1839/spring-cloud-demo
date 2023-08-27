@@ -1,28 +1,25 @@
 package com.showmeyourcode.spring_cloud.standalone_service.api;
 
-
 import com.showmeyourcode.spring_cloud.standalone_service.BaseIT;
 import com.showmeyourcode.spring_cloud.standalone_service.constant.EndpointConstant;
+import io.restassured.RestAssured;
+import io.restassured.response.Response;
+import org.hamcrest.MatcherAssert;
+import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Test;
-import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.RequestEntity;
-import org.springframework.http.ResponseEntity;
-
-import java.net.URI;
-import java.net.URISyntaxException;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import org.springframework.http.MediaType;
 
 class SwaggerEndpointIT extends BaseIT {
 
     @Test
-    void shouldExposeSwaggerEndpoint() throws URISyntaxException {
-        RequestEntity<String> requestEntity = new RequestEntity<>(HttpMethod.GET, new URI(EndpointConstant.SWAGGER_UI));
-        ResponseEntity<String> responseEntity = restTemplate.exchange(requestEntity, String.class);
+    void shouldExposeSwaggerEndpoint() {
+        Response response = RestAssured.given(this.requestSpecification)
+                .accept(MediaType.TEXT_HTML_VALUE)
+                .when()
+                .get(addContextPath(EndpointConstant.SWAGGER_UI));
 
-        assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
-        assertNotNull(responseEntity.getBody());
+        MatcherAssert.assertThat(response.statusCode(), Matchers.is(HttpStatus.OK.value()));
+        MatcherAssert.assertThat(response.body().asString().isBlank(), Matchers.is(false));
     }
 }
