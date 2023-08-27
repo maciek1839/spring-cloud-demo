@@ -14,7 +14,7 @@ import java.net.URISyntaxException;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-class SwaggerEndpointTest extends BaseIT {
+class SwaggerEndpointIT extends BaseIT {
 
     @Test
     void shouldExposeSwaggerEndpoint() throws URISyntaxException {

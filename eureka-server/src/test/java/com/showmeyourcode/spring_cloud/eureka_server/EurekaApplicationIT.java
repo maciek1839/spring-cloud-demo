@@ -1,4 +1,4 @@
-package com.showmeyourcode.spring_cloud.admin;
+package com.showmeyourcode.spring_cloud.eureka_server;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,14 +8,14 @@ import org.springframework.context.ApplicationContext;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
-class AdminApplicationTest {
+class EurekaApplicationIT {
 
     @Autowired
     private ApplicationContext context;
 
     @Test
-    void shouldStartAdminServer() {
-        assertThat(context.getBean("discoveryClient")).isNotNull();
+    void shouldStartEurekaServer() {
+        assertThat(context.getBean("eurekaServerContext")).isNotNull();
     }
 
 }

@@ -1,10 +1,10 @@
-package com.showmeyourcode.spring_cloud.microservice2.api;
+package com.showmeyourcode.spring_cloud.client.api;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.showmeyourcode.spring_cloud.microservice2.BaseIT;
-import com.showmeyourcode.spring_cloud.microservice2.constant.EndpointConstant;
+import com.showmeyourcode.spring_cloud.client.BaseIT;
+import com.showmeyourcode.spring_cloud.client.constant.EndpointConstant;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.HttpMethod;
@@ -21,7 +21,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @Slf4j
-class ActuatorEndpointTest extends BaseIT {
+class ActuatorEndpointIT extends BaseIT {
 
     @Test
     void shouldExposeActuatorEndpoint() throws URISyntaxException {

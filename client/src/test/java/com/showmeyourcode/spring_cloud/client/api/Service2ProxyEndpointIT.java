@@ -3,7 +3,6 @@ package com.showmeyourcode.spring_cloud.client.api;
 import com.github.tomakehurst.wiremock.client.WireMock;
 import com.showmeyourcode.spring_cloud.client.BaseIT;
 import com.showmeyourcode.spring_cloud.client.configuration.ApiPathConstant;
-import com.showmeyourcode.spring_cloud.client.constant.EndpointConstant;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
@@ -17,19 +16,35 @@ import static com.github.tomakehurst.wiremock.client.WireMock.aResponse;
 import static com.github.tomakehurst.wiremock.client.WireMock.configureFor;
 import static com.github.tomakehurst.wiremock.client.WireMock.stubFor;
 import static com.github.tomakehurst.wiremock.client.WireMock.urlEqualTo;
+import static com.showmeyourcode.spring_cloud.client.api.Service2ProxyEndpoint.SERVICE2_INTERNAL_PATH;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-class StandaloneServiceProxyEndpointTest extends BaseIT {
+class Service2ProxyEndpointIT extends BaseIT {
 
     @Test
-    void shouldCallStandaloneServiceUsingRestTemplate() throws URISyntaxException {
+    void shouldCallService2UsingRestTemplate() throws URISyntaxException {
         configureFor(wireMockServer.port());
-        stubFor(WireMock.get(urlEqualTo("/api/v1"))
-                .willReturn(aResponse().withStatus(200).withBody("standalone-service-name"))
+        stubFor(WireMock.get(urlEqualTo(SERVICE2_INTERNAL_PATH))
+                .willReturn(aResponse().withStatus(200).withBody("microservice2"))
         );
 
-        var uri = ApiPathConstant.STANDALONE_MANUAL + StandaloneServiceProxyEndpoint.RESTTEMPLATE_ENDPOINT;
+        var uri = ApiPathConstant.SERVICE_2 + Service2ProxyEndpoint.PATH_RESTTEMPLATE;
+        RequestEntity<String> requestEntity = new RequestEntity<>(HttpMethod.GET, new URI(uri));
+        ResponseEntity<String> responseEntity = restTemplate.exchange(requestEntity, String.class);
+
+        assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
+        assertNotNull(responseEntity.getBody());
+    }
+
+    @Test
+    void shouldCallService2UsingFeign() throws URISyntaxException {
+        configureFor(wireMockServer.port());
+        stubFor(WireMock.get(urlEqualTo(SERVICE2_INTERNAL_PATH))
+                .willReturn(aResponse().withStatus(200).withBody("microservice2"))
+        );
+
+        var uri = ApiPathConstant.SERVICE_2 + Service2ProxyEndpoint.PATH_OPENFEIGN;
         RequestEntity<String> requestEntity = new RequestEntity<>(HttpMethod.GET, new URI(uri));
         ResponseEntity<String> responseEntity = restTemplate.exchange(requestEntity, String.class);
 

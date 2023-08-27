@@ -1,7 +1,7 @@
-package com.showmeyourcode.spring_cloud.microservice2.api;
+package com.showmeyourcode.spring_cloud.microservice1.api;
 
 import com.netflix.discovery.shared.Application;
-import com.showmeyourcode.spring_cloud.microservice2.BaseIT;
+import com.showmeyourcode.spring_cloud.microservice1.BaseIT;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.http.HttpMethod;
@@ -17,13 +17,13 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
 
-class Microservice2EndpointTest extends BaseIT {
+class Microservice1EndpointIT extends BaseIT {
 
     @Test
     void shouldGetMicroserviceName() throws URISyntaxException {
         Mockito.when(eurekaClient.getApplication(any())).thenReturn(new Application("test-name-app"));
 
-        String endpointUri = Microservice2Endpoint.ENDPOINT_PATH;
+        String endpointUri = Microservice1Endpoint.ENDPOINT_PATH;
         RequestEntity<String> requestEntity = new RequestEntity<>(HttpMethod.GET, new URI(endpointUri));
         ResponseEntity<String> responseEntity = restTemplate.exchange(requestEntity, String.class);
 

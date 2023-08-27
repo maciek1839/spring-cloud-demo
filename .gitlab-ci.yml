@@ -58,7 +58,7 @@ sonarcloud-check:
 package:
   stage: build
   script:
-    - ./mvnw clean package -DskipTests $MAVEN_OPTS
+    - ./mvnw clean install -DskipTests $MAVEN_OPTS
   artifacts:
     when: always
     paths:

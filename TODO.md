@@ -1,6 +1,6 @@
 # TODOs
 
-- Use `maven-failsafe-plugin` to run integration tests and try Spock?
+- Spock
 - add a header with a microservice name for API
 - https://bitbucket.org/atlassian/swagger-request-validator/src/master/
 - Use different protocols - gRPC, RPC and try out GraphQL

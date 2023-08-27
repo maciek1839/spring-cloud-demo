@@ -1,10 +1,8 @@
 package com.showmeyourcode.spring_cloud.standalone_service.api;
 
 import com.showmeyourcode.spring_cloud.standalone_service.BaseIT;
-import com.showmeyourcode.spring_cloud.standalone_service.constant.EndpointConstant;
 import com.showmeyourcode.spring_cloud.standalone_service.model.StandaloneModel1;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.RequestEntity;
@@ -12,7 +10,6 @@ import org.springframework.http.ResponseEntity;
 
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -20,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
 
-class StandaloneEndpointTest extends BaseIT {
+class StandaloneEndpointIT extends BaseIT {
 
     @Test
     void shouldGetMicroserviceName() throws URISyntaxException {
