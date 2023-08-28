@@ -2,27 +2,25 @@ eureka:
   client:
     enabled: false
 
+# Spring Cloud services configuration for test purposes
+# when the app runs locally, it fetches URLs from the registry
 spring:
   cloud:
     discovery:
-      enabled: false
+      client:
+        simple:
+          instances:
+            spring-cloud-eureka-service1:
+              - uri: ${wiremock-host}
+            spring-cloud-eureka-client2:
+              - uri: ${wiremock-host}
   main:
     allow-bean-definition-overriding: true
 
 wiremock-host: http://localhost:9871
 
-standaloneService:
-  basePath: ${wiremock-host}
-
-# Spring Cloud services configuration for test purposes
-# when the app runs locally, it fetches URLs from the registry
-spring-cloud-eureka-service1:
-  ribbon:
-    listOfServers: ${wiremock-host}
-
 microservice2_:
   url: ${wiremock-host}/microservice2
 
-spring-cloud-eureka-client2:
-  ribbon:
-    listOfServers: ${wiremock-host}
+standaloneService:
+  basePath: ${wiremock-host}

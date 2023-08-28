@@ -44,7 +44,7 @@ All services use OpenApi3 (OAS3).
   - Context path: /standalone-microservice
 - `client`
   - Technology: Spring MVC
-  - Swagger UI: http://localhost:8000/swagger-ui/
+  - Swagger UI: http://localhost:8000/swagger-ui.html
   - Eureka service name: spring-cloud-eureka-client
   - Spring REST Docs: client/src/main/asciidoc
   - Port: 8000
@@ -80,7 +80,7 @@ Reference: https://www.baeldung.com/spring-rest-docs-vs-openapi
 
 ## Spring Cloud components
 
-<img src="docs/spring-cloud.png"  width="800" height="600">
+![img](docs/spring-cloud.png)
 
 Reference: https://dzone.com/articles/microservice-architecture-with-spring-cloud-and-do
 

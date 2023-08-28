@@ -22,7 +22,6 @@ class ActuatorEndpointIT extends BaseIT{
                 .statusCode(Matchers.is(HttpStatus.OK.value()))
                 .body("isEmpty()", Matchers.is(false))
                 .body("_links", Matchers.notNullValue())
-                .body("_links.archaius", Matchers.notNullValue())
                 .body("_links.refresh", Matchers.notNullValue());
     }
 

@@ -50,7 +50,7 @@ public class Service2ProxyEndpoint {
         return client2OpenFeign.getMicroserviceName().getBody();
     }
 
-    @RequestMapping(PATH_RESTTEMPLATE)
+    @GetMapping(PATH_RESTTEMPLATE)
     public String getMicroservice2NameRestTemplate() {
         log.info("Calling service2 (RestTemplate) ...");
         HttpEntity<String> httpEntity = new HttpEntity<>(new HttpHeaders());

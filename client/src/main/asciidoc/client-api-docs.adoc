@@ -18,7 +18,7 @@ ShowMeYourCode! - SPRING CLOUD demo;
 By accessing *Swagger UI* you can call the client microservice on your web browser.
 This sections shows example requests and responses.
 
-* http://localhost:8000/swagger-ui/
+* http://localhost:8000/swagger-ui.html
 
 === /api/v1/service1
 

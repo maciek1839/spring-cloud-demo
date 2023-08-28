@@ -2,7 +2,6 @@ package com.showmeyourcode.spring_cloud.standalone_service.api;
 
 import com.showmeyourcode.spring_cloud.standalone_service.constant.HttpHeaderConstant;
 import com.showmeyourcode.spring_cloud.standalone_service.model.StandaloneModel1;
-import com.showmeyourcode.spring_cloud.standalone_service.model.StandaloneModel2;
 import com.showmeyourcode.spring_cloud.standalone_service.model.StandaloneModel3;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -11,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.Mono;
 
-import javax.validation.constraints.Max;
 import java.time.Instant;
 import java.util.Collections;
 import java.util.List;
