@@ -1,7 +1,5 @@
 # TODOs
 
-- remove Swagger 2
-- add a header with a microservice name for API
 - https://bitbucket.org/atlassian/swagger-request-validator/src/master/
 - Use different protocols - gRPC, RPC and try out GraphQL
 - Create a diagrams shows current microservices mesh
@@ -40,5 +38,4 @@
 - Archarius
   - https://www.baeldung.com/netflix-archaius-spring-cloud-integration
 - use java faker to generate data for services
-- copy and format swagger JSON to client module
 - add Eureka diagram, client discovery vs server discovery?

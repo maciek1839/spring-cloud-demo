@@ -22,30 +22,36 @@
 All services use OpenApi3 (OAS3).
 
 - `eureka-server`
-    - Dashboard: http://localhost:8761
-    - Port: 8761
+  - Technology: Spring MVC
+  - Dashboard: http://localhost:8761
+  - Port: 8761
 - `microservice1`
-    - Swagger UI: http://localhost:8100/microservice1/swagger-ui/
-    - Eureka service name: spring-cloud-eureka-service1
-    - Port: 8100
-    - Context path: /microservice1
+  - Technology: Spring MVC
+  - Swagger UI: http://localhost:8100/microservice1/swagger-ui.html
+  - Eureka service name: spring-cloud-eureka-service1
+  - Port: 8100
+  - Context path: /microservice1
 - `microservice2`
-    - Swagger UI: http://localhost:8200/microservice2/swagger-ui.html
-    - Eureka service name: spring-cloud-eureka-service2
-    - Port: 8200
-    - Context path: /microservice2
+  - Technology: Spring MVC
+  - Swagger UI: http://localhost:8200/microservice2/swagger-ui.html
+  - Eureka service name: spring-cloud-eureka-service2
+  - Port: 8200
+  - Context path: /microservice2
 - `standalone-service`
-    - Swagger UI: http://localhost:8300/standalone-microservice/swagger-ui.html
-    - Port: 8300
-    - Context path: /standalone-microservice
+  - Technology: Spring WebFlux
+  - Swagger UI: http://localhost:8300/standalone-microservice/swagger-ui.html
+  - Port: 8300
+  - Context path: /standalone-microservice
 - `client`
-    - Swagger UI: http://localhost:8000/swagger-ui/
-    - Eureka service name: spring-cloud-eureka-client
-    - Spring REST Docs: client/src/main/asciidoc
-    - Port: 8000
+  - Technology: Spring MVC
+  - Swagger UI: http://localhost:8000/swagger-ui/
+  - Eureka service name: spring-cloud-eureka-client
+  - Spring REST Docs: client/src/main/asciidoc
+  - Port: 8000
 - `admin-dashboard`
-    - Dashboard: http://localhost:9000/
-    - Port: 9000
+  - Technology: Spring MVC
+  - Dashboard: http://localhost:9000/
+  - Port: 9000
 
 ## Getting started
 

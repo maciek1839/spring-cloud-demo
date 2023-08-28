@@ -51,8 +51,6 @@
         <jacoco.version>0.8.10</jacoco.version>
         <aasciidoctor-maven-plugin.version>1.5.8</aasciidoctor-maven-plugin.version>
         <wiremock-standalone.version>2.27.2</wiremock-standalone.version>
-        <validation-api.version>2.0.1.Final</validation-api.version>
-        <springfox-swagger-ui.version>3.0.0</springfox-swagger-ui.version>
     </properties>
 
     <dependencyManagement>
@@ -65,18 +63,7 @@
                 <scope>import</scope>
             </dependency>
 
-            <!-- Springfox 3-->
-            <dependency>
-                <groupId>io.springfox</groupId>
-                <artifactId>springfox-swagger-ui</artifactId>
-                <version>${springfox-swagger-ui.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>io.springfox</groupId>
-                <artifactId>springfox-boot-starter</artifactId>
-                <version>${springfox-swagger-ui.version}</version>
-            </dependency>
-
+            <!-- Springdoc MVC dependencies-->
             <dependency>
                 <groupId>org.springdoc</groupId>
                 <artifactId>springdoc-openapi-ui</artifactId>
@@ -89,10 +76,17 @@
                 <version>${springdoc-openapi.version}</version>
             </dependency>
 
+            <!-- Springdoc WebFlux dependencies-->
             <dependency>
-                <groupId>javax.validation</groupId>
-                <artifactId>validation-api</artifactId>
-                <version>${validation-api.version}</version>
+                <groupId>org.springdoc</groupId>
+                <artifactId>springdoc-openapi-webflux-core</artifactId>
+                <version>${springdoc-openapi.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springdoc</groupId>
+                <artifactId>springdoc-openapi-webflux-ui</artifactId>
+                <version>${springdoc-openapi.version}</version>
             </dependency>
 
             <!-- Test dependencies-->

@@ -14,14 +14,6 @@ public class SpringDocConfiguration {
     private static final String API_VERSION = "0.0.1";
 
     @Bean
-    public GroupedOpenApi publicApi() {
-        return GroupedOpenApi.builder()
-                .group("public")
-                .pathsToMatch("/**")
-                .build();
-    }
-
-    @Bean
     public OpenAPI microserviceOpenAPI() {
         return new OpenAPI()
                 .info(new Info().title("Microservice2 API")

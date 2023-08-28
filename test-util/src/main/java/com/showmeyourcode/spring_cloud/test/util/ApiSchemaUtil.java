@@ -14,17 +14,21 @@ import java.nio.file.StandardOpenOption;
 @Slf4j
 public class ApiSchemaUtil {
 
+    private ApiSchemaUtil() {
+    }
+
     public static void updateClientSchema(String currentApiSpecificationInJson, String clientModuleFileToReplace) throws IOException {
         Path currentRelativePath = Paths.get("");
         String currentAbsolutePath= currentRelativePath.toAbsolutePath().toString();
         String springCloudDemoProjectPath = new File(currentAbsolutePath).getParentFile().getAbsolutePath();
         String clientSchemaFile = springCloudDemoProjectPath + "/client/src/main/resources/"+clientModuleFileToReplace;
 
+        String apiSchemaToWrite = beautify(currentApiSpecificationInJson);
+
         log.info("Working directory: {}", currentAbsolutePath);
         log.info("Project directory: {}", springCloudDemoProjectPath);
         log.info("Client API file: {}", clientSchemaFile);
-
-        String apiSchemaToWrite = beautify(currentApiSpecificationInJson);
+        log.info("Content to write: {}", apiSchemaToWrite);
 
         Files.write(Path.of(clientSchemaFile), apiSchemaToWrite.getBytes(), StandardOpenOption.WRITE);
     }

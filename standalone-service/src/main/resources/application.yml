@@ -1,10 +1,11 @@
 spring:
   application:
     name: standalone-service
+  webflux:
+    base-path: /standalone-microservice
+
 server:
   port: 8300
-  servlet:
-    context-path: /standalone-microservice
 
 api:
   version: 0.0.1

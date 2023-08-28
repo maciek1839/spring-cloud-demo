@@ -1,37 +1,78 @@
 package com.showmeyourcode.spring_cloud.standalone_service.api;
 
+import com.showmeyourcode.spring_cloud.standalone_service.constant.HttpHeaderConstant;
 import com.showmeyourcode.spring_cloud.standalone_service.model.StandaloneModel1;
 import com.showmeyourcode.spring_cloud.standalone_service.model.StandaloneModel3;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiResponse;
-import io.swagger.annotations.ApiResponses;
+
+import io.swagger.v3.oas.annotations.OpenAPIDefinition;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.info.Info;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import reactor.core.publisher.Mono;
 
 import java.util.List;
 
-@Api(value = "Set of endpoints for Creating, Retrieving, Updating and Deleting of StandaloneModels.", tags = {"Standalone"})
+@OpenAPIDefinition(
+        info = @Info(
+                title = "Standalone REST API",
+                version = "0.0.1",
+                description = "Standalone API specification."
+        )
+)
+@Tag(name = "Standalone", description = "Standalone endpoint")
 public interface StandaloneEndpoint {
 
     String ENDPOINT_PATH = "/api/v1";
     String ENDPOINT_PROPS_PATH = ENDPOINT_PATH+"/properties";
 
+    @ResponseStatus(HttpStatus.OK)
+    @Operation(
+            summary = "Get the microservice name",
+            responses = {
+                    @ApiResponse(responseCode = "200", description = "OK"),
+                    @ApiResponse(responseCode = "500", description = "Internal server error")
+            }
+    )
     @GetMapping(ENDPOINT_PATH)
-    String getMicroserviceName();
+    Mono<String> getMicroserviceName(
+            @RequestHeader(value = HttpHeaderConstant.X_CLIENT_ID_HEADER, required = false) String clientId,
+            @RequestHeader(value = HttpHeaderConstant.X_CLIENT_IP_HEADER, required = false) String clientIp
+    );
 
-    @ApiOperation("Returns list of all Persons in the system.")
+    @ResponseStatus(HttpStatus.OK)
+    @Operation(
+            summary = "Returns list of properties.",
+            responses = {
+                    @ApiResponse(responseCode = "200", description = "OK"),
+                    @ApiResponse(responseCode = "500", description = "Internal server error")
+            }
+    )
     @GetMapping(ENDPOINT_PROPS_PATH)
-    List<StandaloneModel1> getProperties();
+    Mono<List<StandaloneModel1>> getProperties();
 
+    @ResponseStatus(HttpStatus.CREATED)
+    @Operation(
+            summary = "Create a property",
+            responses = {
+                    @ApiResponse(responseCode = "200", description = "OK"),
+                    @ApiResponse(responseCode = "500", description = "Internal server error")
+            }
+    )
     @PostMapping(ENDPOINT_PROPS_PATH)
-    String addProperty(@RequestBody StandaloneModel3 newProperty);
+    Mono<String> addProperty(@RequestBody StandaloneModel3 newProperty);
 
-    @ApiResponses({
-            @ApiResponse(code = 204, message = "Property has been deleted"),
-            @ApiResponse(code = 404, message = "Property does not exist")
-    })
-    @ResponseStatus(value = HttpStatus.NO_CONTENT)
+
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @Operation(
+            summary = "Create a property",
+            responses = {
+                    @ApiResponse(responseCode = "204", description = "Property has been deleted"),
+                    @ApiResponse(responseCode = "404", description = "Property does not exist")
+            }
+    )
     @DeleteMapping(ENDPOINT_PROPS_PATH+"/{id}")
-    void deleteProperty(@PathVariable String id);
+    Mono<Void> deleteProperty(@PathVariable String id);
 }

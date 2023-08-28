@@ -86,13 +86,7 @@ class ActuatorEndpointIT extends BaseIT {
                         "process.start.time",
                         "process.uptime",
                         "system.cpu.count",
-                        "system.cpu.usage",
-                        "tomcat.sessions.active.current",
-                        "tomcat.sessions.active.max",
-                        "tomcat.sessions.alive.max",
-                        "tomcat.sessions.created",
-                        "tomcat.sessions.expired",
-                        "tomcat.sessions.rejected"
+                        "system.cpu.usage"
                 ));
     }
 

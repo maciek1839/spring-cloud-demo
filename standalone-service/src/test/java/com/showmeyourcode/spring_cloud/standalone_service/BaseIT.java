@@ -21,7 +21,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 @SpringBootTest(webEnvironment= SpringBootTest.WebEnvironment.RANDOM_PORT)
 public abstract class BaseIT {
 
-    @Value("${server.servlet.context-path}")
+    @Value("${spring.webflux.base-path}")
     protected String contextPath;
 
     protected RequestSpecification requestSpecification;
