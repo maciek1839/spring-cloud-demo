@@ -1,150 +1,140 @@
 {
-  "openapi": "3.0.1",
-  "info": {
-    "title": "Microservice2 API",
-    "description": "Spring Cloud Application - Microservice2",
-    "license": {
-      "name": "MIT",
-      "url": "https://opensource.org/license/mit/"
+  "openapi" : "3.0.1",
+  "info" : {
+    "title" : "Microservice2 API",
+    "description" : "Spring Cloud Application - Microservice2",
+    "license" : {
+      "name" : "MIT",
+      "url" : "https://opensource.org/license/mit/"
     },
-    "version": "0.0.1"
+    "version" : "0.0.1"
   },
-  "externalDocs": {
-    "description": "ShowMeYourCodeYouTube - GitLab",
-    "url": "https://gitlab.com/ShowMeYourCodeYouTube"
+  "externalDocs" : {
+    "description" : "ShowMeYourCodeYouTube - GitLab",
+    "url" : "https://gitlab.com/ShowMeYourCodeYouTube"
   },
-  "servers": [
-    {
-      "url": "http://localhost:8200/microservice2",
-      "description": "Generated server url"
+  "servers" : [ {
+    "url" : "http://localhost:59638/microservice2",
+    "description" : "Generated server url"
+  } ],
+  "paths" : {
+    "/api/v1" : {
+      "get" : {
+        "tags" : [ "microservice-2-endpoint-impl" ],
+        "operationId" : "getMicroserviceName_4",
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "*/*" : {
+                "schema" : {
+                  "type" : "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put" : {
+        "tags" : [ "microservice-2-endpoint-impl" ],
+        "operationId" : "getMicroserviceName",
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "*/*" : {
+                "schema" : {
+                  "type" : "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "microservice-2-endpoint-impl" ],
+        "operationId" : "getMicroserviceName_1",
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "*/*" : {
+                "schema" : {
+                  "type" : "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "microservice-2-endpoint-impl" ],
+        "operationId" : "getMicroserviceName_6",
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "*/*" : {
+                "schema" : {
+                  "type" : "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      "options" : {
+        "tags" : [ "microservice-2-endpoint-impl" ],
+        "operationId" : "getMicroserviceName_5",
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "*/*" : {
+                "schema" : {
+                  "type" : "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      "head" : {
+        "tags" : [ "microservice-2-endpoint-impl" ],
+        "operationId" : "getMicroserviceName_2",
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "*/*" : {
+                "schema" : {
+                  "type" : "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch" : {
+        "tags" : [ "microservice-2-endpoint-impl" ],
+        "operationId" : "getMicroserviceName_3",
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "*/*" : {
+                "schema" : {
+                  "type" : "string"
+                }
+              }
+            }
+          }
+        }
+      }
     }
-  ],
-  "paths": {
-    "/api/v1": {
-      "get": {
-        "tags": [
-          "microservice-2-endpoint-impl"
-        ],
-        "operationId": "getMicroserviceName_4",
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "type": "string"
-                }
-              }
-            }
-          }
-        }
-      },
-      "put": {
-        "tags": [
-          "microservice-2-endpoint-impl"
-        ],
-        "operationId": "getMicroserviceName",
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "type": "string"
-                }
-              }
-            }
-          }
-        }
-      },
-      "post": {
-        "tags": [
-          "microservice-2-endpoint-impl"
-        ],
-        "operationId": "getMicroserviceName_5",
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "type": "string"
-                }
-              }
-            }
-          }
-        }
-      },
-      "delete": {
-        "tags": [
-          "microservice-2-endpoint-impl"
-        ],
-        "operationId": "getMicroserviceName_6",
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "type": "string"
-                }
-              }
-            }
-          }
-        }
-      },
-      "options": {
-        "tags": [
-          "microservice-2-endpoint-impl"
-        ],
-        "operationId": "getMicroserviceName_1",
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "type": "string"
-                }
-              }
-            }
-          }
-        }
-      },
-      "head": {
-        "tags": [
-          "microservice-2-endpoint-impl"
-        ],
-        "operationId": "getMicroserviceName_3",
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "type": "string"
-                }
-              }
-            }
-          }
-        }
-      },
-      "patch": {
-        "tags": [
-          "microservice-2-endpoint-impl"
-        ],
-        "operationId": "getMicroserviceName_2",
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "type": "string"
-                }
-              }
-            }
-          }
+  },
+  "components" : { }
+}        }
         }
       }
     }

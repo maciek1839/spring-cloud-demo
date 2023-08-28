@@ -10,7 +10,7 @@
     <packaging>pom</packaging>
     <groupId>com.showmeyourcode.spring_cloud</groupId>
     <artifactId>spring-cloud-demo-parent</artifactId>
-    <version>1.0.1-SNAPSHOT</version>
+    <version>2.0.-SNAPSHOT</version>
     <name>Spring Boot Cloud demo</name>
     <description>Demo project for Spring Boot Cloud</description>
 
@@ -22,6 +22,7 @@
         <module>microservice1</module>
         <module>microservice2</module>
         <module>standalone-service</module>
+        <module>test-util</module>
     </modules>
 
     <properties>
@@ -34,15 +35,7 @@
             ${project.basedir}/coverage-report/target/site/jacoco-aggregate/jacoco.xml,
             ${project.basedir}/../coverage-report/target/site/jacoco-aggregate/jacoco.xml
         </sonar.coverage.jacoco.xmlReportPaths>
-        <sonar.exclusions>**/AdminApplication.java, **/ClientApplication*.java, **/EurekaApplication.java, **/Microservice1Application.java, **/Microservice2Application.java, **/StandaloneServiceApplication.java</sonar.exclusions>
-
-        <spring-cloud.version>Hoxton.SR10</spring-cloud.version>
-        <springdoc-openapi.version>1.5.12</springdoc-openapi.version>
-        <jacoco.version>0.8.10</jacoco.version>
-        <aasciidoctor-maven-plugin.version>1.5.8</aasciidoctor-maven-plugin.version>
-        <wiremock-standalone.version>2.27.2</wiremock-standalone.version>
-        <validation-api.version>2.0.1.Final</validation-api.version>
-        <springfox-swagger-ui.version>3.0.0</springfox-swagger-ui.version>
+        <sonar.exclusions>**/AdminApplication.java, **/ClientApplication*.java, **/EurekaApplication.java, **/Microservice1Application.java, **/Microservice2Application.java, **/StandaloneServiceApplication.java, **/spring_cloud/test/util/**</sonar.exclusions>
 
         <jacoco.module.admin.app.exclusion>**/AdminApplication*</jacoco.module.admin.app.exclusion>
         <jacoco.module.client.app.exclusion>**/ClientApplication*</jacoco.module.client.app.exclusion>
@@ -50,6 +43,16 @@
         <jacoco.module.microservice1.app.exclusion>**/Microservice1Application*</jacoco.module.microservice1.app.exclusion>
         <jacoco.module.microservice2.app.exclusion>**/Microservice2Application*</jacoco.module.microservice2.app.exclusion>
         <jacoco.module.standalone.app.exclusion>**/StandaloneServiceApplication*</jacoco.module.standalone.app.exclusion>
+        <jacoco.module.test.util.exclusion>com/showmeyourcode/spring_cloud/test/**</jacoco.module.test.util.exclusion>
+
+        <spring-cloud.version>Hoxton.SR10</spring-cloud.version>
+        <springdoc-openapi.version>1.5.12</springdoc-openapi.version>
+        <java-faker.version>1.0.2</java-faker.version>
+        <jacoco.version>0.8.10</jacoco.version>
+        <aasciidoctor-maven-plugin.version>1.5.8</aasciidoctor-maven-plugin.version>
+        <wiremock-standalone.version>2.27.2</wiremock-standalone.version>
+        <validation-api.version>2.0.1.Final</validation-api.version>
+        <springfox-swagger-ui.version>3.0.0</springfox-swagger-ui.version>
     </properties>
 
     <dependencyManagement>
@@ -109,9 +112,9 @@
         </dependency>
 
         <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
-            <scope>runtime</scope>
+            <groupId>com.github.javafaker</groupId>
+            <artifactId>javafaker</artifactId>
+            <version>${java-faker.version}</version>
         </dependency>
 
         <dependency>
@@ -233,6 +236,7 @@
                         <exclude>${jacoco.module.microservice1.app.exclusion}</exclude>
                         <exclude>${jacoco.module.microservice2.app.exclusion}</exclude>
                         <exclude>${jacoco.module.standalone.app.exclusion}</exclude>
+                        <exclude>${jacoco.module.test.util.exclusion}</exclude>
                         <!-- exclude auto-generated sources -->
                         <exclude>io/swagger/**/*.class</exclude>
                     </excludes>

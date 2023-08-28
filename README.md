@@ -19,33 +19,27 @@
 
 ## Services specification
 
+All services use OpenApi3 (OAS3).
+
 - `eureka-server`
     - Dashboard: http://localhost:8761
     - Port: 8761
 - `microservice1`
-    - SpringFox 3.x
-    - Specification: Swagger2
-    - Reference: http://localhost:8100/microservice1/swagger-ui/
+    - Swagger UI: http://localhost:8100/microservice1/swagger-ui/
     - Eureka service name: spring-cloud-eureka-service1
     - Port: 8100
     - Context path: /microservice1
 - `microservice2`
-    - springdoc-openapi-ui using Swagger UI
-    - Specification: OpenApi3 (OAS3)
-    - Reference: http://localhost:8200/microservice2/swagger-ui.html
+    - Swagger UI: http://localhost:8200/microservice2/swagger-ui.html
     - Eureka service name: spring-cloud-eureka-service2
     - Port: 8200
     - Context path: /microservice2
 - `standalone-service`
-    - Springfox 2.x
-    - Specification: Swagger 2
-    - Reference: http://localhost:8300/standalone-microservice/swagger-ui.html
+    - Swagger UI: http://localhost:8300/standalone-microservice/swagger-ui.html
     - Port: 8300
     - Context path: /standalone-microservice
 - `client`
-    - SpringFox 3.x
-    - Specification: OpenApi3 (OAS3)
-    - Reference: http://localhost:8000/swagger-ui/
+    - Swagger UI: http://localhost:8000/swagger-ui/
     - Eureka service name: spring-cloud-eureka-client
     - Spring REST Docs: client/src/main/asciidoc
     - Port: 8000
@@ -86,9 +80,12 @@ Reference: https://dzone.com/articles/microservice-architecture-with-spring-clou
 
 ## Swagger 2 vs OpenApi3
 
-<img src="docs/swagger2-vs-openapi3.png"  width="800" height="500">
+![img](docs/swagger2-vs-openapi3.png)
 
-Reference: https://medium.com/@tgtshanika/open-api-3-0-vs-swagger-2-0-94a80f121022
+**OpenAPI 3 is the successor of the widely used OpenAPI/Swagger 2.0 format, for machine-readable API definitions.**
+
+- Reference: https://dev.to/frolovdev/openapi-spec-swagger-v2-vs-v3-4o7c
+- Official documentation: https://spec.openapis.org/oas/v3.1.0
 
 ## Spring REST Docs
 
@@ -103,12 +100,3 @@ Ref: https://spring.io/projects/spring-restdocs#overview
 ![img](docs/springs-docs-generated-api-doc.png)
 
 Example implementation - [spring-projects / spring-restdocs](https://github.com/spring-projects/spring-restdocs/blob/2.0.x/samples/rest-notes-spring-data-rest/src/main/asciidoc/api-guide.adoc)
-
-## References
-
-- https://www.baeldung.com/spring-cloud-netflix-eureka
-- https://www.baeldung.com/swagger-2-documentation-for-spring-rest-api
-- https://springdoc.org/migrating-from-springfox.html
-- https://springdoc.org/faq.html
-- https://newbedev.com/how-to-write-integration-tests-with-spring-cloud-netflix-and-feign
-- https://www.vojtechruzicka.com/documenting-spring-boot-rest-api-swagger-springfox/

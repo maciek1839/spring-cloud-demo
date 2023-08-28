@@ -3,21 +3,21 @@ package com.showmeyourcode.spring_cloud.admin;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.context.ApplicationContext;
 
-import static org.hamcrest.Matchers.notNullValue;
+import java.util.Arrays;
 
-@SpringBootTest
-class AdminApplicationIT {
-
-    @Autowired
-    private ApplicationContext context;
+class AdminApplicationIT extends BaseIT {
 
     @Test
-    void shouldStartAdminServer() {
-        MatcherAssert.assertThat(context.getBean("discoveryClient"), Matchers.is(notNullValue()));
-    }
+    void shouldStartAdminServerWithoutErrors() {
+        // For integration tests Eureka discovery is disabled (see application-test.yml).
+        MatcherAssert.assertThat(context.containsBean("discoveryClient"), Matchers.is(false));
 
+        // Ensure that cloud components are created.
+        // It's also a good way to investigate what beans were created automatically in case of debugging any configuration errors.
+        MatcherAssert.assertThat(
+                Arrays.stream(context.getBeanDefinitionNames()).filter(e->e.contains("cloud")).count(),
+                Matchers.greaterThan(0L)
+        );
+    }
 }

@@ -1,5 +1,6 @@
 # TODOs
 
+- remove Swagger 2
 - add a header with a microservice name for API
 - https://bitbucket.org/atlassian/swagger-request-validator/src/master/
 - Use different protocols - gRPC, RPC and try out GraphQL
@@ -27,9 +28,17 @@
 - add System and Acceptance tests. https://www.guru99.com/levels-of-testing.html
   - Do not need to manually check...
 - add client discovery, how ribbon works - https://www.google.com/search?sca_esv=560402742&sxsrf=AB5stBizYIZGA1tKvlTg8vuShUPVVYEB6Q:1693099231347&q=ribbon+eureka+cloud&tbm=isch&source=lnms&sa=X&ved=2ahUKEwje1YOS1vuAAxWPSWwGHeXlBp4Q0pQJegQIDBAB&biw=1536&bih=747&dpr=1.25#imgrc=jm39K4K5saRBWM
-- add actuator
 - add tracking zipkin?
+  - https://piotrminkowski.com/2023/03/13/microservices-with-spring-boot-3-and-spring-cloud/
 - add one service with WebFlux
 - renovate
 - check configuration of generating clients and references in README.md
 - Check latest changes in Spring Cloud (release notes)
+- Implement chain of responsibility + other patterns for microservices
+- Config Server + add `refresh` endpoint to README.md as a feature to describe
+  - https://spring.io/guides/gs/centralized-configuration/
+- Archarius
+  - https://www.baeldung.com/netflix-archaius-spring-cloud-integration
+- use java faker to generate data for services
+- copy and format swagger JSON to client module
+- add Eureka diagram, client discovery vs server discovery?
