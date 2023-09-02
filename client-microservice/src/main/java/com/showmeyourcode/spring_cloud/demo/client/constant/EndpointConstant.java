@@ -9,6 +9,9 @@ public class EndpointConstant {
 
     public static final String SWAGGER_UI = "/swagger-ui.html";
 
+    public static final String API_PREFIX = "/api/v1";
+    public static final String WAREHOUSE_MICROSERVICE = API_PREFIX + "/warehouse";
+
     private EndpointConstant() {
     }
 }

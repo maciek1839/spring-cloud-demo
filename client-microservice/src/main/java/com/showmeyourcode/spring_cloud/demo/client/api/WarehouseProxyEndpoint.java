@@ -1,9 +1,7 @@
 package com.showmeyourcode.spring_cloud.demo.client.api;
 
-import com.showmeyourcode.spring_cloud.demo.client.configuration.ApiPathConstant;
-
+import com.showmeyourcode.spring_cloud.demo.client.constant.EndpointConstant;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -24,7 +22,7 @@ import java.util.Map;
 @Slf4j
 @RestController
 @Tag(name = "Warehouse Proxy", description = "Warehouse Proxy endpoint")
-@RequestMapping(ApiPathConstant.WAREHOUSE_MICROSERVICE)
+@RequestMapping(EndpointConstant.WAREHOUSE_MICROSERVICE)
 public class WarehouseProxyEndpoint {
 
     public static final String INFO_PATH = "/info";

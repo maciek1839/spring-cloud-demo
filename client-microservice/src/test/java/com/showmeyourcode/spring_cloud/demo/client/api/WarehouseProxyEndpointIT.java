@@ -2,7 +2,7 @@ package com.showmeyourcode.spring_cloud.demo.client.api;
 
 import com.github.tomakehurst.wiremock.client.WireMock;
 import com.showmeyourcode.spring_cloud.demo.client.BaseIT;
-import com.showmeyourcode.spring_cloud.demo.client.configuration.ApiPathConstant;
+import com.showmeyourcode.spring_cloud.demo.client.constant.EndpointConstant;
 import io.restassured.RestAssured;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Test;
@@ -30,7 +30,7 @@ class WarehouseProxyEndpointIT extends BaseIT {
                         )
         );
 
-        var uri = ApiPathConstant.WAREHOUSE_MICROSERVICE + WarehouseProxyEndpoint.INFO_PATH;
+        var uri = EndpointConstant.WAREHOUSE_MICROSERVICE + WarehouseProxyEndpoint.INFO_PATH;
 
         RestAssured.given(this.requestSpecification)
                 .when()

@@ -1,7 +1,7 @@
 package com.showmeyourcode.spring_cloud.demo.warehouse.configuration;
 
 
-import com.showmeyourcode.spring_cloud.demo.warehouse.ApiClient;
+import com.showmeyourcode.spring_cloud.demo.warehouse.generated.ApiClient;
 import com.showmeyourcode.spring_cloud.demo.warehouse.generated.ItemsApi;
 import com.showmeyourcode.spring_cloud.demo.warehouse.generated.OrdersApi;
 import org.springframework.beans.factory.annotation.Value;

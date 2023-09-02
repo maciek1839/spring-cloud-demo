@@ -93,6 +93,7 @@
                             <generateSupportingFiles>true</generateSupportingFiles>
                             <generateApis>true</generateApis>
                             <output>target/generated-sources/warehouse-microservice</output>
+                            <invokerPackage>com.showmeyourcode.spring_cloud.demo.shop.generated</invokerPackage>
                             <apiPackage>com.showmeyourcode.spring_cloud.demo.shop.generated</apiPackage>
                             <modelPackage>com.showmeyourcode.spring_cloud.demo.shop.generated.model</modelPackage>
                             <configOptions>
@@ -118,6 +119,7 @@
                             <generateSupportingFiles>false</generateSupportingFiles>
                             <generateApis>true</generateApis>
                             <output>target/generated-sources/warehouse-microservice</output>
+                            <invokerPackage>com.showmeyourcode.spring_cloud.demo.shop.generated</invokerPackage>
                             <apiPackage>com.showmeyourcode.spring_cloud.demo.shop.generated</apiPackage>
                             <modelPackage>com.showmeyourcode.spring_cloud.demo.shop.generated.model</modelPackage>
                             <configOptions>

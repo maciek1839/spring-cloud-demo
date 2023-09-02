@@ -26,4 +26,7 @@ mvn release:update-versions -DautoVersionSubmodules=true
 
 ## Integration tests
 
-When you run tests for microservices, they will automatically update API schemas files in the `client` module. It's good when you are making changes to API. Thanks to it, it's easy to keep the latest schema.
+When you run tests for microservices,
+they will automatically update API schemas in corresponding modules.
+It's good when you are making changes to API.
+Thanks to it, it's easy to keep the latest schema.
