@@ -1,0 +1,89 @@
+= REST API Documentation
+ShowMeYourCode! - SPRING CLOUD demo;
+:doctype: book
+:icons: font
+:source-highlighter: highlightjs
+:toc: left
+:toclevels: 4
+:sectlinks:
+
+[[introduction]]
+= Introduction
+
+*The factory microservice* provides items for other microservices.
+
+[[endpoints]]
+== Endpoints
+
+By accessing *Swagger UI* you can call the client microservice on your web browser.
+This sections shows example requests and responses.
+
+* http://localhost:8300/factory/swagger-ui.html
+
+=== /factory/api/v1/orders
+
+==== POST make an order
+
+===== Request structure
+
+include::{snippets}/orders/make/http-request.adoc[]
+
+include::{snippets}/orders/make/httpie-request.adoc[]
+
+include::{snippets}/orders/make/curl-request.adoc[]
+
+===== Request body
+
+include::{snippets}/orders/make/request-body.adoc[]
+
+===== Response structure
+
+include::{snippets}/orders/make/http-response.adoc[]
+
+===== Example response
+
+include::{snippets}/orders/make/response-body.adoc[]
+
+==== DELETE cancel an order
+
+===== Request structure
+
+include::{snippets}/orders/cancel/http-request.adoc[]
+
+include::{snippets}/orders/cancel/httpie-request.adoc[]
+
+include::{snippets}/orders/cancel/curl-request.adoc[]
+
+===== Request body
+
+include::{snippets}/orders/cancel/request-body.adoc[]
+
+===== Response structure
+
+include::{snippets}/orders/cancel/http-response.adoc[]
+
+===== Example response
+
+include::{snippets}/orders/cancel/response-body.adoc[]
+
+==== GET report
+
+===== Request structure
+
+include::{snippets}/orders/report/http-request.adoc[]
+
+include::{snippets}/orders/report/httpie-request.adoc[]
+
+include::{snippets}/orders/report/curl-request.adoc[]
+
+===== Request body
+
+include::{snippets}/orders/report/request-body.adoc[]
+
+===== Response structure
+
+include::{snippets}/orders/report/http-response.adoc[]
+
+===== Example response
+
+include::{snippets}/orders/report/response-body.adoc[]

@@ -1,0 +1,20 @@
+eureka:
+  client:
+    enabled: false
+
+#############################################
+
+wiremock-host: http://localhost:9871
+
+# Spring Cloud services configuration for test purposes
+# when the app runs locally, it fetches URLs from the registry
+spring:
+  cloud:
+    discovery:
+      client:
+        simple:
+          instances:
+            spring-cloud-eureka-warehouse:
+              - uri: ${wiremock-host}
+  main:
+    allow-bean-definition-overriding: true

@@ -19,52 +19,64 @@
 
 ## Services specification
 
+![img](docs/high-level-design-diagram.drawio.png)
+
+The diagram was created using [https://app.diagrams.net/](https://app.diagrams.net/).
+
 All services use OpenApi3 (OAS3).
 
 - `eureka-server`
   - Technology: Spring MVC
   - Dashboard: http://localhost:8761
   - Port: 8761
-- `microservice1`
+- `shop-microservice`
   - Technology: Spring MVC
-  - Swagger UI: http://localhost:8100/microservice1/swagger-ui.html
-  - Eureka service name: spring-cloud-eureka-service1
+  - Swagger UI: http://localhost:8100/shop/swagger-ui.html
+  - Eureka service name: spring-cloud-eureka-shop
   - Port: 8100
-  - Context path: /microservice1
-- `microservice2`
+  - Context path: /shop
+  - OpenFeign using provided/static URLs or hosts from Ribbon/Eureka (warehouse)
+- `warehouse-microservice`
   - Technology: Spring MVC
-  - Swagger UI: http://localhost:8200/microservice2/swagger-ui.html
-  - Eureka service name: spring-cloud-eureka-service2
+  - Swagger UI: http://localhost:8200/warehouse/swagger-ui.html
+  - Eureka service name: spring-cloud-eureka-warehouse
   - Port: 8200
-  - Context path: /microservice2
-- `standalone-service`
+  - Context path: /warehouse
+  - Java API Client configuration using a provided/static URL (factory)
+- `factory-microservice`
   - Technology: Spring WebFlux
-  - Swagger UI: http://localhost:8300/standalone-microservice/swagger-ui.html
+  - Swagger UI: http://localhost:8300/factory/swagger-ui.html
   - Port: 8300
-  - Context path: /standalone-microservice
-- `client`
+  - Context path: /factory
+- `client-microservice`
   - Technology: Spring MVC
-  - Swagger UI: http://localhost:8000/swagger-ui.html
+  - Swagger UI: http://localhost:8000/client/swagger-ui.html
   - Eureka service name: spring-cloud-eureka-client
-  - Spring REST Docs: client/src/main/asciidoc
+  - Spring REST Docs: client-microservice/src/main/asciidoc
   - Port: 8000
+  - Context path: /client
+  - RestTemplate using Ribbon with Eureka
 - `admin-dashboard`
   - Technology: Spring MVC
   - Dashboard: http://localhost:9000/
   - Port: 9000
 
+---
+
+Design remarks:
+- In order to simplify this example, models are reused by microservices. In real applications it might not be a good choice.
+- The warehouse microservice is a proxy forwarding requests to the factory microservice.
+- The shop microservice is a proxy forwarding requests to the warehouse microservice.
+- The client microservice calls arbitrary other services.
+
 ## Getting started
 
-1. (Optional) Enable Lombok annotations in your IDE.
+1. (Optional) Enable Lombok annotations in your IDE
 2. (Optional) Run all servers using predefined configurations for IntelliJ (.runconfig)
-3. Run Eureka server
-    - dashboard: localhost:8761
-4. Run microservices which will register with Eureka server.
-    - microservice1
-    - microservice2
-    - standalone-service
-5. Run a client which will connect to Eureka and call microservices using Eureka.
-    - client
+   1. If your IDE throws errors because some classes were not found, mark `target/generated-sources` as `Generated Sources Root` in your IDE.
+3. Run the Eureka server
+4. Run microservices
+5. Run a client which calls microservices using Eureka
 
 ![img](./docs/spring-boot-admin.png)
 

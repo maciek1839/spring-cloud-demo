@@ -1,0 +1,19 @@
+= Getting Started Guide
+ShowMeYourCode! - SPRING CLOUD demo;
+:doctype: book
+:icons: font
+:source-highlighter: highlightjs
+:toc: left
+:toclevels: 4
+:sectlinks:
+
+[[introduction]]
+= Introduction
+
+*The factory microservice* provides items for other microservices.
+
+[[getting_started_running_the_service]]
+== Running the service
+
+*The factory microservice* is written using https://projects.spring.io/spring-boot[Spring Boot] which
+makes it easy to get it up and running so that you can start exploring the REST API.

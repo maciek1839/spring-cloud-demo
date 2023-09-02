@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.showmeyourcode.spring_cloud.demo</groupId>
+        <artifactId>spring-cloud-demo-parent</artifactId>
+        <version>2.0.0-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>warehouse-microservice</artifactId>
+
+    <dependencies>
+        <!-- Project specific dependencies -->
+        <dependency>
+            <groupId>com.showmeyourcode.spring_cloud.demo</groupId>
+            <artifactId>test-util</artifactId>
+            <version>${project.parent.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- Other dependencies -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-ui</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-webmvc-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+
+        <!-- Required by Swagger plugins to generate clients -->
+        <dependency>
+            <groupId>com.github.joschi.jackson</groupId>
+            <artifactId>jackson-datatype-threetenbp</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.swagger</groupId>
+            <artifactId>swagger-annotations</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.github.tomakehurst</groupId>
+            <artifactId>wiremock-standalone</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>io.swagger.codegen.v3</groupId>
+                <artifactId>swagger-codegen-maven-plugin</artifactId>
+                <version>${swagger-codegen-maven-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <id>factory-microservice</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <language>java</language>
+                            <library>resttemplate</library>
+                            <inputSpec>${project.basedir}/src/main/resources/api-docs-factory-microservice.json
+                            </inputSpec>
+                            <generateApiTests>false</generateApiTests>
+                            <generateModels>true</generateModels>
+                            <generateApiDocumentation>false</generateApiDocumentation>
+                            <generateModelDocumentation>false</generateModelDocumentation>
+                            <generateSupportingFiles>true</generateSupportingFiles>
+                            <generateApis>true</generateApis>
+                            <output>target/generated-sources/factory-microservice</output>
+                            <apiPackage>com.showmeyourcode.spring_cloud.demo.warehouse.generated</apiPackage>
+                            <modelPackage>com.showmeyourcode.spring_cloud.demo.warehouse.generated.model</modelPackage>
+                            <configOptions>
+                                <generateForOpenFeign>true</generateForOpenFeign>
+                                <interfaceOnly>false</interfaceOnly>
+                            </configOptions>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>factory-microservice-interface</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <language>spring</language>
+                            <inputSpec>${project.basedir}/src/main/resources/api-docs-factory-microservice.json
+                            </inputSpec>
+                            <generateApiTests>false</generateApiTests>
+                            <generateModels>false</generateModels>
+                            <generateApiDocumentation>false</generateApiDocumentation>
+                            <generateModelDocumentation>false</generateModelDocumentation>
+                            <generateSupportingFiles>false</generateSupportingFiles>
+                            <generateApis>true</generateApis>
+                            <output>target/generated-sources/factory-microservice</output>
+                            <apiPackage>com.showmeyourcode.spring_cloud.demo.warehouse.generated</apiPackage>
+                            <modelPackage>com.showmeyourcode.spring_cloud.demo.warehouse.generated.model</modelPackage>
+                            <configOptions>
+                                <generateForOpenFeign>false</generateForOpenFeign>
+                                <interfaceOnly>true</interfaceOnly>
+                            </configOptions>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>

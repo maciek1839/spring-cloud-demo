@@ -1,0 +1,383 @@
+{
+  "openapi" : "3.0.1",
+  "info" : {
+    "title" : "Factory Microservice API",
+    "description" : "API specification for Factory Microservice",
+    "version" : "0.0.1"
+  },
+  "servers" : [ {
+    "url" : "http://localhost:52385/factory",
+    "description" : "Generated server url"
+  } ],
+  "tags" : [ {
+    "name" : "Orders",
+    "description" : "Orders endpoint"
+  }, {
+    "name" : "Items",
+    "description" : "Items endpoint"
+  } ],
+  "paths" : {
+    "/api/v1/orders" : {
+      "post" : {
+        "tags" : [ "Orders" ],
+        "summary" : "Make an order",
+        "operationId" : "create",
+        "parameters" : [ {
+          "name" : "X-Client-Id",
+          "in" : "header",
+          "description" : "A client's ID (a service name)",
+          "required" : true,
+          "schema" : {
+            "type" : "string",
+            "example" : "warehouse-microservice"
+          }
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/NewOrderRequest"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "201" : {
+            "description" : "An order successfully created.",
+            "headers" : {
+              "Location" : {
+                "description" : "The URL (location) of a newly created resource",
+                "required" : true,
+                "style" : "simple",
+                "schema" : {
+                  "type" : "string",
+                  "example" : "/factory/api/v1/orders/4e82f625-199f-41ee-8243-355d3b0356ca"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "A request is invalid. Some required parameters are missing.",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "example" : {
+                    "timestamp" : "2023-09-02T02:15:20.670+00:00",
+                    "path" : "/api/v1/orders",
+                    "status" : 400,
+                    "error" : "Bad Request",
+                    "message" : "",
+                    "requestId" : "ba1d0cbd-1"
+                  }
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Internal Server Error. Please try again later.",
+            "content" : {
+              "application/json" : { }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/orders/report" : {
+      "get" : {
+        "tags" : [ "Orders" ],
+        "summary" : "Get an orders report",
+        "operationId" : "getReport",
+        "parameters" : [ {
+          "name" : "X-Client-Id",
+          "in" : "header",
+          "description" : "A client's ID (a service name)",
+          "required" : true,
+          "content" : {
+            "*/*" : {
+              "schema" : {
+                "type" : "string",
+                "example" : "warehouse-microservice"
+              }
+            }
+          }
+        }, {
+          "name" : "X-Client-Ip",
+          "in" : "header",
+          "description" : "A client's IP",
+          "required" : false,
+          "schema" : {
+            "type" : "string",
+            "example" : "192.158.1.38"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "A report was successfully created.",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/OrdersReportResponse"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized access.",
+            "content" : {
+              "application/json" : { }
+            }
+          },
+          "500" : {
+            "description" : "Internal Server Error. Please try again later.",
+            "content" : {
+              "application/json" : { }
+            }
+          }
+        },
+        "security" : [ {
+          "basicAuth" : [ ]
+        } ]
+      }
+    },
+    "/api/v1/items/{id}" : {
+      "get" : {
+        "tags" : [ "Items" ],
+        "summary" : "Get an item by ID",
+        "operationId" : "getById",
+        "parameters" : [ {
+          "name" : "X-Client-Id",
+          "in" : "header",
+          "description" : "A client's ID (a service name)",
+          "required" : true,
+          "schema" : {
+            "type" : "string",
+            "example" : "warehouse-microservice"
+          }
+        }, {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "content" : {
+            "*/*" : {
+              "schema" : {
+                "type" : "string",
+                "example" : "6b8895d1-c2ab-4043-978a-631b6d2fdfb9"
+              }
+            }
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Successfully retrieved an item.",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ItemResponse"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "An item with associated ID is not found.",
+            "content" : {
+              "application/json" : { }
+            }
+          },
+          "500" : {
+            "description" : "Internal Server Error. Please try again later.",
+            "content" : {
+              "application/json" : { }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/items" : {
+      "get" : {
+        "tags" : [ "Items" ],
+        "summary" : "Get all available items",
+        "operationId" : "getAll",
+        "parameters" : [ {
+          "name" : "X-Client-Id",
+          "in" : "header",
+          "description" : "A client's ID (a service name)",
+          "required" : true,
+          "schema" : {
+            "type" : "string",
+            "example" : "warehouse-microservice"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Successfully retrieved items.",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/ItemResponse"
+                  }
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "A request is invalid. Some required parameters are missing.",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "example" : {
+                    "timestamp" : "2023-09-02T01:19:20.515+00:00",
+                    "path" : "/api/v1/items",
+                    "status" : 400,
+                    "error" : "Bad Request",
+                    "message" : "",
+                    "requestId" : "2016f8a8-1"
+                  }
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Internal Server Error. Please try again later.",
+            "content" : {
+              "application/json" : { }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/orders/{id}" : {
+      "delete" : {
+        "tags" : [ "Orders" ],
+        "summary" : "Cancel an order",
+        "operationId" : "cancel",
+        "parameters" : [ {
+          "name" : "X-Client-Id",
+          "in" : "header",
+          "description" : "A client's ID (a service name)",
+          "required" : true,
+          "schema" : {
+            "type" : "string",
+            "example" : "warehouse-microservice"
+          }
+        }, {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "content" : {
+            "*/*" : {
+              "schema" : {
+                "type" : "string",
+                "example" : "6b8895d1-c2ab-4043-978a-631b6d2fdfb9"
+              }
+            }
+          }
+        } ],
+        "responses" : {
+          "204" : {
+            "description" : "Cancellation succeed."
+          },
+          "410" : {
+            "description" : "An order cannot be cancelled. It's already processed.",
+            "content" : {
+              "application/json" : { }
+            }
+          },
+          "404" : {
+            "description" : "An order with associated ID is not found.",
+            "content" : {
+              "application/json" : { }
+            }
+          },
+          "500" : {
+            "description" : "Internal Server Error. Please try again later.",
+            "content" : {
+              "application/json" : { }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components" : {
+    "schemas" : {
+      "NewItemRequest" : {
+        "required" : [ "name" ],
+        "type" : "object",
+        "properties" : {
+          "name" : {
+            "type" : "string"
+          }
+        }
+      },
+      "NewOrderRequest" : {
+        "required" : [ "customerName", "item" ],
+        "type" : "object",
+        "properties" : {
+          "item" : {
+            "$ref" : "#/components/schemas/NewItemRequest"
+          },
+          "customerName" : {
+            "type" : "string"
+          },
+          "comment" : {
+            "type" : "string"
+          }
+        }
+      },
+      "OrdersReportResponse" : {
+        "required" : [ "name", "requestedBy" ],
+        "type" : "object",
+        "properties" : {
+          "name" : {
+            "type" : "string"
+          },
+          "requestedBy" : {
+            "type" : "string"
+          }
+        }
+      },
+      "ItemResponse" : {
+        "required" : [ "id", "name" ],
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "format" : "uuid"
+          },
+          "name" : {
+            "type" : "string"
+          }
+        }
+      }
+    },
+    "securitySchemes" : {
+      "basicAuth" : {
+        "type" : "http",
+        "scheme" : "basic"
+      }
+    }
+  }
+}: {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "name": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "basicAuth": {
+        "type": "http",
+        "scheme": "basic"
+      }
+    }
+  }
+}

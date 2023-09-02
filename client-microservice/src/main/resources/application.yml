@@ -1,0 +1,30 @@
+spring:
+  application:
+    name: spring-cloud-eureka-client
+
+server:
+  port: 8000
+  servlet:
+    context-path: /client
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}
+
+warehouseEurekaName:
+  name: spring-cloud-eureka-warehouse
+
+
+# Default metric settings for all services
+# (metrics should be ingested by the Admin microservice)
+management:
+  endpoints:
+    jmx:
+      exposure:
+        exclude: shutdown
+        include: '*'
+    web:
+      exposure:
+        exclude:
+        include: health,info,metrics

@@ -1,11 +1,9 @@
 # TODOs
 
-- Add spring security
-- Add context to all services e.g. books, store, external-bookstore, printing-house
-  - use java faker to generate data for services
+- Handle upstreams errors (Warehouse + Shop + Client)
+- Add API validation
 - add System and Acceptance tests. https://www.guru99.com/levels-of-testing.html
   - Do not need to manually check...
-- Create a diagrams shows current microservices mesh
 - https://bitbucket.org/atlassian/swagger-request-validator/src/master/
 - Use different protocols - gRPC, RPC and try out GraphQL
 - Spring Cloud Contract
@@ -37,3 +35,4 @@
 - Archarius
   - https://www.baeldung.com/netflix-archaius-spring-cloud-integration
 - add Eureka diagram, client discovery vs server discovery?
+- fix TODOs in code
