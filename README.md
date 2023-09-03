@@ -46,13 +46,13 @@ All services use OpenApi3 (OAS3).
 - `factory-microservice`
   - Technology: Spring WebFlux
   - Swagger UI: http://localhost:8300/factory/swagger-ui.html
+  - Spring REST Docs: factory-microservice/src/main/asciidoc
   - Port: 8300
   - Context path: /factory
 - `client-microservice`
   - Technology: Spring MVC
   - Swagger UI: http://localhost:8000/client/swagger-ui.html
   - Eureka service name: spring-cloud-eureka-client
-  - Spring REST Docs: client-microservice/src/main/asciidoc
   - Port: 8000
   - Context path: /client
   - RestTemplate using Ribbon with Eureka
@@ -81,6 +81,24 @@ Design remarks:
 ![img](./docs/spring-boot-admin.png)
 
 ![img](./docs/spring-boot-eureka.png)
+
+## Testing Strategy
+
+> Acceptance Testing is done after the system testing. It is used to check whether the software meets the customer requirements or not. Acceptance testing is used by testers, stakeholders as well as clients.
+>
+> Reference: https://www.geeksforgeeks.org/difference-between-system-testing-and-acceptance-testing/
+
+![img](docs/testing-strategy.jpg)
+
+[Reference](https://www.geeksforgeeks.org/acceptance-testing-software-testing/)
+
+System and acceptance tests are in the `test-util` module.
+Run them when all microservices are up.
+
+Thanks to automatic tests you don't need to manually verify is services are fine after making major changes.
+
+Other good articles about testing levels:
+- https://www.guru99.com/levels-of-testing.html
 
 ## Primary Projects of Spring Cloud
 
@@ -157,7 +175,7 @@ but it isn’t recommended in a modern cloud-based application of this kind.
 The Service Discovery mechanism helps us know where each instance is located.
 In this way, a Service Discovery component acts as a registry in which the addresses of all instances are tracked.
 
-## How Does Service Discovery Works?
+### How Does Service Discovery Works?
 
 ![img](docs/Service-Discovery-1-1.png)
 

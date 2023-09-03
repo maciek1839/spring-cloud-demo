@@ -1,7 +1,6 @@
 # TODOs
 
-- add System and Acceptance tests. https://www.guru99.com/levels-of-testing.html
-  - Do not need to manually check...
+- Run system/acceptance tests on GitLab
 - Handle upstreams errors (Warehouse + Shop + Client)
 - Add API validation
   - https://bitbucket.org/atlassian/swagger-request-validator/src/master/
