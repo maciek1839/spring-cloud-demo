@@ -1,38 +1,31 @@
 # TODOs
 
-- Handle upstreams errors (Warehouse + Shop + Client)
-- Add API validation
 - add System and Acceptance tests. https://www.guru99.com/levels-of-testing.html
   - Do not need to manually check...
-- https://bitbucket.org/atlassian/swagger-request-validator/src/master/
+- Handle upstreams errors (Warehouse + Shop + Client)
+- Add API validation
+  - https://bitbucket.org/atlassian/swagger-request-validator/src/master/
 - Use different protocols - gRPC, RPC and try out GraphQL
-- Spring Cloud Contract
-  - Spring Cloud Contract is an umbrella project holding solutions that help users in successfully implementing the Consumer Driven Contracts approach.
-  - https://spring.io/projects/spring-cloud-contract
-- Add examples of all Spring libraries
-    - Spring Cloud Gateway
-    - spring-boot-starter-security
-    - spring-cloud-starter
-    - spring-cloud-starter-loadbalancer
-    - spring-cloud-starter-netflix-hystrix
-    - spring-cloud-starter-netflix-hystrix-dashboard
-    - spring-cloud-starter-netflix-ribbon
-    - spring-cloud-starter-netflix-zuul
-    - spring-cloud-starter-open-service-broker
-    - spring-boot-configuration-processor
-    - spring-security-test
-    - and others from https://start.spring.io/
-- Hystrix Dashboard/Turbine
 - K8 with internal/external communication, show use-cases
-- add client discovery, how ribbon works - https://www.google.com/search?sca_esv=560402742&sxsrf=AB5stBizYIZGA1tKvlTg8vuShUPVVYEB6Q:1693099231347&q=ribbon+eureka+cloud&tbm=isch&source=lnms&sa=X&ved=2ahUKEwje1YOS1vuAAxWPSWwGHeXlBp4Q0pQJegQIDBAB&biw=1536&bih=747&dpr=1.25#imgrc=jm39K4K5saRBWM
 - add tracking zipkin?
   - https://piotrminkowski.com/2023/03/13/microservices-with-spring-boot-3-and-spring-cloud/
-- renovate
-- Check latest changes in Spring Cloud (release notes)
 - Implement chain of responsibility + other patterns for microservices
-- Config Server + add `refresh` endpoint to README.md as a feature to describe
-  - https://spring.io/guides/gs/centralized-configuration/
-- Archarius
-  - https://www.baeldung.com/netflix-archaius-spring-cloud-integration
-- add Eureka diagram, client discovery vs server discovery?
 - fix TODOs in code
+- Add examples of:
+  - Spring Cloud Config
+    - Config Server + add `refresh` endpoint to README.md as a feature to describe
+  - Spring Cloud Netflix
+  - Spring Cloud Bus
+  - Spring Cloud Open Service Broker
+  - Spring Cloud Consul
+  - Spring Cloud Sleuth
+  - Spring Cloud Data Flow
+  - Spring Cloud Stream
+  - Spring Cloud Stream Applications
+  - Spring Cloud Task
+  - Spring Cloud Task App Starters
+  - Spring Cloud Zookeeper
+  - Spring Cloud Contract
+  - Spring Cloud Gateway
+  - Spring Cloud OpenFeign
+  - Spring Cloud Function
