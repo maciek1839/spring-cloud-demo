@@ -15,7 +15,6 @@ import org.springframework.test.web.reactive.server.WebTestClient;
 import org.springframework.web.reactive.function.client.ClientRequest;
 import org.springframework.web.reactive.function.client.ClientResponse;
 import org.springframework.web.reactive.function.client.ExchangeFunction;
-import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
 import reactor.netty.http.client.HttpClient;
 import reactor.netty.resources.ConnectionProvider;
@@ -32,8 +31,8 @@ public class TestHelper {
             .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)
             .registerModules(new JavaTimeModule());
 
-    static WebTestClient clientMicroserviceWebClient(){
-        return buildWebTestClient("http://localhost:8000/client");
+    static WebTestClient reportingMicroserviceWebClient(){
+        return buildWebTestClient("http://localhost:8000/reporting");
     }
 
     static WebTestClient shopMicroserviceWebClient() {

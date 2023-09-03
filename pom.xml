@@ -16,7 +16,7 @@
 
     <modules>
         <module>admin-dashboard</module>
-        <module>client-microservice</module>
+        <module>reporting-microservice</module>
         <module>coverage-report</module>
         <module>eureka-server</module>
         <module>factory-microservice</module>
@@ -35,10 +35,10 @@
             ${project.basedir}/coverage-report/target/site/jacoco-aggregate/jacoco.xml,
             ${project.basedir}/../coverage-report/target/site/jacoco-aggregate/jacoco.xml
         </sonar.coverage.jacoco.xmlReportPaths>
-        <sonar.exclusions>**/AdminApplication.java, **/EurekaApplication.java, **/ClientApplication*.java, **/ShopApplication.java, **/WarehouseApplication.java, **/FactoryApplication.java, **/spring_cloud/demo/test/util/**, **/generated/**</sonar.exclusions>
+        <sonar.exclusions>**/AdminApplication.java, **/EurekaApplication.java, **/ReportingApplication*.java, **/ShopApplication.java, **/WarehouseApplication.java, **/FactoryApplication.java, **/spring_cloud/demo/test/util/**, **/generated/**</sonar.exclusions>
 
         <jacoco.module.admin.app.exclusion>**/AdminApplication*</jacoco.module.admin.app.exclusion>
-        <jacoco.module.client.app.exclusion>**/ClientApplication*</jacoco.module.client.app.exclusion>
+        <jacoco.module.reporting.app.exclusion>**/ReportingApplication*</jacoco.module.reporting.app.exclusion>
         <jacoco.module.eureka.app.exclusion>**/EurekaApplication*</jacoco.module.eureka.app.exclusion>
         <jacoco.module.shop.app.exclusion>**/ShopApplication*</jacoco.module.shop.app.exclusion>
         <jacoco.module.factory.app.exclusion>**/FactoryApplication*</jacoco.module.factory.app.exclusion>
@@ -244,7 +244,7 @@
                 <configuration>
                     <excludes>
                         <exclude>${jacoco.module.admin.app.exclusion}</exclude>
-                        <exclude>${jacoco.module.client.app.exclusion}</exclude>
+                        <exclude>${jacoco.module.reporting.app.exclusion}</exclude>
                         <exclude>${jacoco.module.eureka.app.exclusion}</exclude>
                         <exclude>${jacoco.module.factory.app.exclusion}</exclude>
                         <exclude>${jacoco.module.warehouse.app.exclusion}</exclude>

@@ -22,7 +22,7 @@
         </dependency>
         <dependency>
             <groupId>com.showmeyourcode.spring_cloud.demo</groupId>
-            <artifactId>client-microservice</artifactId>
+            <artifactId>reporting-microservice</artifactId>
             <version>${project.parent.version}</version>
         </dependency>
         <dependency>

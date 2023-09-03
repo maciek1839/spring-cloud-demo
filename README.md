@@ -49,12 +49,12 @@ All services use OpenApi3 (OAS3).
   - Spring REST Docs: factory-microservice/src/main/asciidoc
   - Port: 8300
   - Context path: /factory
-- `client-microservice`
+- `reporting-microservice`
   - Technology: Spring MVC
-  - Swagger UI: http://localhost:8000/client/swagger-ui.html
-  - Eureka service name: spring-cloud-eureka-client
+  - Swagger UI: http://localhost:8000/reporting/swagger-ui.html
+  - Eureka service name: spring-cloud-eureka-reporting
   - Port: 8000
-  - Context path: /client
+  - Context path: /reporting
   - RestTemplate using Ribbon with Eureka
 - `admin-dashboard`
   - Technology: Spring MVC

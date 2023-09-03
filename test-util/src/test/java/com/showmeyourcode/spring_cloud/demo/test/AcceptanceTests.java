@@ -21,12 +21,7 @@ class AcceptanceTests {
 
     private static final InfrastructureVerifier infrastructureVerifier = new InfrastructureVerifier();
 
-    private final WebTestClient clientMicroserviceWebClient = TestHelper.clientMicroserviceWebClient();
     private final WebTestClient shopMicroserviceWebClient = TestHelper.shopMicroserviceWebClient();
-    private final WebTestClient factoryMicroserviceWebClient = TestHelper.factoryMicroserviceWebClient();
-    private final WebTestClient warehouseMicroserviceWebClient = TestHelper.warehouseMicroserviceWebClient();
-    private final WebTestClient eurekaMicroserviceWebClient = TestHelper.eurekaMicroserviceWebClient();
-    private final WebTestClient adminMicroserviceWebClient = TestHelper.adminMicroserviceWebClient();
 
     @BeforeAll
     static void setup() {

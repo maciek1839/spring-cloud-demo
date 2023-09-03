@@ -20,7 +20,7 @@ public class ApiSchemaUtil {
         WAREHOUSE("api-docs-warehouse-microservice.json"),
         FACTORY("api-docs-factory-microservice.json");
 
-        private String name;
+        private final String name;
 
         ApiFileToReplace(String name) {
             this.name = name;
@@ -28,12 +28,12 @@ public class ApiSchemaUtil {
     }
 
     public enum DestinationProject{
-        CLIENT("client-microservice"),
+        REPORTING("reporting-microservice"),
         SHOP("shop-microservice"),
         WAREHOUSE("warehouse-microservice"),
         FACTORY("factory-microservice");
 
-        private String name;
+        private final String name;
 
         DestinationProject(String name) {
             this.name = name;

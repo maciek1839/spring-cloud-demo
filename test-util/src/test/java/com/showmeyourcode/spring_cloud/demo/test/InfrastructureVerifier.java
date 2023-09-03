@@ -5,7 +5,7 @@ import org.springframework.test.web.reactive.server.WebTestClient;
 
 class InfrastructureVerifier {
 
-    private final WebTestClient clientMicroserviceWebClient = TestHelper.clientMicroserviceWebClient();
+    private final WebTestClient reportingMicroserviceWebClient = TestHelper.reportingMicroserviceWebClient();
     private final WebTestClient shopMicroserviceWebClient = TestHelper.shopMicroserviceWebClient();
     private final WebTestClient factoryMicroserviceWebClient = TestHelper.factoryMicroserviceWebClient();
     private final WebTestClient warehouseMicroserviceWebClient = TestHelper.warehouseMicroserviceWebClient();
@@ -13,7 +13,7 @@ class InfrastructureVerifier {
     private final WebTestClient adminMicroserviceWebClient = TestHelper.adminMicroserviceWebClient();
 
     public void verifyAllServicesArUp(){
-        verifyMicroserviceIsUp(clientMicroserviceWebClient);
+        verifyMicroserviceIsUp(reportingMicroserviceWebClient);
         verifyMicroserviceIsUp(shopMicroserviceWebClient);
         verifyMicroserviceIsUp(factoryMicroserviceWebClient);
         verifyMicroserviceIsUp(warehouseMicroserviceWebClient);

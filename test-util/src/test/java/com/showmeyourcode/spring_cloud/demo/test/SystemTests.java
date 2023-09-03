@@ -20,7 +20,7 @@ class SystemTests {
 
     private static final InfrastructureVerifier infrastructureVerifier = new InfrastructureVerifier();
 
-    private final WebTestClient clientMicroserviceWebClient = TestHelper.clientMicroserviceWebClient();
+    private final WebTestClient reportingMicroserviceWebClient = TestHelper.reportingMicroserviceWebClient();
     private final WebTestClient shopMicroserviceWebClient = TestHelper.shopMicroserviceWebClient();
 
     @BeforeAll
@@ -37,8 +37,8 @@ class SystemTests {
 
     @Order(1)
     @Test
-    void shouldClientMicroserviceCommunicateToWarehouse(){
-        clientMicroserviceWebClient
+    void shouldReportingMicroserviceCommunicateToWarehouse(){
+        reportingMicroserviceWebClient
                 .get()
                 .uri(InfrastructureConstant.V1_CLIENT_WAREHOUSE_PROXY)
                 .exchange()
