@@ -44,7 +44,7 @@ public class SecurityConfiguration implements WebMvcConfigurer {
                 .authorizeRequests()
                 .and()
                 .authorizeRequests()
-                .antMatchers(HttpMethod.GET, reportPath)
+                .requestMatchers(HttpMethod.GET, reportPath)
                 .authenticated()
                 .and()
                 .build();

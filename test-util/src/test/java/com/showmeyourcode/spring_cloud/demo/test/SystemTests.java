@@ -22,6 +22,8 @@ class SystemTests {
 
     private final WebTestClient reportingMicroserviceWebClient = TestHelper.reportingMicroserviceWebClient();
     private final WebTestClient shopMicroserviceWebClient = TestHelper.shopMicroserviceWebClient();
+    private final WebTestClient warehouseMicroserviceWebClient = TestHelper.warehouseMicroserviceWebClient();
+    private final WebTestClient factoryMicroserviceWebClient = TestHelper.factoryMicroserviceWebClient();
 
     @BeforeAll
     static void setup() {
@@ -37,7 +39,7 @@ class SystemTests {
 
     @Order(1)
     @Test
-    void shouldReportingMicroserviceCommunicateToWarehouse(){
+    void shouldReportingMicroserviceCommunicateToOtherMicroservices(){
         reportingMicroserviceWebClient
                 .get()
                 .uri(InfrastructureConstant.V1_CLIENT_WAREHOUSE_PROXY)
@@ -55,6 +57,36 @@ class SystemTests {
     @Test
     void shouldShopMicroserviceCommunicateToOtherMicroservices(){
         shopMicroserviceWebClient
+                .get()
+                .uri(InfrastructureConstant.V1_ITEMS)
+                .exchange()
+                .expectStatus()
+                .isOk()
+                .expectHeader()
+                .contentType(MediaType.APPLICATION_JSON)
+                .expectBody()
+                .jsonPath("$").isArray();
+    }
+
+    @Order(3)
+    @Test
+    void shouldWarehouseMicroserviceCommunicateToOtherMicroservices(){
+        warehouseMicroserviceWebClient
+                .get()
+                .uri(InfrastructureConstant.V1_ITEMS)
+                .exchange()
+                .expectStatus()
+                .isOk()
+                .expectHeader()
+                .contentType(MediaType.APPLICATION_JSON)
+                .expectBody()
+                .jsonPath("$").isArray();
+    }
+
+    @Order(4)
+    @Test
+    void shouldFactoryMicroserviceBeOperational(){
+        factoryMicroserviceWebClient
                 .get()
                 .uri(InfrastructureConstant.V1_ITEMS)
                 .exchange()

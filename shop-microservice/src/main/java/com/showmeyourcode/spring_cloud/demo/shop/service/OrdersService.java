@@ -30,9 +30,9 @@ public class OrdersService {
         log.info("Calling CREATE ...");
         var response = ordersApi.create(xClientId, body);
 
+        var newLocation = response.getHeaders().getLocation().toString().replace("/warehouse", contextPath);
         HttpHeaders headers = new HttpHeaders();
-        headers.addAll(response.getHeaders());
-        headers.add(HttpHeaders.LOCATION, response.getHeaders().getLocation().toString().replace("/factory", contextPath));
+        headers.add(HttpHeaders.LOCATION, newLocation);
         return ResponseEntity.status(response.getStatusCode()).headers(headers).build();
     }
 

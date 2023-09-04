@@ -13,7 +13,7 @@ import org.springframework.http.MediaType;
 class SwaggerEndpointIT extends BaseIT {
 
     @Test
-    void shouldExposeSwaggerEndpoint() {
+    void shouldExposeSwaggerUiEndpoint() {
         Response response = RestAssured.given(this.requestSpecification)
                 .accept(MediaType.TEXT_HTML_VALUE)
                 .when()
@@ -23,4 +23,13 @@ class SwaggerEndpointIT extends BaseIT {
         MatcherAssert.assertThat(response.body().asString().isBlank(), Matchers.is(false));
     }
 
+    @Test
+    void shouldExposeSwaggerDocsEndpoint() {
+        Response response = RestAssured.given(this.requestSpecification)
+                .when()
+                .get(addContextPath(EndpointConstant.SWAGGER_DOCS));
+
+        MatcherAssert.assertThat(response.statusCode(), Matchers.is(HttpStatus.OK.value()));
+        MatcherAssert.assertThat(response.body().asString().isBlank(), Matchers.is(false));
+    }
 }

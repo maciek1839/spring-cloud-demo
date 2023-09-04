@@ -5,6 +5,8 @@ import com.showmeyourcode.spring_cloud.demo.factory.model.NewItem;
 import com.showmeyourcode.spring_cloud.demo.factory.model.Order;
 import com.showmeyourcode.spring_cloud.demo.factory.model.OrderStatus;
 import com.showmeyourcode.spring_cloud.demo.factory.model.OrdersReportResponse;
+import jakarta.annotation.PostConstruct;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationEventPublisher;
@@ -13,7 +15,6 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 import reactor.core.scheduler.Schedulers;
 
-import javax.annotation.PostConstruct;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -21,6 +22,7 @@ import java.util.List;
 import java.util.UUID;
 
 @Slf4j
+@RequiredArgsConstructor
 @Service
 public class OrdersService {
 
@@ -29,11 +31,6 @@ public class OrdersService {
     private final List<Order> orders = Collections.synchronizedList(new ArrayList<>());
     @Value("${orders.processing-time}")
     private String processingTimeInSec;
-
-    public OrdersService(IdProvider idProvider, ApplicationEventPublisher applicationEventPublisher) {
-        this.idProvider = idProvider;
-        this.applicationEventPublisher = applicationEventPublisher;
-    }
 
     public Mono<Void> cancel(UUID id) {
         var order = orders.stream().filter(o -> o.getId().equals(id)).findAny();

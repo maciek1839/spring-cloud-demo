@@ -4,7 +4,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.4.2</version>
+        <version>3.1.0</version>
         <relativePath /> <!-- lookup parent from repository -->
     </parent>
     <packaging>pom</packaging>
@@ -47,16 +47,17 @@
         <jacoco.module.test.util.exclusion>com/showmeyourcode/spring_cloud/demo/test/**</jacoco.module.test.util.exclusion>
 
         <spring-cloud-starter-oauth2.version>2.2.5.RELEASE</spring-cloud-starter-oauth2.version>
-        <spring-cloud.version>2020.0.0</spring-cloud.version>
-        <springdoc-openapi.version>1.5.12</springdoc-openapi.version>
+        <spring-cloud.version>2022.0.4</spring-cloud.version>
+        <springdoc-openapi.version>2.0.4</springdoc-openapi.version>
         <java-faker.version>1.0.2</java-faker.version>
         <jacoco.version>0.8.10</jacoco.version>
         <aasciidoctor-maven-plugin.version>1.5.8</aasciidoctor-maven-plugin.version>
         <wiremock-standalone.version>2.27.2</wiremock-standalone.version>
-        <lombok.version>1.18.22</lombok.version>
         <swagger-codegen-maven-plugin.version>3.0.43</swagger-codegen-maven-plugin.version>
         <threetenbp.version>2.6.4</threetenbp.version>
         <swagger-annotations.version>1.6.11</swagger-annotations.version>
+        <javax-validation.version>2.0.1.Final</javax-validation.version>
+        <javax-annotation-api.version>1.3.2</javax-annotation-api.version>
     </properties>
 
     <dependencyManagement>
@@ -67,32 +68,6 @@
                 <version>${spring-cloud.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
-            </dependency>
-
-            <!-- Springdoc MVC dependencies-->
-            <dependency>
-                <groupId>org.springdoc</groupId>
-                <artifactId>springdoc-openapi-ui</artifactId>
-                <version>${springdoc-openapi.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>org.springdoc</groupId>
-                <artifactId>springdoc-openapi-webmvc-core</artifactId>
-                <version>${springdoc-openapi.version}</version>
-            </dependency>
-
-            <!-- Springdoc WebFlux dependencies-->
-            <dependency>
-                <groupId>org.springdoc</groupId>
-                <artifactId>springdoc-openapi-webflux-core</artifactId>
-                <version>${springdoc-openapi.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>org.springdoc</groupId>
-                <artifactId>springdoc-openapi-webflux-ui</artifactId>
-                <version>${springdoc-openapi.version}</version>
             </dependency>
 
             <!-- Required by Swagger plugins to generate clients -->
@@ -132,7 +107,6 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>${lombok.version}</version>
             <optional>true</optional>
         </dependency>
 
@@ -226,8 +200,8 @@
                 </executions>
             </plugin>
             <plugin>
-                <groupId>pl.project13.maven</groupId>
-                <artifactId>git-commit-id-plugin</artifactId>
+                <groupId>io.github.git-commit-id</groupId>
+                <artifactId>git-commit-id-maven-plugin</artifactId>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

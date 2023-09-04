@@ -1,6 +1,8 @@
 # TODOs
 
-- Add more endpoints and logic to the reporting microservice.
+- Add more acceptance tests
+  - Add an endpoint to get an order after making an order.
+- Add more endpoints and logic to the reporting microservice (info + reports)
 - Run system/acceptance tests on GitLab
 - Handle upstreams errors (Warehouse + Shop + Client)
 - Add API validation

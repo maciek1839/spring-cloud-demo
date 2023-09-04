@@ -21,7 +21,6 @@ import java.util.UUID;
 public class OrdersEndpoint implements OrdersEndpointSpecification {
 
     private final OrdersService ordersService;
-    private final UriBuilder componentsBuilder = UriComponentsBuilder.newInstance();
     @Value("${spring.application.name}")
     private String appName;
     @Value("${spring.webflux.base-path}")
@@ -41,12 +40,11 @@ public class OrdersEndpoint implements OrdersEndpointSpecification {
     @Override
     public Mono<ResponseEntity<Void>> create(String clientId, NewOrderRequest newOrder) {
         log.info("Received a CREATE request from {}.", clientId);
+        UriComponentsBuilder.newInstance()
+                .scheme("http").host("www.baeldung.com").path("/junit-5").build();
         return ordersService.create(newOrder)
                 .map(orderId -> {
-                    var uriLocation = componentsBuilder
-                            .path(contextPath + "/" + OrdersEndpoint.ENDPOINT_PATH + "/" + orderId)
-                            .build()
-                            .toString();
+                    var uriLocation = contextPath + OrdersEndpoint.ENDPOINT_PATH + "/" + orderId;
                     var headers = new LinkedMultiValueMap<String, String>();
                     headers.add(HttpHeaders.LOCATION, uriLocation);
                     return new ResponseEntity(null, headers, HttpStatus.CREATED);

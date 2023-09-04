@@ -6,7 +6,7 @@
     "version" : "0.0.1"
   },
   "servers" : [ {
-    "url" : "http://localhost:52385/factory",
+    "url" : "http://localhost:57868/factory",
     "description" : "Generated server url"
   } ],
   "tags" : [ {
@@ -359,24 +359,6 @@
       "basicAuth" : {
         "type" : "http",
         "scheme" : "basic"
-      }
-    }
-  }
-}: {
-          "id": {
-            "type": "string",
-            "format": "uuid"
-          },
-          "name": {
-            "type": "string"
-          }
-        }
-      }
-    },
-    "securitySchemes": {
-      "basicAuth": {
-        "type": "http",
-        "scheme": "basic"
       }
     }
   }

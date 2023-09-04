@@ -1,12 +1,6 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="3AdminApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
-    <module name="admin-dashboard" />
-    <extension name="coverage">
-      <pattern>
-        <option name="PATTERN" value="com.showmeyourcode.spring_cloud.admin.*" />
-        <option name="ENABLED" value="true" />
-      </pattern>
-    </extension>
+  <configuration default="false" name="1WarehouseApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+    <module name="warehouse-microservice" />
     <extension name="net.ashald.envfile">
       <option name="IS_ENABLED" value="false" />
       <option name="IS_SUBST" value="false" />
@@ -22,7 +16,7 @@
       <option name="region" />
       <option name="useCurrentConnection" value="false" />
     </extension>
-    <option name="SPRING_BOOT_MAIN_CLASS" value="com.showmeyourcode.spring_cloud.demo.admin.AdminApplication" />
+    <option name="SPRING_BOOT_MAIN_CLASS" value="com.showmeyourcode.spring_cloud.demo.warehouse.WarehouseApplication" />
     <option name="ALTERNATIVE_JRE_PATH" />
     <method v="2">
       <option name="Make" enabled="true" />

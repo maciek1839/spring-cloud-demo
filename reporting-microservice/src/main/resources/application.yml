@@ -1,3 +1,6 @@
+# In case of debugging, you can set a proper logging level.
+#logging.level.root: DEBUG
+
 spring:
   application:
     name: spring-cloud-eureka-reporting
@@ -27,4 +30,4 @@ management:
     web:
       exposure:
         exclude:
-        include: health,info,metrics
+        include: health,info,metrics,mappings

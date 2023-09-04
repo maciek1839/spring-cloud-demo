@@ -7,6 +7,8 @@ ShowMeYourCode! - SPRING CLOUD demo;
 :toclevels: 4
 :sectlinks:
 
+:snippets: ../../../target/generated-snippets
+
 [[introduction]]
 = Introduction
 

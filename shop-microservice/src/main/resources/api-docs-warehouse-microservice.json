@@ -14,7 +14,7 @@
     "url" : "https://gitlab.com/ShowMeYourCodeYouTube"
   },
   "servers" : [ {
-    "url" : "http://localhost:52341/warehouse",
+    "url" : "http://localhost:57756/warehouse",
     "description" : "Generated server url"
   } ],
   "paths" : {
@@ -43,6 +43,9 @@
           "required" : true
         },
         "responses" : {
+          "201" : {
+            "description" : "An order successfully created."
+          },
           "500" : {
             "description" : "Internal Server Error. Please try again later."
           },
@@ -55,9 +58,6 @@
                 }
               }
             }
-          },
-          "201" : {
-            "description" : "An order successfully created."
           }
         }
       }
@@ -85,6 +85,16 @@
           }
         } ],
         "responses" : {
+          "401" : {
+            "description" : "Unauthorized access.",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/OrdersReportResponse"
+                }
+              }
+            }
+          },
           "200" : {
             "description" : "A report was successfully created.",
             "content" : {
@@ -97,16 +107,6 @@
           },
           "500" : {
             "description" : "Internal Server Error. Please try again later.",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/OrdersReportResponse"
-                }
-              }
-            }
-          },
-          "401" : {
-            "description" : "Unauthorized access.",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -136,8 +136,8 @@
           }
         } ],
         "responses" : {
-          "500" : {
-            "description" : "Internal Server Error. Please try again later.",
+          "200" : {
+            "description" : "Successfully retrieved items.",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -149,8 +149,8 @@
               }
             }
           },
-          "200" : {
-            "description" : "Successfully retrieved items.",
+          "500" : {
+            "description" : "Internal Server Error. Please try again later.",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -197,6 +197,16 @@
           }
         } ],
         "responses" : {
+          "404" : {
+            "description" : "An item with associated ID is not found.",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ItemResponse"
+                }
+              }
+            }
+          },
           "200" : {
             "description" : "Successfully retrieved an item.",
             "content" : {
@@ -209,16 +219,6 @@
           },
           "500" : {
             "description" : "Internal Server Error. Please try again later.",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/ItemResponse"
-                }
-              }
-            }
-          },
-          "404" : {
-            "description" : "An item with associated ID is not found.",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -255,14 +255,14 @@
           "204" : {
             "description" : "Cancellation succeed."
           },
+          "410" : {
+            "description" : "An order cannot be cancelled. It's already processed."
+          },
           "404" : {
             "description" : "An order with associated ID is not found."
           },
           "500" : {
             "description" : "Internal Server Error. Please try again later."
-          },
-          "410" : {
-            "description" : "An order cannot be cancelled. It's already processed."
           }
         }
       }
@@ -324,22 +324,6 @@
       "basicAuth" : {
         "type" : "http",
         "scheme" : "basic"
-      }
-    }
-  }
-}           "type": "string",
-            "format": "uuid"
-          },
-          "name": {
-            "type": "string"
-          }
-        }
-      }
-    },
-    "securitySchemes": {
-      "basicAuth": {
-        "type": "http",
-        "scheme": "basic"
       }
     }
   }

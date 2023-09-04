@@ -1,7 +1,7 @@
 package com.showmeyourcode.spring_cloud.demo.test.util;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.File;
@@ -44,7 +44,7 @@ public class ApiSchemaUtil {
     }
 
     public static void updateClientSchema(
-            String currentApiSpecificationInJson,
+            String currentApiSpecification,
                                           List<DestinationProject> destinationProjects,
             ApiFileToReplace fileToReplace
     ) throws IOException {
@@ -55,7 +55,7 @@ public class ApiSchemaUtil {
         log.info("Working directory: {}", currentAbsolutePath);
         log.info("Project directory: {}", springCloudDemoProjectPath);
 
-        String apiSchemaToWrite = beautify(currentApiSpecificationInJson);
+        String apiSchemaToWrite = beautify(currentApiSpecification);
         log.info("Content to write: {}", apiSchemaToWrite);
 
         for(DestinationProject project: destinationProjects){
@@ -68,10 +68,15 @@ public class ApiSchemaUtil {
         }
     }
 
-    @SneakyThrows
+
     private static String beautify(String json) {
         ObjectMapper mapper = new ObjectMapper();
-        Object obj = mapper.readValue(json, Object.class);
-        return mapper.writerWithDefaultPrettyPrinter().writeValueAsString(obj);
+        try {
+            Object obj = mapper.readValue(json, Object.class);
+            return mapper.writerWithDefaultPrettyPrinter().writeValueAsString(obj);
+        } catch (JsonProcessingException ex){
+            log.warn("Cannot format the API specification.");
+            return json;
+        }
     }
 }

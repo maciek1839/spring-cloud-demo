@@ -12,13 +12,13 @@ import org.junit.jupiter.api.Test;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.restdocs.restassured.RestAssuredRestDocumentation;
 import reactor.test.StepVerifier;
 
 import java.util.UUID;
 import java.util.concurrent.atomic.AtomicReference;
 
 import static org.hamcrest.Matchers.is;
-import static org.springframework.restdocs.restassured3.RestAssuredRestDocumentation.document;
 
 class OrdersEndpointIT extends BaseIT {
 
@@ -31,7 +31,7 @@ class OrdersEndpointIT extends BaseIT {
                 faker.random().hex()
         );
         RestAssured.given(this.requestSpecification)
-                .filter(document("orders/make"))
+                .filter(RestAssuredRestDocumentation.document("orders/make"))
                 .accept(MediaType.APPLICATION_JSON_VALUE)
                 .contentType(MediaType.APPLICATION_JSON_VALUE)
                 .header(HttpHeaderConstant.X_CLIENT_ID_HEADER, exampleClientHeaderValue)
@@ -43,7 +43,7 @@ class OrdersEndpointIT extends BaseIT {
                 .assertThat()
                 .log().ifValidationFails(LogDetail.BODY)
                 .statusCode(is(HttpStatus.CREATED.value()))
-                .header(HttpHeaders.LOCATION, Matchers.notNullValue());
+                .header(HttpHeaders.LOCATION, Matchers.matchesRegex("/factory/api/v1/orders/.{36}$"));
 
         // todo: try https://stackoverflow.com/questions/59029446/java-reactor-stepverifier-withvirtualtime-loop-repeatedly-check-with-expectnoe
         // .withVirtualTime(() -> Flux.interval(Duration.ofSeconds(1)).take(3600))
@@ -65,7 +65,7 @@ class OrdersEndpointIT extends BaseIT {
                 .verify();
 
         RestAssured.given(this.requestSpecification)
-                .filter(document("orders/cancel"))
+                .filter(RestAssuredRestDocumentation.document("orders/cancel"))
                 .header(HttpHeaderConstant.X_CLIENT_ID_HEADER, exampleClientHeaderValue)
                 .when()
                 .delete(addContextPath(OrdersEndpointSpecification.ENDPOINT_PATH+"/"+orderId))
@@ -98,7 +98,7 @@ class OrdersEndpointIT extends BaseIT {
         var uri = OrdersEndpointSpecification.ENDPOINT_PATH+OrdersEndpointSpecification.REPORT_PATH;
 
         RestAssured.given(this.requestSpecification)
-                .filter(document("orders/report"))
+                .filter(RestAssuredRestDocumentation.document("orders/report"))
                 .accept(MediaType.APPLICATION_JSON_VALUE)
                 .header(HttpHeaderConstant.X_CLIENT_ID_HEADER, exampleClientHeaderValue)
                 .auth().preemptive().basic("user", "user")

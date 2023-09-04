@@ -9,7 +9,6 @@
 
     <artifactId>admin-dashboard</artifactId>
 
-
     <dependencies>
         <dependency>
             <groupId>org.springframework.cloud</groupId>

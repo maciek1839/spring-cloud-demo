@@ -12,6 +12,7 @@ import org.junit.jupiter.api.TestMethodOrder;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.reactive.server.WebTestClient;
+import java.util.concurrent.atomic.AtomicReference;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -37,7 +38,9 @@ class AcceptanceTests {
 
     @Order(1)
     @Test
-    void shouldMakeAnOrderAndGetTheOrderedItem(){
+    void shouldMakeAnOrderAndCancelSuccessfully() {
+        final AtomicReference<String> location = new AtomicReference<>();
+
         shopMicroserviceWebClient
                 .post()
                 .uri(InfrastructureConstant.V1_ORDERS)
@@ -54,13 +57,28 @@ class AcceptanceTests {
                         """)
                 .exchange()
                 .expectStatus()
-                .isOk()
+                .isCreated()
                 .expectHeader()
-                .contentType(MediaType.APPLICATION_JSON)
+                .value(HttpHeaders.LOCATION, header ->{
+                    log.info("A new item location: {}", header);
+                    location.set(header);
+                })
                 .expectBody()
-                .jsonPath("$.build.name").isEqualTo("warehouse-microservice")
-                .jsonPath("$.build.artifact").isEqualTo("warehouse-microservice");
+                .isEmpty();
 
-        // todo: call GET items and verify a product is available
+        var locationWithoutMicroservicePrefix = location.get().replace("/shop","");
+        log.info("Cancelling an order: {} (original: {})",
+                locationWithoutMicroservicePrefix,
+                location.get()
+        );
+
+        shopMicroserviceWebClient
+                .delete()
+                .uri(locationWithoutMicroservicePrefix)
+                .exchange()
+                .expectStatus()
+                .isNoContent()
+                .expectBody()
+                .isEmpty();
     }
 }

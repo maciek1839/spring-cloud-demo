@@ -2,10 +2,10 @@
   <configuration default="false" name="SpringCloudDemo" type="CompoundRunConfigurationType">
     <toRun name="0EurekaApplication" type="SpringBootApplicationConfigurationType" />
     <toRun name="1FactoryApplication" type="SpringBootApplicationConfigurationType" />
+    <toRun name="1ReportingApplication" type="SpringBootApplicationConfigurationType" />
     <toRun name="1ShopApplication" type="SpringBootApplicationConfigurationType" />
     <toRun name="1WarehouseApplication" type="SpringBootApplicationConfigurationType" />
-    <toRun name="2ClientApplication" type="SpringBootApplicationConfigurationType" />
-    <toRun name="3AdminApplication" type="SpringBootApplicationConfigurationType" />
+    <toRun name="2AdminApplication" type="SpringBootApplicationConfigurationType" />
     <method v="2" />
   </configuration>
 </component>

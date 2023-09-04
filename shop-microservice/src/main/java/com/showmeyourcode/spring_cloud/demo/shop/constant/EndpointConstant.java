@@ -8,7 +8,7 @@ public class EndpointConstant {
     public static final String ACTUATOR_METRICS_ENDPOINT = "/actuator/metrics";
 
     public static final String SWAGGER_UI = "/swagger-ui.html";
-    public static final String SWAGGER_API_DOC = "/v3/api-docs/";
+    public static final String SWAGGER_API_DOC = "/v3/api-docs.yaml";
 
     private EndpointConstant() {
     }

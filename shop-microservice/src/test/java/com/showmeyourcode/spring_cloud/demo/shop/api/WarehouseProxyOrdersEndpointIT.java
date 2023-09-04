@@ -71,12 +71,13 @@ class WarehouseProxyOrdersEndpointIT extends BaseIT {
 
     @Test
     void shouldMakeOrder() throws JsonProcessingException {
+        final String header = "/warehouse/api/v1/orders/4e82f625-199f-41ee-8243-355d3b0356ca";
         wireMockServer.stubFor(
                 post(urlEqualTo("/warehouse/api/v1/orders"))
                         .willReturn(
                                 aResponse()
                                         .withStatus(200)
-                                        .withHeader(HttpHeaders.LOCATION, "/warehouse/api/v1/orders/4e82f625-199f-41ee-8243-355d3b0356ca")
+                                        .withHeader(HttpHeaders.LOCATION, header)
                                         .withBodyFile("warehouse/orders/make/success.json")
                         )
         );
@@ -100,9 +101,8 @@ class WarehouseProxyOrdersEndpointIT extends BaseIT {
                 .post(addContextPath(uri))
                 .then()
                 .assertThat()
-                // Ref: https://github.com/spring-cloud/spring-cloud-openfeign/issues/456
-                // todo: fix it by upgrading dependencies
-                .statusCode(Matchers.is(HttpStatus.INTERNAL_SERVER_ERROR.value()));
+                .statusCode(Matchers.is(HttpStatus.OK.value()))
+                .header(HttpHeaders.LOCATION, header.replace("/warehouse", "/shop"));
     }
 
     @Test

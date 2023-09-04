@@ -13,14 +13,13 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.web.server.LocalServerPort;
+import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.restdocs.RestDocumentationContextProvider;
 import org.springframework.restdocs.RestDocumentationExtension;
+import org.springframework.restdocs.restassured.RestAssuredRestDocumentation;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import reactor.test.StepVerifier;
-
-import static org.springframework.restdocs.restassured3.RestAssuredRestDocumentation.documentationConfiguration;
 
 @Slf4j
 @ExtendWith({RestDocumentationExtension.class, SpringExtension.class})
@@ -51,7 +50,7 @@ public abstract class BaseIT {
         log.info("Setting up the port: {}", port);
         RestAssured.port = port;
         this.requestSpecification = new RequestSpecBuilder()
-                .addFilter(documentationConfiguration(restDocumentation))
+                .addFilter(RestAssuredRestDocumentation.documentationConfiguration(restDocumentation))
                 .build();
 
         StepVerifier

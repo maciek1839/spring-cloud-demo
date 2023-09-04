@@ -29,9 +29,9 @@ import java.util.Map;
 
 @OpenAPIDefinition(
         info = @Info(
-                title = "Client Microservice API",
+                title = "Reporting Microservice API",
                 version = "0.0.1",
-                description = "API specification for Client Microservice"
+                description = "API specification for Reporting Microservice"
         )
 )
 @Slf4j

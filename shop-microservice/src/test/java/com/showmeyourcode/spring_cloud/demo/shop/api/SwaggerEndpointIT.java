@@ -14,13 +14,12 @@ import org.springframework.http.MediaType;
 
 import java.io.IOException;
 import java.util.Collections;
-import java.util.List;
 
 @Slf4j
 class SwaggerEndpointIT extends BaseIT {
 
     @Test
-    void shouldExposeSwaggerEndpoint() {
+    void shouldExposeSwaggerUiEndpoint() {
         Response response = RestAssured.given(this.requestSpecification)
                 .accept(MediaType.TEXT_HTML_VALUE)
                 .when()
@@ -35,7 +34,6 @@ class SwaggerEndpointIT extends BaseIT {
     @Test
     void shouldUpdateClientSchemaInAnotherMavenModule() throws IOException {
         Response response = RestAssured.given(this.requestSpecification)
-                .accept(MediaType.APPLICATION_JSON_VALUE)
                 .when()
                 .get(addContextPath(EndpointConstant.SWAGGER_API_DOC));
 
