@@ -59,6 +59,7 @@ All services use OpenApi3 (OAS3).
 - `admin-dashboard`
   - Technology: Spring MVC
   - Dashboard: http://localhost:9000/
+  - Eureka service name: spring-cloud-eureka-admin-server
   - Port: 9000
 
 ---

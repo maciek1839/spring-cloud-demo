@@ -1,12 +1,30 @@
 package com.showmeyourcode.spring_cloud.demo.admin;
 
+import com.showmeyourcode.spring_cloud.demo.admin.constant.EndpointConstant;
+import io.restassured.RestAssured;
+import io.restassured.filter.log.LogDetail;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Test;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 
 import java.util.Arrays;
 
 class AdminApplicationIT extends BaseIT {
+
+    @Test
+    void shouldExposeAdminUi() {
+        RestAssured.given(this.requestSpecification)
+                .accept(MediaType.APPLICATION_JSON_VALUE)
+                .when()
+                .get(EndpointConstant.ACTUATOR_ENDPOINT)
+                .then()
+                .assertThat()
+                .log().ifValidationFails(LogDetail.BODY)
+                .statusCode(Matchers.is(HttpStatus.OK.value()))
+                .body("isEmpty()", Matchers.is(false));
+    }
 
     @Test
     void shouldStartAdminServerWithoutErrors() {
