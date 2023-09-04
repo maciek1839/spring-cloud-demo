@@ -110,6 +110,7 @@
                             <configOptions>
                                 <generateForOpenFeign>true</generateForOpenFeign>
                                 <interfaceOnly>false</interfaceOnly>
+                                <dateLibrary>java8</dateLibrary>
                             </configOptions>
                         </configuration>
                     </execution>
@@ -136,6 +137,7 @@
                             <configOptions>
                                 <generateForOpenFeign>false</generateForOpenFeign>
                                 <interfaceOnly>true</interfaceOnly>
+                                <dateLibrary>java8</dateLibrary>
                             </configOptions>
                         </configuration>
                     </execution>
