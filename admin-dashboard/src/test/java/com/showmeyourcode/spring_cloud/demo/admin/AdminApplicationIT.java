@@ -16,14 +16,13 @@ class AdminApplicationIT extends BaseIT {
     @Test
     void shouldExposeAdminUi() {
         RestAssured.given(this.requestSpecification)
-                .accept(MediaType.APPLICATION_JSON_VALUE)
+                .accept(MediaType.TEXT_HTML_VALUE)
                 .when()
-                .get(EndpointConstant.ACTUATOR_ENDPOINT)
+                .get(EndpointConstant.ADMIN_UI)
                 .then()
                 .assertThat()
                 .log().ifValidationFails(LogDetail.BODY)
-                .statusCode(Matchers.is(HttpStatus.OK.value()))
-                .body("isEmpty()", Matchers.is(false));
+                .statusCode(Matchers.is(HttpStatus.OK.value()));
     }
 
     @Test
