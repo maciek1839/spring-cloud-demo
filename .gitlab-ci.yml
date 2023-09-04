@@ -51,7 +51,6 @@ sonarcloud-check:
   script:
     - ./mvnw verify sonar:sonar -Dsonar.projectKey=ShowMeYourCodeYouTube_spring-cloud-demo
   only:
-    - merge_requests
     - master
 
 package:
