@@ -16,5 +16,10 @@ spring:
           instances:
             spring-cloud-eureka-warehouse:
               - uri: ${wiremock-host}
+            spring-cloud-eureka-shop:
+              - uri: ${wiremock-host}
   main:
     allow-bean-definition-overriding: true
+
+factoryMicroservice:
+  url: ${wiremock-host}

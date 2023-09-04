@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## 2.0.0 (2023-09-??)
+## 2.0.0 (2023-09-04)
 
 ### Added
 
@@ -14,7 +14,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Changed
 
-- Migrate to Spring Boot 3.1 and Spring Cloud 2022.0.4 ([xx]())
+- Migrate to Spring Boot 3.1 and Spring Cloud 2022.0.4 ([6e8be691](https://gitlab.com/ShowMeYourCodeYouTube/spring-cloud-demo/-/commit/6e8be6915270795c32e93b64e3e4bf4733e317a8))
 - Migrate to Java 17 and Spring Boot 2.4 (compatible with Spring Cloud 2020) ([ae0fdade](https://gitlab.com/ShowMeYourCodeYouTube/spring-cloud-demo/-/commit/ae0fdade676731cb7f0de2b518f29214297b2131))
 - Replace OpenAPI 2.0 by OpenApi3 (OAS3) ([9d0364c1](https://gitlab.com/ShowMeYourCodeYouTube/spring-cloud-demo/-/commit/9d0364c1d63fd8bcb41cf9b372450790f974c0e4))
 - API specification for microservices

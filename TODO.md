@@ -1,8 +1,9 @@
 # TODOs
 
+- fix TODOs in code
 - Add more acceptance tests
   - Add an endpoint to get an order after making an order.
-- Add more endpoints and logic to the reporting microservice (info + reports)
+- Add more endpoints and logic to the reporting microservice (reports connection to other microservice and do one aggregated report)
 - Run system/acceptance tests on GitLab
 - Handle upstreams errors (Warehouse + Shop + Client)
 - Add API validation
@@ -12,7 +13,6 @@
 - add tracking zipkin?
   - https://piotrminkowski.com/2023/03/13/microservices-with-spring-boot-3-and-spring-cloud/
 - Implement chain of responsibility + other patterns for microservices
-- fix TODOs in code
 - Add examples of:
   - Spring Cloud Config
     - Config Server + add `refresh` endpoint to README.md as a feature to describe

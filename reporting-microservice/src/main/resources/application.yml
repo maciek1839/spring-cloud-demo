@@ -15,9 +15,14 @@ eureka:
     serviceUrl:
       defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}
 
-warehouseEurekaName:
-  name: spring-cloud-eureka-warehouse
+warehouseMicroservice:
+  eurekaName: spring-cloud-eureka-warehouse
 
+shopMicroservice:
+  eurekaName: spring-cloud-eureka-shop
+
+factoryMicroservice:
+  url: http://localhost:8300
 
 # Default metric settings for all services
 # (metrics should be ingested by the Admin microservice)

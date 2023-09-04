@@ -1,0 +1,16 @@
+{
+  "git": {
+    "branch": "master",
+    "commit": {
+      "id": "1833831",
+      "time": "2023-09-03T09:19:22Z"
+    }
+  },
+  "build": {
+    "artifact": "shop-microservice",
+    "name": "shop-microservice",
+    "time": "2023-09-04T11:45:27.894Z",
+    "version": "2.0.0-SNAPSHOT",
+    "group": "com.showmeyourcode.spring_cloud.demo"
+  }
+}

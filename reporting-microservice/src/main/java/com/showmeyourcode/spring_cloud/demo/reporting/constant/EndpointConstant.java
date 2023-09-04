@@ -12,6 +12,8 @@ public class EndpointConstant {
 
     public static final String API_PREFIX = "/api/v1";
     public static final String WAREHOUSE_MICROSERVICE = API_PREFIX + "/warehouse";
+    public static final String SHOP_MICROSERVICE = API_PREFIX + "/shop";
+    public static final String FACTORY_MICROSERVICE = API_PREFIX + "/factory";
 
     private EndpointConstant() {
     }
