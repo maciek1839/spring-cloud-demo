@@ -42,8 +42,6 @@ test:
     expire_in: 1 hour
 
 sonarcloud-check:
-  needs:
-    - job: test
   cache:
     key: "${CI_JOB_NAME}"
     paths:
