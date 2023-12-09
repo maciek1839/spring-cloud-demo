@@ -20,4 +20,9 @@ public class BargainsService {
         log.info("Got products: {}", products.size());
         return ResponseEntity.ok(products.size());
     }
+
+    // for testing purposes
+    void setBargainsStub(BargainsServiceGrpc.BargainsServiceBlockingStub stub){
+        this.bargainsStub = stub;
+    }
 }
