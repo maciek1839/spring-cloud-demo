@@ -2,7 +2,6 @@ package com.showmeyourcode.spring_cloud.demo.shop.api;
 
 import com.showmeyourcode.spring_cloud.demo.shop.generated.ApiApi;
 import com.showmeyourcode.spring_cloud.demo.shop.generated.model.ItemResponse;
-import com.showmeyourcode.spring_cloud.demo.shop.grpc.BargainProto;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.enums.ParameterIn;
@@ -17,9 +16,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-
-import java.util.List;
 
 @SecurityScheme(
         name = "basicAuth",

@@ -3,7 +3,6 @@ package com.showmeyourcode.spring_cloud.demo.shop.api;
 import com.showmeyourcode.spring_cloud.demo.shop.generated.model.ItemResponse;
 import com.showmeyourcode.spring_cloud.demo.shop.generated.model.NewOrderRequest;
 import com.showmeyourcode.spring_cloud.demo.shop.generated.model.OrdersReportResponse;
-import com.showmeyourcode.spring_cloud.demo.shop.grpc.BargainProto;
 import com.showmeyourcode.spring_cloud.demo.shop.service.BargainsService;
 import com.showmeyourcode.spring_cloud.demo.shop.service.ItemsService;
 import com.showmeyourcode.spring_cloud.demo.shop.service.OrdersService;
