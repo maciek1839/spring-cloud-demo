@@ -60,6 +60,11 @@
         <javax-annotation-api.version>1.3.2</javax-annotation-api.version>
         <spring-boot-admin.version>3.1.6</spring-boot-admin.version>
         <spring-boot-admin-ui.version>1.5.7</spring-boot-admin-ui.version>
+
+        <net-devh-grpc.version>2.15.0.RELEASE</net-devh-grpc.version>
+        <grpc-plugin.version>io.grpc:protoc-gen-grpc-java:1.57.2</grpc-plugin.version>
+        <protoc-jar-maven-plugin.version>3.11.4</protoc-jar-maven-plugin.version>
+        <guava.version>32.1.3-jre</guava.version>
     </properties>
 
     <dependencyManagement>
@@ -84,11 +89,34 @@
                 <version>${swagger-annotations.version}</version>
             </dependency>
 
+            <!-- gRPC  -->
+            <dependency>
+                <groupId>net.devh</groupId>
+                <artifactId>grpc-client-spring-boot-starter</artifactId>
+                <version>${net-devh-grpc.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>net.devh</groupId>
+                <artifactId>grpc-server-spring-boot-starter</artifactId>
+                <version>${net-devh-grpc.version}</version>
+            </dependency>
+            <!-- Due to conflict, explicitly add a compatible Guava version. -->
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>${guava.version}</version>
+            </dependency>
+
             <!-- Test dependencies-->
             <dependency>
                 <groupId>org.wiremock</groupId>
                 <artifactId>wiremock-standalone</artifactId>
                 <version>${wiremock-standalone.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>io.grpc</groupId>
+                <artifactId>grpc-testing</artifactId>
                 <scope>test</scope>
             </dependency>
         </dependencies>
@@ -166,6 +194,11 @@
                             <version>${spring-restdocs.version}</version>
                         </dependency>
                     </dependencies>
+                </plugin>
+                <plugin>
+                    <groupId>com.github.os72</groupId>
+                    <artifactId>protoc-jar-maven-plugin</artifactId>
+                    <version>${protoc-jar-maven-plugin.version}</version>
                 </plugin>
             </plugins>
         </pluginManagement>

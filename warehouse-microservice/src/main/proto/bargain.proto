@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package service;
+
+option java_package = "com.showmeyourcode.spring_cloud.demo.warehouse.grpc";
+option java_outer_classname = "BargainProto";
+
+service BargainsService{
+  rpc findAll(Empty) returns (BargainFindAllResponse);
+}
+
+message BargainFindAllResponse{
+  repeated BargainProduct products = 1;
+  int32 messageCode = 2;
+}
+
+message BargainProduct{
+  string id = 1;
+  double discount = 3;
+  double basePrice = 2;
+}
+
+message Empty{
+
+}

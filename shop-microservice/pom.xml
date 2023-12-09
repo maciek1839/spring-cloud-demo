@@ -47,6 +47,11 @@
             <version>${springdoc-openapi.version}</version>
         </dependency>
 
+        <dependency>
+            <groupId>net.devh</groupId>
+            <artifactId>grpc-client-spring-boot-starter</artifactId>
+        </dependency>
+
         <!-- Required by Swagger plugins to generate clients -->
         <dependency>
             <groupId>com.github.joschi.jackson</groupId>
@@ -137,6 +142,40 @@
                                 <generateForOpenFeign>false</generateForOpenFeign>
                                 <interfaceOnly>true</interfaceOnly>
                             </configOptions>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>com.github.os72</groupId>
+                <artifactId>protoc-jar-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                        <configuration>
+                            <addProtoSources>all</addProtoSources>
+                            <includeMavenTypes>direct</includeMavenTypes>
+                            <outputDirectory>target/generated-sources/shop-microservice-grpc/src/main/java
+                            </outputDirectory>
+                            <inputDirectories>
+                                <include>src/main/proto</include>
+                            </inputDirectories>
+                            <outputTargets>
+                                <outputTarget>
+                                    <type>java</type>
+                                    <outputDirectory>target/generated-sources/shop-microservice-grpc/src/main/java
+                                    </outputDirectory>
+                                </outputTarget>
+                                <outputTarget>
+                                    <type>grpc-java</type>
+                                    <pluginArtifact>${grpc-plugin.version}</pluginArtifact>
+                                    <outputDirectory>target/generated-sources/shop-microservice-grpc/src/main/java
+                                    </outputDirectory>
+                                </outputTarget>
+                            </outputTargets>
                         </configuration>
                     </execution>
                 </executions>

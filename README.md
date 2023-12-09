@@ -16,6 +16,7 @@
 - Swagger
 - WireMock
 - RestAssured & Hamcrest
+- gRPC
 
 ## Services specification
 
@@ -33,14 +34,14 @@ All services use OpenApi3 (OAS3).
   - Technology: Spring MVC
   - Swagger UI: http://localhost:8100/shop/swagger-ui.html
   - Eureka service name: spring-cloud-eureka-shop
-  - Port: 8100
+  - Port: 8100 (REST), 7001 (gRPC)
   - Context path: /shop
   - OpenFeign using provided/static URLs or hosts from Ribbon/Eureka (warehouse)
 - `warehouse-microservice`
   - Technology: Spring MVC
   - Swagger UI: http://localhost:8200/warehouse/swagger-ui.html
   - Eureka service name: spring-cloud-eureka-warehouse
-  - Port: 8200
+  - Port: 8200 (REST), 7000 (gRPC)
   - Context path: /warehouse
   - Java API Client configuration using a provided/static URL (factory)
 - `factory-microservice`
@@ -269,3 +270,28 @@ Ref: https://spring.io/projects/spring-restdocs#overview
 ![img](docs/springs-docs-generated-api-doc.png)
 
 Example implementation - [spring-projects / spring-restdocs](https://github.com/spring-projects/spring-restdocs/blob/2.0.x/samples/rest-notes-spring-data-rest/src/main/asciidoc/api-guide.adoc)
+
+## API architecture styles
+
+### gRPC
+
+RPC is a generic protocol for remote procedure calls, while gRPC is a specific implementation of RPC that uses the HTTP/2 protocol for communication.
+Also, RPC uses a binary encoding format to transmit data, while gRPC supports several serialization formats, including Protocol Buffers, JSON, and XML.
+
+![img](docs/grpc_0401.png)
+
+Ref: https://www.oreilly.com/library/view/grpc-up-and/9781492058328/ch04.html
+
+Protocol buffers are a combination of the definition language (created in .proto files),
+the code that the proto compiler generates to interface with data, language-specific runtime libraries,
+and the serialization format for data that is written to a file (or sent across a network connection).
+
+Advantages of using protocol buffers include:
+- Compact data storage
+- Fast parsing
+- Availability in many programming languages
+- Optimized functionality through automatically-generated classes
+
+![img](docs/protocol-buffers-concepts.png)
+
+Ref: https://protobuf.dev/overview/

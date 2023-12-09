@@ -6,3 +6,13 @@ wiremock-host: http://localhost:9871
 
 factoryMicroservice:
   basePath: ${wiremock-host}/factory
+
+grpc:
+  client:
+    bargains:
+      address: in-process:test
+      enableKeepAlive:
+      negotiationType:
+  server:
+    inProcessName: test
+    port: -1
