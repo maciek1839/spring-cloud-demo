@@ -34,7 +34,7 @@ All services use OpenApi3 (OAS3).
   - Technology: Spring MVC
   - Swagger UI: http://localhost:8100/shop/swagger-ui.html
   - Eureka service name: spring-cloud-eureka-shop
-  - Port: 8100 (REST), 7001 (gRPC)
+  - Port: 8100 (REST)
   - Context path: /shop
   - OpenFeign using provided/static URLs or hosts from Ribbon/Eureka (warehouse)
 - `warehouse-microservice`
