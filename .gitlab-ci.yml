@@ -42,8 +42,7 @@ test:
     expire_in: 1 hour
 
 sonarcloud-check:
-  needs:
-    - job: test
+  stage: test
   cache:
     key: "${CI_JOB_NAME}"
     paths:
@@ -51,6 +50,7 @@ sonarcloud-check:
   script:
     - ./mvnw verify sonar:sonar -Dsonar.projectKey=ShowMeYourCodeYouTube_spring-cloud-demo
   only:
+    - merge_requests
     - master
 
 package:

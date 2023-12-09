@@ -42,3 +42,9 @@ management:
 
 factoryMicroservice:
   basePath: http://localhost:8300/factory
+
+#############################################
+
+grpc:
+  server:
+    port: 7000

@@ -34,3 +34,11 @@ management:
       exposure:
         exclude:
         include: health,info,metrics
+
+#############################################
+
+grpc:
+  client:
+    bargains:
+      address: static://localhost:7000
+      negotiation-type: plaintext
