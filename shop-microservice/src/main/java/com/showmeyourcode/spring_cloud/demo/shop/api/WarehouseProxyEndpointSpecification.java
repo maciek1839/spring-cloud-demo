@@ -35,7 +35,7 @@ public interface WarehouseProxyEndpointSpecification extends ApiApi {
     @ApiResponses(value = {
             @ApiResponse(
                     responseCode = "200",
-                    description = "Successfully retrieved number of bargains.",
+                    description = "Successfully retrieved a number of bargains.",
                     content = @Content(
                             mediaType = "application/json",
                             array = @ArraySchema(schema = @Schema(implementation = ItemResponse.class))
