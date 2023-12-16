@@ -39,7 +39,7 @@ public class BargainsService {
         return products.stream().map(message -> {
             try {
                 return mapper.readTree(PRINTER.print(message));
-            } catch (InvalidProtocolBufferException | JsonProcessingException e) {
+            } catch (Exception e) {
                 log.warn("Cannot parse the protobuf object! Id: {} ", message.getId(),e);
                 return null;
             }
