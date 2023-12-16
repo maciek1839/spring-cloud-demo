@@ -9,6 +9,9 @@ import org.springframework.web.client.RestTemplate;
 
 import java.time.Duration;
 
+/**
+ * An example configuration of retrieving a microservice address from Eureka.
+ */
 @Configuration
 public class ManualApiClientConfiguration {
 
@@ -23,7 +26,7 @@ public class ManualApiClientConfiguration {
     @Value("${factoryMicroservice.url}")
     private String factoryMicroserviceUrl;
 
-    private final int DEFAULT_TIMEOUT = 300000;
+    private final int DEFAULT_TIMEOUT = 300_000;
 
     /**
      * An example of using Ribbon/LoadBalancer with RestTemplate.

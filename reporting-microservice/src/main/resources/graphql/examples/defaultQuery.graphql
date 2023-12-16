@@ -1,5 +1,6 @@
 query {
-    getServicesInfo {
-        shop
+    getShopItems {
+        id
+        name
     }
 }

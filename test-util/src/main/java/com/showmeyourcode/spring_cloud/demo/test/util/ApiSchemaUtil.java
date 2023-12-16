@@ -16,7 +16,7 @@ import java.util.List;
 public class ApiSchemaUtil {
 
     public enum ApiFileToReplace {
-        SHOP("api-docs-shop-microservice.json"),
+        SHOP("api-docs-shop-microservice.yml"),
         WAREHOUSE("api-docs-warehouse-microservice.json"),
         FACTORY("api-docs-factory-microservice.json");
 
@@ -45,7 +45,7 @@ public class ApiSchemaUtil {
 
     public static void updateClientSchema(
             String currentApiSpecification,
-                                          List<DestinationProject> destinationProjects,
+            List<DestinationProject> destinationProjects,
             ApiFileToReplace fileToReplace
     ) throws IOException {
         Path currentRelativePath = Paths.get("");

@@ -391,6 +391,14 @@ References:
 
 ![Graphql](./docs/rest-vs-graphql.jpg)
 
+---
+
+Development remarks:
+- it's not possible to not return anything
+  - https://github.com/ardatan/graphql-tools/issues/277
+  - https://stackoverflow.com/questions/44737043/is-it-possible-to-not-return-any-data-when-using-a-graphql-mutation
+- you always need to specify which data you want back while doing queries
+
 #### Altair vs GraphiQL vs Voyager vs Playground
 
 All mentioned above can be primarily classified as "GraphQL" tools.

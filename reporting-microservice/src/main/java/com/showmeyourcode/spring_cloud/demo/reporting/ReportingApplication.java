@@ -5,8 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 
 @EnableFeignClients(basePackages = {
-		"io.swagger.api",
-		"com.showmeyourcode.spring_cloud.demo.client"
+		"com.showmeyourcode.spring_cloud.demo.reporting.configuration"
 })
 @SpringBootApplication
 public class ReportingApplication {

@@ -46,8 +46,9 @@ class SwaggerEndpointIT extends BaseIT {
         ApiSchemaUtil.updateClientSchema(
                 response.body().asString(),
                 List.of(
-                        ApiSchemaUtil.DestinationProject.SHOP
-                        ),
+                        ApiSchemaUtil.DestinationProject.SHOP,
+                        ApiSchemaUtil.DestinationProject.REPORTING
+                ),
                 ApiSchemaUtil.ApiFileToReplace.WAREHOUSE
         );
     }

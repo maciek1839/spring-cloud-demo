@@ -14,6 +14,7 @@ import org.springframework.http.MediaType;
 
 import java.io.IOException;
 import java.util.Collections;
+import java.util.List;
 
 @Slf4j
 class SwaggerEndpointIT extends BaseIT {
@@ -42,7 +43,7 @@ class SwaggerEndpointIT extends BaseIT {
 
         ApiSchemaUtil.updateClientSchema(
                 response.body().asString(),
-                Collections.emptyList(),
+                List.of(ApiSchemaUtil.DestinationProject.REPORTING),
                 ApiSchemaUtil.ApiFileToReplace.SHOP
         );
     }
