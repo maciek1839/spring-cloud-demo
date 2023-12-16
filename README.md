@@ -14,9 +14,10 @@
     - Eureka
 - Spring REST Docs
 - Swagger
+- gRPC
+- GraphQL
 - WireMock
 - RestAssured & Hamcrest
-- gRPC
 
 ## Services specification
 
@@ -395,8 +396,7 @@ References:
 All mentioned above can be primarily classified as "GraphQL" tools.
 
 - GraphiQL is an in-browser IDE for exploring GraphQL. Ref: https://www.npmjs.com/package/graphql-voyager
-- Altair is a GraphQL API client to explore APIs. Altair provides a good alternative to traditional GraphiQL and
-Playground.
+- Altair is a GraphQL API client to explore APIs. Altair provides a good alternative to traditional GraphiQL and Playground.
 - GraphQL Voyager represents any GraphQL API as an interactive visual.
 
 Below there is a demo fo GraphQL Voyager.

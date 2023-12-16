@@ -1,0 +1,18 @@
+type ServicesInfoOverview {
+    factory: String
+    shop: String
+    warehouse: String
+}
+
+type Query {
+    getServicesInfo: ServicesInfoOverview!
+}
+
+type Mutation {
+    addItem(item: String) : String
+}
+
+schema {
+    query: Query
+    mutation: Mutation
+}
