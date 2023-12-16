@@ -2,6 +2,8 @@
 #logging.level.root: DEBUG
 
 spring:
+  main:
+    allow-bean-definition-overriding: true
   application:
     name: spring-cloud-eureka-reporting
 
@@ -35,4 +37,56 @@ management:
     web:
       exposure:
         exclude:
-        include: health,info,metrics,mappings
+        # For test purposes include all. For production expose only the necessary data.
+        include: '*'
+
+
+#############################################
+graphql-endpoint: ${server.servlet.context-path}/graphql
+
+graphql:
+  servlet:
+    # Sets if GraphQL servlet should be created and exposed. If not specified defaults to "true".
+    enabled: true
+    # Sets the path where GraphQL servlet will be exposed. If not specified defaults to "/graphql"
+#    mapping: /graphql
+    # if you want to @ExceptionHandler annotation for custom GraphQLErrors
+    exception-handlers-enabled: true
+    cors-enabled: false
+    actuator-metrics: true
+    tracing-enabled: true
+
+  graphiql:
+    enabled: true
+    page-title: Reporting Microservice - GraphiQL
+    endpoint:
+      graphql: ${graphql-endpoint}
+
+  altair:
+    enabled: true
+    mapping: /altair
+    page-title: Reporting Microservice - Altair GraphQL Client
+    options:
+      endpoint-url: ${graphql-endpoint}
+      initial-settings:
+        theme: dracula
+    cdn:
+      enabled: true
+      version: 4.0.2
+
+  playground:
+    endpoint: ${graphql-endpoint}
+    subscriptionEndpoint: /subscriptions
+    enabled: true
+    pageTitle: Reporting Microservice - GraphQL Playground
+    cdn:
+      enabled: true
+      version: 1.7.20
+
+  voyager:
+    enabled: true
+    page-title: Reporting Microservice - GraphQL Voyager
+    endpoint: ${graphql-endpoint}
+    cdn:
+      enabled: true
+      version: latest

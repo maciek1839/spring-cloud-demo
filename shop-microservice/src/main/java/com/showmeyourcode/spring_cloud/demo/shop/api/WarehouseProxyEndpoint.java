@@ -1,5 +1,6 @@
 package com.showmeyourcode.spring_cloud.demo.shop.api;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import com.showmeyourcode.spring_cloud.demo.shop.generated.model.ItemResponse;
 import com.showmeyourcode.spring_cloud.demo.shop.generated.model.NewOrderRequest;
 import com.showmeyourcode.spring_cloud.demo.shop.generated.model.OrdersReportResponse;
@@ -45,8 +46,8 @@ public class WarehouseProxyEndpoint implements WarehouseProxyEndpointSpecificati
     }
 
     @Override
-    public ResponseEntity<Integer> getAllBargains(String xClientId) {
-        return bargainsService.getBargains();
+    public ResponseEntity<List<JsonNode>> getAllBargains(String xClientId) {
+        return ResponseEntity.ok(bargainsService.getBargains());
     }
 
     @Override

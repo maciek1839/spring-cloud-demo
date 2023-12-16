@@ -1,5 +1,6 @@
 package com.showmeyourcode.spring_cloud.demo.shop.api;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import com.showmeyourcode.spring_cloud.demo.shop.generated.ApiApi;
 import com.showmeyourcode.spring_cloud.demo.shop.generated.model.ItemResponse;
 import io.swagger.v3.oas.annotations.Operation;
@@ -16,6 +17,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.util.List;
 
 @SecurityScheme(
         name = "basicAuth",
@@ -35,7 +38,7 @@ public interface WarehouseProxyEndpointSpecification extends ApiApi {
     @ApiResponses(value = {
             @ApiResponse(
                     responseCode = "200",
-                    description = "Successfully retrieved a number of bargains.",
+                    description = "Successfully retrieved bargains.",
                     content = @Content(
                             mediaType = "application/json",
                             array = @ArraySchema(schema = @Schema(implementation = ItemResponse.class))
@@ -53,7 +56,7 @@ public interface WarehouseProxyEndpointSpecification extends ApiApi {
             value = BARGAINS_WAREHOUSE_PATH,
             produces = {"application/json"}
     )
-    ResponseEntity<Integer> getAllBargains(
+    ResponseEntity<List<JsonNode>> getAllBargains(
             @Parameter(
                     in = ParameterIn.HEADER,
                     description = "A client's ID (a service name)",

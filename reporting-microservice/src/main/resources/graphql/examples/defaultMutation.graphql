@@ -1,0 +1,7 @@
+mutation {
+    makeShopOrder(order: {
+        item: {name: "item name"},
+        customerName: "customer name",
+        comment: "order comment"
+    })
+}

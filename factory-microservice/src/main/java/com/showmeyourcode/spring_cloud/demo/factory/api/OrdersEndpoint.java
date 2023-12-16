@@ -21,8 +21,6 @@ import java.util.UUID;
 public class OrdersEndpoint implements OrdersEndpointSpecification {
 
     private final OrdersService ordersService;
-    @Value("${spring.application.name}")
-    private String appName;
     @Value("${spring.webflux.base-path}")
     private String contextPath;
 

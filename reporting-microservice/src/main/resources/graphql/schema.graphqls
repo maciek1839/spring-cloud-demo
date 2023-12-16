@@ -1,0 +1,33 @@
+type WarehouseItemResponse   {
+    id: String
+    name: String
+}
+
+type ShopItemResponse   {
+    id: String
+    name: String
+}
+
+input NewItemRequest {
+    name: String
+}
+
+input NewOrderRequest {
+    item: NewItemRequest!
+    customerName: String!
+    comment: String
+}
+
+type Query {
+    getShopItems: [ShopItemResponse!]!
+    getWarehouseItems: [WarehouseItemResponse!]!
+}
+
+type Mutation {
+    makeShopOrder(order: NewOrderRequest): Int
+}
+
+schema {
+    query: Query
+    mutation: Mutation
+}

@@ -33,7 +33,8 @@ management:
     web:
       exposure:
         exclude:
-        include: health,info,metrics
+        # For test purposes include all. For production expose only the necessary data.
+        include: '*'
 
 #############################################
 

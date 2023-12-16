@@ -60,6 +60,8 @@
         <javax-annotation-api.version>1.3.2</javax-annotation-api.version>
         <spring-boot-admin.version>3.1.6</spring-boot-admin.version>
         <spring-boot-admin-ui.version>1.5.7</spring-boot-admin-ui.version>
+        <graphql-spring-starter.version>15.1.0</graphql-spring-starter.version>
+        <protobuf-java-util.version>3.25.1</protobuf-java-util.version>
 
         <net-devh-grpc.version>2.15.0.RELEASE</net-devh-grpc.version>
         <grpc-plugin.version>io.grpc:protoc-gen-grpc-java:1.57.2</grpc-plugin.version>
@@ -107,6 +109,12 @@
                 <version>${guava.version}</version>
             </dependency>
 
+            <dependency>
+                <groupId>com.graphql-java-kickstart</groupId>
+                <artifactId>graphql-spring-boot-starter</artifactId>
+                <version>${graphql-spring-starter.version}</version>
+            </dependency>
+
             <!-- Test dependencies-->
             <dependency>
                 <groupId>org.wiremock</groupId>
@@ -115,8 +123,9 @@
                 <scope>test</scope>
             </dependency>
             <dependency>
-                <groupId>io.grpc</groupId>
-                <artifactId>grpc-testing</artifactId>
+                <groupId>com.graphql-java-kickstart</groupId>
+                <artifactId>graphql-spring-boot-starter-test</artifactId>
+                <version>${graphql-spring-starter.version}</version>
                 <scope>test</scope>
             </dependency>
         </dependencies>

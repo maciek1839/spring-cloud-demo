@@ -1,6 +1,7 @@
 package com.showmeyourcode.spring_cloud.demo.shop.service;
 
 
+import com.google.protobuf.MessageOrBuilder;
 import com.showmeyourcode.spring_cloud.demo.shop.BaseIT;
 import com.showmeyourcode.spring_cloud.demo.shop.api.WarehouseProxyEndpointSpecification;
 import com.showmeyourcode.spring_cloud.demo.shop.constant.HttpHeaderConstant;
@@ -32,6 +33,7 @@ class BargainsServiceIT extends BaseIT {
     void shouldReturnBargainsUsingGrpc() {
         var stub = mock(BargainsServiceGrpc.BargainsServiceBlockingStub.class);
         var products = new ArrayList<BargainProto.BargainProduct>();
+        products.add(Mockito.mock(BargainProto.BargainProduct.class));
         products.add(BargainProto.BargainProduct.newBuilder().setBasePrice(12.22).setDiscount(0.45).setId(UUID.randomUUID().toString()).build());
         when(stub.findAll(any())).thenReturn(
                 BargainProto.BargainFindAllResponse.newBuilder().setMessageCode(200).addAllProducts(products).build()

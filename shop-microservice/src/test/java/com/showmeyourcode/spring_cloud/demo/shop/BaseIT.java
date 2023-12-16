@@ -45,6 +45,8 @@ public abstract class BaseIT {
         log.info("Starting WireMock services...");
         wireMockServer = new WireMockServer(9871);
         wireMockServer.start();
+
+        RestAssured.enableLoggingOfRequestAndResponseIfValidationFails();
     }
 
     @AfterAll
