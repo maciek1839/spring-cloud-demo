@@ -420,3 +420,32 @@ WebSockets are often used as a transport protocol for GraphQL Subscriptions.
 Subscriptions are useful for notifying your client in real time about changes to back-end data, such as the creation of a new object or updates to an important field.
 
 Reference: https://stackoverflow.com/questions/67659937/what-are-differences-between-graphql-subscription-and-websocket-protocol
+
+## HTTP/2
+
+HTTPS is just the HTTP protocol but with data encryption using SSL/TLS.
+
+Secure Sockets Layer (SSL) is an older, less-secure version of the cryptographic protocol, and Transport Layer Security (TLS) is its successor.
+
+*There is `http2` profile which can be used to run locally this protocol as POC.*
+
+=> https://localhost:8443/reporting/swagger-ui/index.html
+
+![HTTP 2](./docs/tls/http1-http2-http3.png)
+
+Reference: https://www.wallarm.com/what/what-is-http-2-and-how-is-it-different-from-http-1
+
+#### Generating a certificate for local development
+
+Reference: https://byte27.com/2020/02/03/using-http-2-in-your-spring-boot-application/
+
+On Windows:
+1. Generate a certificate and the private key using openssl with the command (you must be in `docs` folder):
+    ```
+    openssl req -x509 -out localhost.crt -keyout localhost.key -newkey rsa:2048 -nodes -sha256 -subj '//CN=localhost' -extensions EXT -config ./certificate.cnf
+    ```
+2. Generate pkcs12.
+   ```
+   openssl pkcs12 -export -in localhost.crt -inkey localhost.key -name localhost -out localhost.p12
+   ```
+
