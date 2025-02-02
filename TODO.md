@@ -8,8 +8,6 @@
 - Handle upstreams errors (Warehouse + Shop + Client)
 - Add API validation
   - https://bitbucket.org/atlassian/swagger-request-validator/src/master/
-- Use different protocols - gRPC, RPC and try out GraphQL
-- K8 with internal/external communication, show use-cases
 - add tracking zipkin?
   - https://piotrminkowski.com/2023/03/13/microservices-with-spring-boot-3-and-spring-cloud/
 - Implement chain of responsibility + other patterns for microservices

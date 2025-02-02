@@ -69,6 +69,8 @@ All services use OpenApi3 (OAS3).
   - Dashboard: http://localhost:9000/
   - Eureka service name: spring-cloud-eureka-admin
   - Port: 9000
+- `test-util`
+  - System and acceptance tests.
 
 ---
 
@@ -261,6 +263,16 @@ Reference: https://www.baeldung.com/spring-rest-docs-vs-openapi
 
 **OpenAPI 3 is the successor of the widely used OpenAPI/Swagger 2.0 format, for machine-readable API definitions.**
 
+OpenAPI Specification (formerly Swagger Specification) is an API description format for REST APIs. An OpenAPI file allows you to describe your entire API, including:
+- Available endpoints (/users) and operations on each endpoint (GET /users, POST /users)
+- Operation parameters Input and output for each operation
+- Authentication methods
+- Contact information, license, terms of use and other information.
+
+API specifications can be written in YAML or JSON. The format is easy to learn and readable to both humans and machines. The complete OpenAPI Specification can be found on GitHub: OpenAPI 3.0 Specification
+
+Swagger is a set of open-source tools built around the OpenAPI Specification that can help you design, build, document and consume REST APIs.
+
 - Reference: https://dev.to/frolovdev/openapi-spec-swagger-v2-vs-v3-4o7c
 - Official documentation: https://spec.openapis.org/oas/v3.1.0
 
@@ -279,6 +291,162 @@ Ref: https://spring.io/projects/spring-restdocs#overview
 Example implementation - [spring-projects / spring-restdocs](https://github.com/spring-projects/spring-restdocs/blob/2.0.x/samples/rest-notes-spring-data-rest/src/main/asciidoc/api-guide.adoc)
 
 ## API architecture styles
+
+### REST
+
+REST, or REpresentational State Transfer, is an architectural style for providing standards between computer systems on the web, making it easier for systems to communicate with each other. REST-compliant systems, often called RESTful systems, are characterized by how they are stateless and separate the concerns of client and server.
+
+An architectural style is a set of principles and patterns that guide the design of software systems
+
+Key features:
+- Uniform Interface
+  - It is a key constraint that differentiate between a REST API and Non-REST API. It suggests that there should be an uniform way of interacting with a given server irrespective of device or type of application (website, mobile app).
+    - There are four guidelines principle of Uniform Interface are:
+      - Resource-Based: Individual resources are identified in requests. For example: API/users.
+      - Manipulation of Resources Through Representations: Client has representation of resource and it contains enough information to modify or delete the resource on the server, provided it has permission to do so. Example: Usually user get a user id when user request for a list of users and then use that id to delete or modify that particular user.
+      - Self-descriptive Messages: Each message includes enough information to describe how to process the message so that server can easily analyses the request.
+      - Hypermedia as the Engine of Application State (HATEOAS): It need to include links for each response so that client can discover other resources easily.
+- Stateless
+  - It means that the necessary state to handle the request is contained within the request itself and server would not store anything related to the session.
+- Cacheable
+  - Every response should include whether the response is cacheable or not and for how much duration responses can be cached at the client side.
+- Client-Server
+  - REST application should have a client-server architecture.
+- Layered System
+  - An application architecture needs to be composed of multiple layers. Each layer doesn’t know any thing about any layer other than that of immediate layer and there can be lot of intermediate servers between client and the end server. Intermediary servers may improve system availability by enabling load-balancing and by providing shared caches.
+- (Optional) Code on Demand
+- RFC specification:
+  - <https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html#sec9.6>
+- References:
+  - <https://www.codecademy.com/article/what-is-rest>
+  - <https://www.geeksforgeeks.org/rest-api-architectural-constraints/>
+
+#### Good practises for designing REST API
+
+- Return JSON instead of multiple formats.
+- Use Nouns instead of Verbs.
+  - GET /books/123
+- Name the collections using Plural Nouns.
+- Use resource nesting to show relations or hierarchy.
+- Error Handling / Standard HTTP error code handling is a must.
+  - So the `perfect` error message would consist of:
+    - HTTP Status Code
+    - Code ID - which may be an internal reference, you may also provide a link to the API documentation containing all the code id’s
+    - Human readable message shortly explaining the error (its cause, context or possible remedy)
+- Filtering, sorting, paging, and field selection
+  - Few of the most important features for consuming an API are filtering, sorting and paging. Resource collections are oftentimes enormous, and when some data has to be retrieved from them, it would be simply not very efficient to always get the full list and browse it for specific items.
+- API versioning
+  - Versioning your REST API is a good approach to take right from the start. This will allow you to introduce changes to the data structure or specific actions, even if they are breaking/non-backward compatible changes. At some point, you might end up managing more than one API versions. But this will allow you to introduce modifications and improve services on one hand, and on another not to lose a part of your API’s users as some of them might be either reluctant to change (their integrations) or are just slow adopters that need time in order to introduce changes on their side.
+- API Documentation.
+- Always use SSL/TLS to encrypt the communication with your API. No exceptions. Period.
+- References
+  - <https://www.merixstudio.com/blog/best-practices-rest-api-development/>
+
+
+#### Idempotent and safe HTTP methods in REST APIs
+
+A method is safe if it does not modify the server's (internal) state. Safe methods are methods that can be cached, prefetched without any repercussions to the resource.
+
+A method is idempotent if calling it multiple times has the same effect as calling it once (it doesn't change anything externally (response)).
+
+Idempotent HTTP method is a HTTP method that can be called many times without different outcomes. The PUT and DELETE methods are defined to be idempotent. However, there is a caveat on DELETE. The problem with DELETE, which if successful would normally return a 200 (OK) or 204 (No Content), will often return a 404 (Not Found) on subsequent calls, unless the service is configured to "mark" resources for deletion without actually deleting them. However, when the service actually deletes the resource, the next call will not find the resource to delete it and return a 404. However, the state on the server is the same after each DELETE call, but the response is different. [Reference](https://stackoverflow.com/questions/56729786/difference-between-idempotent-and-safe-http-methods-in-rest-apis)
+
+PATCH is not idempotent when it involves incremental updates (e.g., adding money, appending data), however it can be idempotent if it sets specific values rather than modifying them relatively.
+
+PUT is always idempotent, as it replaces the entire resource.
+
+| HTTP Method | Idempotent | Safe |
+|-------------|------------|------|
+| OPTIONS     | yes        | yes  |
+| GET         | yes        | yes  |
+ | HEAD        | yes        | yes  |
+ | PUT         | yes        | no   |
+| POST        | no         | no   |
+ | DELETE      | yes        | no   |
+ | PATCH       | no         | no   |
+
+
+
+#### An example of REST API design
+
+Resource objects often exhibit a functional hierarchy or interrelation. For example, in an online store, we have 'users' and 'orders'. Orders are always associated with a specific user. Hence, we might structure our endpoints as follows:
+
+```text
+/users               <- list of users
+/users/123           <- specific user
+/users/123/orders    <- list of orders belonging to a specific user
+/users/123/orders/0001 <- specific order of a specific user
+```
+
+It's generally advisable to limit the nesting to one level in a REST API. Too many nested levels can make the API structure less elegant. Alternatively, similar results can often be achieved through filtering, e.g., /orders?user=123.
+
+```text
+GET /users?country=USA
+GET /users?creation_date=2019-11-11
+GET /users?creation_date=2019-11-11
+```
+```text
+GET /users?sort=birthdate_date:asc
+GET /users?sort=birthdate_date:desc
+```
+```text
+GET /users?limit=100
+GET /users?offset=2
+```
+```text
+GET /users?country=USA&creation_date=2019-11-11&sort=birthdate_date:desc&limit=100&offset=2
+```
+
+#### Richardson maturity model
+
+Reference: https://martinfowler.com/articles/richardsonMaturityModel.html
+
+```text
+Glory of REST
+⬆
+|
+Level 3: Hypermedia Controls
+|
+Level 2: HTTP Verbs
+|
+Level 1: Resources
+|
+Level 0: The Swamp of POX
+```
+
+- Level 0: The Swamp of POX
+  - At this level, the API uses HTTP as a transport mechanism for remote interactions but does not utilize the features of HTTP.
+  - Often, APIs at this level expose a single endpoint, and interactions are handled through a single method (e.g., POST) with payloads that encapsulate both action and data.
+  - The communication is typically in XML or JSON format but lacks structure and clear delineation of resources.
+- Level 1: Resources
+  - This level introduces the concept of resources, with each resource having its unique URI.
+  - Resources can be accessed via different URIs, making the API more structured and navigable.
+  - While the resources are identified, the interactions still do not fully leverage HTTP methods.
+- Level 2: HTTP Verbs
+  - At this level, the API uses HTTP methods (GET, POST, PUT, DELETE) appropriately.
+    - Each HTTP method is used to perform specific actions on resources, following REST principles.
+      - This level brings more standardization and a clearer interaction model with resources.
+- Level 3: Hypermedia Controls (HATEOAS)
+  - The final level introduces Hypermedia as the Engine of Application State (HATEOAS).
+  - The API provides hypermedia links in the responses, guiding clients on available actions dynamically.
+  - This level offers the most RESTful experience, allowing clients to discover and navigate the API interactively through links.
+
+#### Miscellanios
+
+- Can we use REST in SOA instead of SOAP?
+  - Yes. SOAP and REST – both provide support for building SOA based application
+- Does REST Api have to be HTTP protocol based?
+  - REST isn't always linked to HTTP. You can use other transfer protocols, such as FTP, SMTP, etc. and your API can still be RESTful. Any API that uses HTTP as its transfer protocol is referred to as an HTTP API.
+  - Ref: <https://hevodata.com/learn/http-api-vs-rest-api/>
+- How to implement PATCH (partial update)?
+  - Send a map of changed attributes only
+    - private Map<String, Object> changedAttrs = new HashMap<>();
+  - Use GSON instead of Jackson to distinguish null fields.
+  - Instead of Jackson class mapping, use JsonNode and manually check keys and associate with attribute. If a class field is missing, it means it was not changed.
+  - Add a boolean to each attribute e.g.
+    - private String firstName;
+    - private boolean isFirstNameDirty;
+  - Ref: <https://stackoverflow.com/questions/38424383/how-to-distinguish-between-null-and-not-provided-values-for-partial-updates-in-s>
 
 ### gRPC
 
@@ -383,9 +551,12 @@ GraphQL is a query language and server-side runtime for application programming 
 giving clients exactly the data they request and no more. As an alternative to REST, GraphQL lets developers construct
 requests that pull data from multiple data sources in a single API call.
 
+When developing a GraphQL API there are two popular approaches to create the GraphQL Schema: the schema-first approach and the code-first. The schema-first consists of building the Schema using the Schema Definition Language while the code-first uses a programming language to create the Schema.
+
 References:
 - https://www.redhat.com/en/topics/api/what-is-graphql
 - https://graphql.org/
+- https://formidable.com/blog/2021/graphql-with-nexus/
 
 ![Graphql](./docs/GraphQL_Architecture-1024x461.png)
 
@@ -420,6 +591,24 @@ WebSockets are often used as a transport protocol for GraphQL Subscriptions.
 Subscriptions are useful for notifying your client in real time about changes to back-end data, such as the creation of a new object or updates to an important field.
 
 Reference: https://stackoverflow.com/questions/67659937/what-are-differences-between-graphql-subscription-and-websocket-protocol
+
+#### GraphQL vs REST API
+
+A REST API is an `architectural concept` for network-based software.
+GraphQL, on the other hand, is a query language and a set of tools that operate over a single endpoint.
+
+References:
+- https://hygraph.com/blog/graphql-vs-rest-apis
+- https://aws.amazon.com/compare/the-difference-between-graphql-and-rest/
+
+
+#### How to solve n+1 problem when using GraphQL?
+
+- When querying for nested data, like in the music example, a scaling issue known as the n+1 problem can occur.
+- In the example, the query will fetch a list of musicians. Let’s say it finds n musicians in the database. For each musician found, the albums() resolver will be invoked to locate all the albums associated with that musician. This resolver will trigger a database call for each musician, which will be n calls. This means that in total, there are n+1 database calls occurring. This is much less efficient than having two database calls, one for musicians and one for albums.
+- There are well-established solutions for handling it. These include using batching or using data loaders on the client.
+- When using a data loader, the fetcher responds with a promise, then moves to the next fetch at the same data level rather than moving onto the nested data. A promise is a proxy for the response of a function that allows processing to continue. The code guarantees that a response for the call will come later, making it a non-blocking function. Once all the data at one level is retrieved (or once all the promises have been fulfilled), a single request is made to get all the nested data.
+- Reference: https://hygraph.com/blog/graphql-n-1-problem
 
 ## HTTP/2
 
