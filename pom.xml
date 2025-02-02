@@ -10,7 +10,7 @@
     <packaging>pom</packaging>
     <groupId>com.showmeyourcode.spring_cloud.demo</groupId>
     <artifactId>spring-cloud-demo-parent</artifactId>
-    <version>2.1.0</version>
+    <version>2.1.1-SNAPSHOT</version>
     <name>Spring Boot Cloud demo</name>
     <description>Demo project for Spring Boot Cloud</description>
 
@@ -315,7 +315,7 @@
         <url>https://gitlab.com/ShowMeYourCodeYouTube/spring-cloud-demo</url>
         <connection>scm:git:https://gitlab.com/ShowMeYourCodeYouTube/spring-cloud-demo.git</connection>
         <developerConnection>scm:git:https://gitlab.com/ShowMeYourCodeYouTube/spring-cloud-demo.git</developerConnection>
-        <tag>2.1.0</tag>
+        <tag>HEAD</tag>
     </scm>
 
 </project>
