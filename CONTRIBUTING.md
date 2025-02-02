@@ -15,7 +15,7 @@
 ### Release a new version
 
 ```text
-mvn release:prepare
+mvn release:clean release:prepare release:perform
 ```
 
 If you want to only update versions (not recommended), use below command:

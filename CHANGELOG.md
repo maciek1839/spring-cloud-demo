@@ -4,6 +4,17 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## 2.1.0 (2025-02-02)
+
+### Added
+
+- Integrate services using gRPC ([8307014d](https://gitlab.com/ShowMeYourCodeYouTube/spring-cloud-demo/-/commit/8307014d24f3831d165fb31dd8d0e30d3876b9b7))
+- Expose data using GraphQL (reporting microservice) ([0d2230d1](https://gitlab.com/ShowMeYourCodeYouTube/spring-cloud-demo/-/commit/0d2230d15367618f3520fd2b24aa738b37d043ac))
+
+### Changed
+
+- Move acceptance tests to a separate module ([88d97bce](https://gitlab.com/ShowMeYourCodeYouTube/spring-cloud-demo/-/commit/88d97bce666c618c9f463e9d2a532a71a12e72c6))
+
 ## 2.0.0 (2023-09-04)
 
 ### Added
