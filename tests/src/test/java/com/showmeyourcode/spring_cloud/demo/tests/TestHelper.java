@@ -1,4 +1,4 @@
-package com.showmeyourcode.spring_cloud.demo.test;
+package com.showmeyourcode.spring_cloud.demo.tests;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;

@@ -1,4 +1,4 @@
-package com.showmeyourcode.spring_cloud.demo.test;
+package com.showmeyourcode.spring_cloud.demo.tests;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

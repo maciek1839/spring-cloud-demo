@@ -1,4 +1,4 @@
-package com.showmeyourcode.spring_cloud.demo.test;
+package com.showmeyourcode.spring_cloud.demo.tests;
 
 import org.springframework.http.MediaType;
 import org.springframework.test.web.reactive.server.WebTestClient;

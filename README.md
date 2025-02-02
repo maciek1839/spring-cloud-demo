@@ -69,7 +69,7 @@ All services use OpenApi3 (OAS3).
   - Dashboard: http://localhost:9000/
   - Eureka service name: spring-cloud-eureka-admin
   - Port: 9000
-- `test-util`
+- `tests`
   - System and acceptance tests.
 
 ---
@@ -103,7 +103,7 @@ Design remarks:
 
 [Reference](https://www.geeksforgeeks.org/acceptance-testing-software-testing/)
 
-System and acceptance tests are in the `test-util` module.
+System and acceptance tests are in the `tests` module.
 Run them when all microservices are up.
 
 Thanks to automatic tests you don't need to manually verify is services are fine after making major changes.
@@ -560,7 +560,7 @@ References:
 
 ![Graphql](./docs/GraphQL_Architecture-1024x461.png)
 
-![Graphql](./docs/rest-vs-graphql.jpg)
+![Graphql](./docs/rest-vs-graphql.png)
 
 ---
 
