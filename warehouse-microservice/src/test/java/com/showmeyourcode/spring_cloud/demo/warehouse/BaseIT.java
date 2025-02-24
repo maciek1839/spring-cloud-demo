@@ -17,6 +17,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.boot.test.web.server.LocalServerPort;
+import org.springframework.http.HttpHeaders;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
@@ -28,6 +29,9 @@ import static com.github.tomakehurst.wiremock.client.WireMock.configureFor;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public abstract class BaseIT {
 
+    // Software caused connection abort: recv failed
+    // .withHeader(HttpHeaders.CONNECTION, "close")
+    // https://stackoverflow.com/questions/68929051/wiremock-sometimes-it-throws-software-caused-connection-abort-recv-failed
     protected static WireMockServer wireMockServer;
 
     @Value("${server.servlet.context-path}")

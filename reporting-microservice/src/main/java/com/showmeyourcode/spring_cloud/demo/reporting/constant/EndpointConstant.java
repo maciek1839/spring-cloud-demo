@@ -17,9 +17,6 @@ public class EndpointConstant {
 
     public static final String GRAPHQL_ROOT = "/graphql";
     public static final String GRAPHQL_GRAPHIQL = "/graphiql";
-    public static final String GRAPHQL_ALTAIR = "/altair";
-    public static final String GRAPHQL_PLAYGROUND = "/playground";
-    public static final String GRAPHQL_VOYAGER = "/voyager";
 
     private EndpointConstant() {
     }

@@ -8,6 +8,7 @@ import com.showmeyourcode.spring_cloud.demo.warehouse.generated.model.NewOrderRe
 import io.restassured.RestAssured;
 import io.restassured.filter.log.LogDetail;
 import org.hamcrest.Matchers;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -30,10 +31,11 @@ class FactoryProxyOrdersEndpointIT extends BaseIT {
                                         .withStatus(200)
                                         .withHeader(HttpHeaders.LOCATION, "/factory/api/v1/orders/4e82f625-199f-41ee-8243-355d3b0356ca")
                                         .withBodyFile("factory/orders/make/success.json")
+                                        .withHeader(HttpHeaders.CONNECTION, "close")
                         )
         );
 
-        var uri = FactoryProxyEndpointSpecification.ENDPOINT_PATH+FactoryProxyEndpointSpecification.ORDERS_API_PATH;
+        var uri = FactoryProxyEndpointSpecification.ENDPOINT_PATH + FactoryProxyEndpointSpecification.ORDERS_API_PATH;
 
         var newOrder = new NewOrderRequest();
         var newItem = new NewItemRequest();
@@ -59,14 +61,15 @@ class FactoryProxyOrdersEndpointIT extends BaseIT {
     void shouldCancelOrder() {
         var orderId = "4e82f625-199f-41ee-8243-355d3b0356ca";
         wireMockServer.stubFor(
-                delete(urlEqualTo("/factory/api/v1/orders/"+orderId))
+                delete(urlEqualTo("/factory/api/v1/orders/" + orderId))
                         .willReturn(
                                 aResponse()
                                         .withStatus(204)
+                                        .withHeader(HttpHeaders.CONNECTION, "close")
                         )
         );
 
-        var uri = FactoryProxyEndpointSpecification.ENDPOINT_PATH+FactoryProxyEndpointSpecification.ORDERS_API_PATH+"/"+orderId;
+        var uri = FactoryProxyEndpointSpecification.ENDPOINT_PATH + FactoryProxyEndpointSpecification.ORDERS_API_PATH + "/" + orderId;
 
         RestAssured.given(this.requestSpecification)
                 .header(HttpHeaderConstant.X_CLIENT_ID_HEADER, exampleClientHeaderValue)
@@ -79,7 +82,7 @@ class FactoryProxyOrdersEndpointIT extends BaseIT {
 
     @Test
     void shouldGetReport() {
-        var uri = FactoryProxyEndpointSpecification.ORDERS_API_PATH+FactoryProxyEndpointSpecification.REPORT_PATH;
+        var uri = FactoryProxyEndpointSpecification.ORDERS_API_PATH + FactoryProxyEndpointSpecification.REPORT_PATH;
 
         wireMockServer.stubFor(
                 get(urlEqualTo("/factory/api/v1/orders/report"))
@@ -88,6 +91,7 @@ class FactoryProxyOrdersEndpointIT extends BaseIT {
                                         .withStatus(200)
                                         .withHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
                                         .withBodyFile("factory/orders/report/success.json")
+                                        .withHeader(HttpHeaders.CONNECTION, "close")
                         )
         );
 
@@ -105,7 +109,7 @@ class FactoryProxyOrdersEndpointIT extends BaseIT {
 
     @Test
     void shouldNotGetReportWhenUserIsUnauthorized() {
-        var uri = FactoryProxyEndpointSpecification.ORDERS_API_PATH+FactoryProxyEndpointSpecification.REPORT_PATH;
+        var uri = FactoryProxyEndpointSpecification.ORDERS_API_PATH + FactoryProxyEndpointSpecification.REPORT_PATH;
 
         RestAssured.given(this.requestSpecification)
                 .accept(MediaType.APPLICATION_JSON_VALUE)

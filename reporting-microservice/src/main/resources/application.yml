@@ -6,6 +6,9 @@ spring:
     allow-bean-definition-overriding: true
   application:
     name: spring-cloud-eureka-reporting
+  graphql:
+    graphiql:
+      enabled: true
 
 server:
   port: 8000

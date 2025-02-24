@@ -15,10 +15,7 @@ class GraphQLStaticAssetsIT extends BaseIT {
 
     @ParameterizedTest
     @ValueSource(strings = {
-            EndpointConstant.GRAPHQL_ALTAIR,
-            EndpointConstant.GRAPHQL_GRAPHIQL,
-            EndpointConstant.GRAPHQL_VOYAGER,
-            EndpointConstant.GRAPHQL_PLAYGROUND
+            EndpointConstant.GRAPHQL_GRAPHIQL
     })
     void shouldGetStaticFile(String path) {
         Response response = RestAssured.given(this.requestSpecification)

@@ -33,7 +33,7 @@ class GraphQueryIT extends BaseIT {
         RestAssured.given(this.requestSpecification)
                 .contentType(ContentType.JSON)
                 .when()
-                .body(graphQLUtil.buildQuery(loadFileFromResources("graphql/examples/defaultQuery.graphql")))
+                .body(graphQLUtil.getShopItemsPayload)
                 .post(addContextPath(EndpointConstant.GRAPHQL_ROOT))
                 .then()
                 .assertThat()
@@ -56,13 +56,13 @@ class GraphQueryIT extends BaseIT {
         RestAssured.given(this.requestSpecification)
                 .contentType(ContentType.JSON)
                 .when()
-                .body(graphQLUtil.buildQuery(loadFileFromResources("graphql/examples/defaultQuery.graphql")))
+                .body(graphQLUtil.getShopItemsPayload)
                 .post(addContextPath(EndpointConstant.GRAPHQL_ROOT))
                 .then()
                 .assertThat()
                 .statusCode(Matchers.is(HttpStatus.OK.value()))
                 .body("errors.size()", Matchers.is(1))
-                .body("errors[0].message", Matchers.is("[503 Service Unavailable] during [GET] to [http://spring-cloud-eureka-shop/shop/api/v1/items] [ShopApiClient#getAll(String)]: []"));
+                .body("errors[0].message", Matchers.containsString("INTERNAL_ERROR"));
     }
 
     @Test
@@ -80,7 +80,7 @@ class GraphQueryIT extends BaseIT {
         RestAssured.given(this.requestSpecification)
                 .contentType(ContentType.JSON)
                 .when()
-                .body(graphQLUtil.buildQuery(loadFileFromResources("graphql/examples/defaultQuery.graphql").replace("getShopItems","getWarehouseItems")))
+                .body(graphQLUtil.getWarehouseItemsPayload)
                 .post(addContextPath(EndpointConstant.GRAPHQL_ROOT))
                 .then()
                 .assertThat()
@@ -92,14 +92,12 @@ class GraphQueryIT extends BaseIT {
     @Test
     void shouldValidateQueryAndReturnErrorWhenQueryIsInvalid() {
         RestAssured.given(this.requestSpecification)
-                .accept(MediaType.TEXT_HTML_VALUE)
+                .accept(MediaType.TEXT_PLAIN_VALUE)
                 .when()
-                .body(graphQLUtil.buildQuery(graphQLUtil.buildWrongMutation()))
+                .body(graphQLUtil.getNotExistingQuery)
                 .post(addContextPath(EndpointConstant.GRAPHQL_ROOT))
                 .then()
                 .assertThat()
-                .statusCode(Matchers.is(HttpStatus.OK.value()))
-                .body("errors.size()", Matchers.is(1))
-                .body("errors[0].message", Matchers.is("Validation error (FieldUndefined@[doesNotExist]) : Field 'doesNotExist' in type 'Mutation' is undefined"));
+                .statusCode(Matchers.is(HttpStatus.NOT_FOUND.value()));
     }
 }

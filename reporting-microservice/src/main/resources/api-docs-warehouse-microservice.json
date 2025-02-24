@@ -14,7 +14,7 @@
     "url" : "https://gitlab.com/ShowMeYourCodeYouTube"
   },
   "servers" : [ {
-    "url" : "http://localhost:63188/warehouse",
+    "url" : "http://localhost:52993/warehouse",
     "description" : "Generated server url"
   } ],
   "paths" : {
@@ -95,8 +95,8 @@
               }
             }
           },
-          "500" : {
-            "description" : "Internal Server Error. Please try again later.",
+          "200" : {
+            "description" : "A report was successfully created.",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -105,8 +105,8 @@
               }
             }
           },
-          "200" : {
-            "description" : "A report was successfully created.",
+          "500" : {
+            "description" : "Internal Server Error. Please try again later.",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -136,6 +136,16 @@
           }
         } ],
         "responses" : {
+          "400" : {
+            "description" : "A request is invalid. Some required parameters are missing.",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object"
+                }
+              }
+            }
+          },
           "200" : {
             "description" : "Successfully retrieved items.",
             "content" : {
@@ -145,16 +155,6 @@
                   "items" : {
                     "$ref" : "#/components/schemas/ItemResponse"
                   }
-                }
-              }
-            }
-          },
-          "400" : {
-            "description" : "A request is invalid. Some required parameters are missing.",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "type" : "object"
                 }
               }
             }
@@ -207,8 +207,8 @@
               }
             }
           },
-          "500" : {
-            "description" : "Internal Server Error. Please try again later.",
+          "200" : {
+            "description" : "Successfully retrieved an item.",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -217,8 +217,8 @@
               }
             }
           },
-          "200" : {
-            "description" : "Successfully retrieved an item.",
+          "500" : {
+            "description" : "Internal Server Error. Please try again later.",
             "content" : {
               "application/json" : {
                 "schema" : {

@@ -26,6 +26,7 @@ class FactoryProxyItemsEndpointIT extends BaseIT {
                                         .withStatus(200)
                                         .withHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
                                         .withBodyFile("factory/items/get-all/success.json")
+                                        .withHeader(HttpHeaders.CONNECTION, "close")
                         )
         );
 
@@ -51,6 +52,7 @@ class FactoryProxyItemsEndpointIT extends BaseIT {
                                 .withStatus(200)
                                 .withHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
                                 .withBodyFile("factory/items/get-by-id/success.json")
+                                .withHeader(HttpHeaders.CONNECTION, "close")
                 )
         );
 

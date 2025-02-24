@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.1.3</version>
-        <relativePath /> <!-- lookup parent from repository -->
+        <version>3.3.0</version>
+        <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <packaging>pom</packaging>
     <groupId>com.showmeyourcode.spring_cloud.demo</groupId>
@@ -36,33 +37,42 @@
             ${project.basedir}/coverage-report/target/site/jacoco-aggregate/jacoco.xml,
             ${project.basedir}/../coverage-report/target/site/jacoco-aggregate/jacoco.xml
         </sonar.coverage.jacoco.xmlReportPaths>
-        <sonar.exclusions>**/AdminApplication.java, **/EurekaApplication.java, **/ReportingApplication*.java, **/ShopApplication.java, **/WarehouseApplication.java, **/FactoryApplication.java, **/spring_cloud/demo/test/util/**, **/generated/**</sonar.exclusions>
+        <sonar.exclusions>**/AdminApplication.java, **/EurekaApplication.java, **/ReportingApplication*.java,
+            **/ShopApplication.java, **/WarehouseApplication.java, **/FactoryApplication.java,
+            **/spring_cloud/demo/test/util/**, **/generated/**
+        </sonar.exclusions>
 
         <jacoco.module.admin.app.exclusion>**/AdminApplication*</jacoco.module.admin.app.exclusion>
         <jacoco.module.reporting.app.exclusion>**/ReportingApplication*</jacoco.module.reporting.app.exclusion>
         <jacoco.module.eureka.app.exclusion>**/EurekaApplication*</jacoco.module.eureka.app.exclusion>
-        <jacoco.module.shop.app.exclusion>**/ShopApplication*,com/showmeyourcode/spring_cloud/demo/shop/grpc/**</jacoco.module.shop.app.exclusion>
+        <jacoco.module.shop.app.exclusion>**/ShopApplication*,com/showmeyourcode/spring_cloud/demo/shop/grpc/**
+        </jacoco.module.shop.app.exclusion>
         <jacoco.module.factory.app.exclusion>**/FactoryApplication*</jacoco.module.factory.app.exclusion>
-        <jacoco.module.warehouse.app.exclusion>**/WarehouseApplication*,com/showmeyourcode/spring_cloud/demo/warehouse/grpc/**</jacoco.module.warehouse.app.exclusion>
+        <jacoco.module.warehouse.app.exclusion>
+            **/WarehouseApplication*,com/showmeyourcode/spring_cloud/demo/warehouse/grpc/**
+        </jacoco.module.warehouse.app.exclusion>
         <jacoco.module.generated.exclusion>**/generated/**</jacoco.module.generated.exclusion>
-        <jacoco.module.test.util.exclusion>com/showmeyourcode/spring_cloud/demo/test/**</jacoco.module.test.util.exclusion>
+        <jacoco.module.test.util.exclusion>com/showmeyourcode/spring_cloud/demo/test/**
+        </jacoco.module.test.util.exclusion>
 
         <spring-cloud-starter-oauth2.version>2.2.5.RELEASE</spring-cloud-starter-oauth2.version>
-        <spring-cloud.version>2022.0.5</spring-cloud.version>
+        <spring-cloud.version>2023.0.5</spring-cloud.version>
         <springdoc-openapi.version>2.0.4</springdoc-openapi.version>
         <java-faker.version>1.0.2</java-faker.version>
         <jacoco.version>0.8.10</jacoco.version>
         <aasciidoctor-maven-plugin.version>2.2.4</aasciidoctor-maven-plugin.version>
         <wiremock-standalone.version>3.0.1</wiremock-standalone.version>
-        <swagger-codegen-maven-plugin.version>3.0.43</swagger-codegen-maven-plugin.version>
+        <swagger-codegen-maven-plugin.version>3.0.67</swagger-codegen-maven-plugin.version>
         <threetenbp.version>2.6.4</threetenbp.version>
         <swagger-annotations.version>1.6.11</swagger-annotations.version>
         <javax-validation.version>2.0.1.Final</javax-validation.version>
         <javax-annotation-api.version>1.3.2</javax-annotation-api.version>
         <spring-boot-admin.version>3.1.6</spring-boot-admin.version>
-        <spring-boot-admin-ui.version>1.5.7</spring-boot-admin-ui.version>
-        <graphql-spring-starter.version>15.1.0</graphql-spring-starter.version>
+        <spring-boot-admin-ui.version>3.3.6</spring-boot-admin-ui.version>
         <protobuf-java-util.version>3.25.6</protobuf-java-util.version>
+        <openapitools-jackson-databind.version>0.2.6</openapitools-jackson-databind.version>
+        <!-- Spring parent includes a compatible Jackson version but Swagger codegen works only with the old version -->
+        <jackson.module.version>2.15.0</jackson.module.version>
 
         <net-devh-grpc.version>2.15.0.RELEASE</net-devh-grpc.version>
         <grpc-plugin.version>io.grpc:protoc-gen-grpc-java:1.57.2</grpc-plugin.version>
@@ -91,7 +101,27 @@
                 <artifactId>swagger-annotations</artifactId>
                 <version>${swagger-annotations.version}</version>
             </dependency>
-
+            <dependency>
+                <groupId>org.openapitools</groupId>
+                <artifactId>jackson-databind-nullable</artifactId>
+                <version>${openapitools-jackson-databind.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-databind</artifactId>
+                <version>${jackson.module.version}</version>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-core</artifactId>
+                <version>${jackson.module.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.module</groupId>
+                <artifactId>jackson-module-parameter-names</artifactId>
+                <version>${jackson.module.version}</version>
+            </dependency>
             <!-- gRPC  -->
             <dependency>
                 <groupId>net.devh</groupId>
@@ -110,12 +140,6 @@
                 <version>${guava.version}</version>
             </dependency>
 
-            <dependency>
-                <groupId>com.graphql-java-kickstart</groupId>
-                <artifactId>graphql-spring-boot-starter</artifactId>
-                <version>${graphql-spring-starter.version}</version>
-            </dependency>
-
             <!-- Test dependencies-->
             <dependency>
                 <groupId>org.wiremock</groupId>
@@ -126,7 +150,7 @@
             <dependency>
                 <groupId>com.graphql-java-kickstart</groupId>
                 <artifactId>graphql-spring-boot-starter-test</artifactId>
-                <version>${graphql-spring-starter.version}</version>
+                <version>${spring-boot-starter-graphql.version}</version>
                 <scope>test</scope>
             </dependency>
         </dependencies>
@@ -314,7 +338,8 @@
     <scm>
         <url>https://gitlab.com/ShowMeYourCodeYouTube/spring-cloud-demo</url>
         <connection>scm:git:https://gitlab.com/ShowMeYourCodeYouTube/spring-cloud-demo.git</connection>
-        <developerConnection>scm:git:https://gitlab.com/ShowMeYourCodeYouTube/spring-cloud-demo.git</developerConnection>
+        <developerConnection>scm:git:https://gitlab.com/ShowMeYourCodeYouTube/spring-cloud-demo.git
+        </developerConnection>
         <tag>HEAD</tag>
     </scm>
 
